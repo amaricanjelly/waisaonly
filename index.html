@@ -32,6 +32,16 @@ button:active{transform:scale(.95)}button.alt{background:var(--soft);color:var(-
 #disc{font-size:1.6rem}#disc.spin{animation:sp 3s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
 #music button{margin:0;padding:6px 12px}#music input{width:80px;padding:0}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+#adm{position:fixed;inset:0;z-index:50;background:linear-gradient(160deg,#fff0f6,#ece0ff);overflow:auto;padding:16px;font-size:.95rem}
+#adm[hidden]{display:none}
+#adm .in{max-width:1100px;margin:auto}#adm .c{background:#fff;border-radius:20px;padding:16px;margin:12px 0;box-shadow:0 4px 16px #7b2d8e1f}
+#adm .g{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}#adm .g b{display:block;font-size:1.8rem;color:var(--pur)}
+#adm input,#adm select{width:auto;max-width:100%;padding:9px 12px;margin:4px 4px 4px 0;border-radius:12px}
+#adm button{padding:9px 16px;margin:4px 4px 4px 0}#adm .w{overflow-x:auto}#adm table{border-collapse:collapse;width:100%;font-size:.85rem}
+#adm td,#adm th{padding:7px 9px;border-bottom:1px solid #f0e4f7;text-align:left;white-space:nowrap}#adm tr.r{cursor:pointer}#adm tr.r:hover{background:#fbf1ff}
+#adm .row{display:flex;align-items:center;gap:8px;font-size:.85rem;margin:3px 0}#adm .row i{display:block;height:12px;background:var(--pink);border-radius:6px}
+#adm pre,#adm ul{font-size:.85rem}#adm pre{white-space:pre-wrap}#a-err{color:#c0215b}
 </style></head><body><main>
 <section class="card on" id="s-reg"><span class="big">🧸🎀</span>
 <h1>WELCOME TO MY LITTLE LOVE WORLD! 🎀</h1><p>Before entering, tell me a little about yourself.</p>
@@ -66,6 +76,13 @@ button:active{transform:scale(.95)}button.alt{background:var(--soft);color:var(-
 <div class="letter" id="fin" style="display:none"></div><button id="hopen">OPEN</button><div id="after" style="display:none"><button class="alt" id="del">DELETE MY DATA 🗑️</button></div></section>
 </main>
 <div id="music"><span id="disc">💿</span><button id="pp">▶</button><input id="vol" type="range" min="0" max="1" step=".05" value=".5" aria-label="Volume"></div>
+<div id="adm" hidden role="dialog" aria-label="Admin"><div class="in"><button class="alt" id="a-x">✕ Close</button>
+<div class="c" id="a-login"><h2>Admin login 🔐</h2><input id="a-em" type="email" placeholder="Admin email" autocomplete="username"><input id="a-pw" type="password" placeholder="Password" autocomplete="current-password"><button id="a-in">Sign in</button><p id="a-err"></p></div>
+<div id="a-app" hidden><h2>Admin dashboard ❤️</h2><button class="alt" id="a-rf">Refresh</button><button class="alt" id="a-out">Sign out</button>
+<div class="c g" id="a-stats"></div>
+<div class="c"><input id="a-q" placeholder="Search name, city, personality…"><select id="a-fl"><option value="">All visitors</option><option value="done">Completed game</option><option value="loc">Shared location</option></select><button id="a-csv">Export CSV</button><div class="w"><table id="a-t"></table></div></div>
+<div class="c" id="a-detail" hidden><h3>Visitor profile</h3><pre id="a-pre"></pre><h4>Activity history</h4><ul id="a-hist"></ul><button id="a-del" style="background:#c0215b">Delete this visitor</button></div>
+<div class="c"><h3>Analytics</h3><div id="a-ch"></div></div></div></div></div>
 <audio id="aud" loop preload="none"></audio>
 <script type="module">
 /* ====== EDIT YOUR CONTENT HERE ====== */
@@ -83,7 +100,7 @@ const CONFIG={
 const REASONS=["You remember tiny details I forgot I told you.","You laugh at my worst jokes anyway.","You make silence feel safe.","You say 'text me when you get home' and mean it.","Your voice notes are my favourite podcast.","You cheer louder for my wins than I do.","You never make me feel small for being sensitive.","You turn boring errands into adventures.","You hold my hand like it's the most normal, precious thing.","You tell me the truth, gently.","You share your food (mostly).","You make my bad days shorter.","You see the best version of me before I do.","You're brave about being soft.","You sing off-key with full confidence.","You apologise like an adult and forgive like an angel.","You make home feel like a person.","You dream out loud with me.","Your hugs reset my whole week.","You keep my secrets like treasure.","You make 3am talks feel like magic.","You're proud of me in ways that matter.","You make me want to be kinder.","You know which song fits my mood.","You laugh with your whole face.","You choose me on ordinary Tuesdays.","You make waiting feel worth it.","You turn my worries into plans.","You celebrate small things like they're festivals.","You are my favourite person to be quiet with."];
 /* Add more strings to REASONS above to reach 100. Everything below adapts automatically. */
 import {initializeApp} from "https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js";
-import {getAuth,signInAnonymously,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
+import {getAuth,signInAnonymously,onAuthStateChanged,signInWithEmailAndPassword,signOut} from "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
 import {getDatabase,ref,get,update,remove,serverTimestamp} from "https://www.gstatic.com/firebasejs/13.1.0/firebase-database.js";
 const app=initializeApp({apiKey:"AIzaSyCzx5PjKJNlKMJC4evQPjyXmdp1sTwpCP4",authDomain:"my-website-ctg.firebaseapp.com",databaseURL:"https://my-website-ctg-default-rtdb.firebaseio.com",projectId:"my-website-ctg",storageBucket:"my-website-ctg.firebasestorage.app",messagingSenderId:"655567782113",appId:"1:655567782113:web:a5adaa922a76bc58f5b7a0",measurementId:"G-8LBRH0WSEQ"});
 const auth=getAuth(app),db=getDatabase(app),$=id=>document.getElementById(id);
@@ -100,6 +117,7 @@ const sync=()=>{const m=minor();$('ori').style.display=m?'none':'block';if(m)$('
 $('age').oninput=$('dob').oninput=sync;
 /* auth + restore */
 onAuthStateChanged(auth,async u=>{if(!u){signInAnonymously(auth).catch(e=>$('err').textContent='Could not connect. Check that Anonymous sign-in is enabled.');return}
+ if(!u.isAnonymous){if($('adm').hidden)signOut(auth);else adminCheck(u);return}
  uid=u.uid;try{const s=await get(ref(db,`visitors/${uid}`));if(s.exists()&&s.val().profile){const v=s.val();name=v.profile.name;adult=v.profile.age>=18;done=v.activity?.completedLevels||0;seen=v.activity?.reasonsViewed||{};$('hey').textContent=`HEY, ${name.toUpperCase()}! 🥹❤️`;
   if(v.activity?.gameCompleted)start(5);else if(done>0)start(done+1);else show('s-wel')}}catch(e){console.warn(e)}});
 $('f').onsubmit=async e=>{e.preventDefault();const err=$('err');err.textContent='';
@@ -145,6 +163,41 @@ const a=$('aud');let want=false;
 function startMusic(){if(!CONFIG.musicUrl||want)return;want=true;a.src=CONFIG.musicUrl;a.volume=$('vol').value;a.play().then(()=>{$('pp').textContent='⏸';$('disc').classList.add('spin')}).catch(()=>{want=false})}
 $('pp').onclick=()=>{if(!CONFIG.musicUrl){alert('No music file is configured yet.');return}if(!a.src)a.src=CONFIG.musicUrl;if(a.paused){a.play().then(()=>{$('pp').textContent='⏸';$('disc').classList.add('spin')}).catch(()=>alert('Could not play the music.'))}else{a.pause();$('pp').textContent='▶';$('disc').classList.remove('spin')}};
 $('vol').oninput=()=>a.volume=$('vol').value;a.onerror=()=>{$('pp').textContent='▶';$('disc').classList.remove('spin')};
-/* admin shortcut: A A */
-let last=0;addEventListener('keydown',e=>{if(/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)||e.key.toLowerCase()!=='a')return;const t=Date.now();if(t-last<400)location.href='admin.html';last=t});
+/* admin shortcut: A A (400 ms); ignores inputs, textareas, selects, editable elements */
+let last=0;addEventListener('keydown',e=>{const el=document.activeElement,t0=el&&el.tagName;if(/INPUT|TEXTAREA|SELECT/.test(t0)||(el&&el.isContentEditable)||e.ctrlKey||e.metaKey||e.altKey||e.repeat||e.key.toLowerCase()!=='a')return;const t=Date.now();if(t-last<400){last=0;$('adm').hidden=false}else last=t});
+/* ===== hidden admin dashboard (same file) ===== */
+let V={},cur=null;const A=i=>$('a-'+i);
+const esc=x=>String(x??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmt=t=>t?new Date(t).toLocaleString():'';
+A('x').onclick=()=>{$('adm').hidden=true;if(!auth.currentUser?.isAnonymous)signOut(auth).then(()=>location.reload())};
+A('out').onclick=()=>signOut(auth).then(()=>location.reload());
+A('in').onclick=()=>{A('err').textContent='';signInWithEmailAndPassword(auth,A('em').value,A('pw').value).catch(()=>A('err').textContent='Sign-in failed. Check email and password.')};
+A('pw').onkeydown=e=>{if(e.key==='Enter')A('in').click()};
+A('rf').onclick=()=>loadAdm();
+async function adminCheck(u){A('app').hidden=true;A('login').hidden=false;
+ try{const a=await get(ref(db,'admins/'+u.uid));if(a.val()!==true)throw 0;await loadAdm();A('login').hidden=true;A('app').hidden=false}
+ catch{A('err').textContent='This account is not authorised as an admin.';signOut(auth)}}
+async function loadAdm(){const s=await get(ref(db,'visitors'));V=s.val()||{};render()}
+const rows=()=>Object.entries(V).filter(([k,v])=>v.profile).map(([k,v])=>({k,...v.profile,...v.location,...v.activity,reasons:Object.keys(v.activity?.reasonsViewed||{})}));
+function render(){const R=rows(),now=Date.now(),day=new Date().setHours(0,0,0,0);
+ const st=[['Total visitors',R.length],['Today',R.filter(r=>r.createdAt>=day).length],['Game starts',R.filter(r=>r.gameStarted).length],['Completed',R.filter(r=>r.gameCompleted).length],['Active (5 min)',R.filter(r=>now-r.lastActive<3e5).length],['Reasons viewed',R.reduce((a,r)=>a+r.reasons.length,0)]];
+ A('stats').innerHTML=st.map(([a,b])=>`<div><b>${b}</b>${a}</div>`).join('');
+ const q=A('q').value.toLowerCase(),f=A('fl').value;
+ const L=R.filter(r=>(!q||JSON.stringify([r.name,r.city,r.country,r.personality]).toLowerCase().includes(q))&&(!f||(f==='done'?r.gameCompleted:r.latitude!=null)));
+ A('t').innerHTML='<tr><th>Name<th>Age<th>Birthday<th>Gender<th>Orientation<th>Personality<th>Registered<th>Location<th>Progress<th>Last active</tr>'+L.map(r=>`<tr class="r" data-k="${esc(r.k)}"><td>${esc(r.name)}<td>${esc(r.age)}<td>${esc(r.dateOfBirth)}<td>${esc(r.gender)}<td>${esc(r.orientation)}<td>${esc(r.personality)}<td>${fmt(r.createdAt)}<td>${r.latitude!=null?esc([r.city,r.country].filter(Boolean).join(', ')||r.latitude.toFixed(3)+', '+r.longitude.toFixed(3)):''}<td>${r.completedLevels||0}/5${r.gameCompleted?' ✔':''}<td>${fmt(r.lastActive)}</tr>`).join('');
+ A('t').querySelectorAll('tr.r').forEach(tr=>tr.onclick=()=>detail(tr.dataset.k));
+ const bars=(t,m)=>`<h4>${t}</h4>`+(Object.keys(m).length?Object.entries(m).map(([k,n])=>`<div class="row"><span style="min-width:110px">${esc(k)}</span><i style="width:${Math.min(n*30,400)}px"></i>${n}</div>`).join(''):'<p>No data yet.</p>');
+ const days={},lv={},rs={};R.forEach(r=>{const d=new Date(r.createdAt).toLocaleDateString();days[d]=(days[d]||0)+1;for(let i=1;i<=(r.completedLevels||0);i++)lv['Level '+i]=(lv['Level '+i]||0)+1;r.reasons.forEach(n=>rs['Reason '+n]=(rs['Reason '+n]||0)+1)});
+ const top=Object.fromEntries(Object.entries(rs).sort((a,b)=>b[1]-a[1]).slice(0,8));
+ A('ch').innerHTML=bars('Daily visitors',days)+bars('Game completion',{Started:R.filter(r=>r.gameStarted).length,Completed:R.filter(r=>r.gameCompleted).length})+bars('Level completion',lv)+bars('Most viewed reasons',top)}
+function detail(k){cur=k;const v=V[k],a=v.activity||{},p=v.profile||{},l=v.location,c=v.consent||{};A('detail').hidden=false;
+ A('pre').textContent=`Name: ${p.name}\nAge: ${p.age}\nBirthday: ${p.dateOfBirth}\nGender: ${p.gender||'-'}\nOrientation: ${p.orientation||'-'}\nPersonality: ${p.personality||'-'}\nLocation: ${l?`${l.latitude}, ${l.longitude} (${[l.city,l.country].filter(Boolean).join(', ')||'no city'})`:'not shared'}\nProfile consent: ${c.profileConsent?'yes':'no'}   Location consent: ${c.locationConsent?'yes':'no'}\nUID: ${k}`;
+ const h=[[p.createdAt,'Registered'],[a.entryTime,'Entered the site'],[a.gameStarted?a.entryTime:0,'Game started'],[l?.sharedAt,'Shared location'],[a.surpriseOpened?a.lastActive:0,'Opened the love letters'],[a.completedLevels?a.lastActive:0,`Completed ${a.completedLevels||0} of 5 levels`],[Object.keys(a.reasonsViewed||{}).length?a.lastActive:0,`Viewed ${Object.keys(a.reasonsViewed||{}).length} love reasons`],[a.gameCompleted?a.lastActive:0,'Completed the game']].filter(x=>x[0]);
+ A('hist').innerHTML=h.sort((x,y)=>x[0]-y[0]).map(x=>`<li>${fmt(x[0])} · ${esc(x[1])}</li>`).join('')+`<li>${fmt(a.lastActive)} · Last active</li>`;
+ A('detail').scrollIntoView({behavior:'smooth'})}
+A('q').oninput=A('fl').onchange=render;
+A('del').onclick=async()=>{if(cur&&confirm('Delete this visitor permanently?')){await remove(ref(db,'visitors/'+cur));delete V[cur];A('detail').hidden=true;render()}};
+A('csv').onclick=()=>{const R=rows(),h=['name','age','dateOfBirth','gender','orientation','personality','createdAt','city','country','latitude','longitude','completedLevels','gameCompleted','lastActive'];
+ const c=v=>{v=String(v??'');if(/^[=+\-@]/.test(v))v="'"+v;return '"'+v.replace(/"/g,'""')+'"'};
+ const b=new Blob([[h.join(','),...R.map(r=>h.map(k=>c(r[k])).join(','))].join('\n')],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='visitors.csv';a.click()};
 </script></body></html>
