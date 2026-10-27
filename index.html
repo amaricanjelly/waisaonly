@@ -1,29 +1,222 @@
-<!DOCTYPE html><html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HER HEART</title>
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HER HEART</title>
 <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script src="https://unpkg.com/lucide@0.383.0/dist/umd/lucide.min.js"></script>
 <style>
-:root{--c:#d6336c;--g:#e7c27d;--iv:#fff8ee}*{box-sizing:border-box}
-body{margin:0;min-height:100vh;background:radial-gradient(at 20% 0,#8c1d4b,#3a0a1f 60%,#1a0310) fixed;color:var(--iv);font:400 17px/1.6 'Cutive Mono',monospace}
-#bg{position:fixed;inset:0;z-index:0;pointer-events:none}#app{position:relative;z-index:2;max-width:780px;margin:auto;padding:24px 16px 70px}
-h1,h2,h3{font-family:inherit;font-weight:400;line-height:1.25}h1{font-size:clamp(28px,7vw,46px)}.sc{font-family:inherit;font-size:clamp(28px,7.5vw,48px);color:var(--g);margin:0}
-.glass{background:rgba(255,255,255,.08);backdrop-filter:blur(14px);border:1px solid rgba(231,194,125,.35);border-radius:22px;padding:20px;margin:14px 0}
-.btn{border:0;border-radius:40px;padding:14px 28px;font:400 17px 'Cutive Mono',monospace;color:#3a0a1f;background:linear-gradient(135deg,#f6dca0,#e7c27d,#c9974a);cursor:pointer;box-shadow:0 0 24px #e7c27d66;margin:8px 6px 0 0}.btn:disabled{opacity:.35;cursor:not-allowed}.btn.sm{padding:7px 14px;font-size:14px}.btn.red{background:#c0264f;color:#fff}
-input,select,textarea{width:100%;padding:13px;margin:6px 0 14px;border-radius:14px;border:1px solid #e7c27d88;background:#ffffff14;color:var(--iv);font:inherit}select option{color:#000}
-.opt{display:block;padding:14px 16px;margin:9px 0;border:1px solid #e7c27d66;border-radius:16px;cursor:pointer;background:#ffffff0d;transition:.25s}.opt:hover,.opt.on{border-color:var(--g);background:#d6336c55;transform:translateX(6px)}
-.prog{font-family:inherit;color:var(--g);letter-spacing:3px}.bar{height:4px;background:#fff3;border-radius:4px}.bar i{display:block;height:100%;background:var(--g);border-radius:4px}
-.heart{font-size:min(38vw,170px);text-align:center;animation:spin 7s linear infinite;filter:drop-shadow(0 0 40px #ff3b7f);transform-style:preserve-3d}@keyframes spin{to{transform:rotateY(360deg)}}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;perspective:900px}
-.env{position:relative;height:150px;background:var(--e);border-radius:8px;cursor:pointer;box-shadow:0 14px 30px #0006;transition:.4s;text-align:center;padding-top:80px;font:400 13px 'Cutive Mono',monospace;color:#fff;letter-spacing:1px}
-.env:before{content:"";position:absolute;left:0;top:0;width:100%;height:80px;background:var(--e);filter:brightness(.8);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:.6s}.env:hover{transform:translateY(-8px) rotateX(10deg)}.env:hover:before{transform:rotateX(180deg)}
-.seal{position:absolute;left:50%;top:62px;transform:translateX(-50%);width:34px;height:34px;border-radius:50%;background:#a3122f;display:grid;place-items:center;box-shadow:0 0 12px #f55}.env.done{outline:2px solid var(--g)}
-.paper{background:#fffaf0;color:#4a1128;border-radius:6px;padding:28px 22px;font:400 19px/1.6 'Cutive Mono',monospace;box-shadow:0 20px 60px #000a;margin:12px 0}.paper h2{font-family:inherit;font-size:24px;color:#b3123f;margin:0 0 8px}
-.fl{position:fixed;pointer-events:none;z-index:1;font-size:24px}.err{color:#ffb3c6}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.k{color:var(--g)}
-.adm{border-bottom:1px solid #fff3;padding:10px 0}details summary{cursor:pointer}
-@media print{body{background:#fff;color:#000}#bg,.noprint{display:none!important}.glass{background:#fff;border:1px solid #999}.k{color:#800}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-</style></head><body><canvas id="bg"></canvas><div id="app"></div>
+:root{
+  --ru:#9b1b3f;
+  --rg:#e8b4a0;
+  --g:#f3d9a4;
+  --g2:#c9974a;
+  --iv:#fbf4ea;
+  --foil:linear-gradient(110deg,#f3d9a4,#fff2cf 30%,#c9974a 55%,#f3d9a4 80%,#b98339);
+  --bg-deep:#0b0207;
+  --bg-wine:#2a0718;
+  --bg-wine2:#3b0a22;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;min-height:100vh;
+  background:radial-gradient(at 20% 0%,#3b0a22 0%,#12030a 55%,#0b0207 100%) fixed;
+  color:var(--iv);
+  font:400 17px/1.6 'Cutive Mono',monospace;
+  overflow-x:hidden;
+  letter-spacing:.2px;
+}
+body:before{
+  content:"";position:fixed;inset:-25%;z-index:0;pointer-events:none;
+  background:repeating-conic-gradient(from 0deg at 50% -8%,#f3d9a410 0 3deg,transparent 3deg 13deg);
+  -webkit-mask-image:linear-gradient(#000,transparent 65%);
+  mask-image:linear-gradient(#000,transparent 65%);
+  animation:ray 14s ease-in-out infinite;
+  will-change:transform;
+}
+@keyframes ray{0%,100%{transform:rotate(-4deg);opacity:.35}50%{transform:rotate(4deg);opacity:.9}}
+#bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+#app{position:relative;z-index:2;max-width:780px;margin:auto;padding:24px 16px 70px}
+#cu{
+  position:fixed;inset:0;z-index:50;pointer-events:none;
+  transform:translateY(-100%);
+  background:linear-gradient(#12030a,#3b0a22);
+  border-bottom:2px solid var(--g);
+  box-shadow:0 10px 50px #f3d9a499;
+}
+h1,h2,h3{
+  font-family:inherit;font-weight:400;line-height:1.25;color:var(--g);
+  text-shadow:0 0 18px #f3d9a44d;
+}
+h1{font-size:clamp(28px,7vw,46px)}
+.sc,.foil{
+  font-family:inherit;font-size:clamp(28px,7.5vw,48px);margin:0;
+  background:var(--foil);background-size:200% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+  text-shadow:none;
+  animation:fs 5s ease-in-out infinite alternate;
+  filter:drop-shadow(0 0 14px #f3d9a455);
+}
+@keyframes fs{to{background-position:100% 0}}
+.w,.ch{display:inline-block}
+.glass{
+  background:linear-gradient(145deg,#ffffff16,#ffffff05);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid #f3d9a455;border-radius:22px;padding:20px;margin:14px 0;
+  box-shadow:0 18px 50px #000a,inset 0 0 30px #e8b4a014,inset 0 1px 0 #f3d9a433;
+}
+.btn{
+  position:relative;overflow:hidden;border:0;border-radius:40px;
+  padding:14px 28px;font:400 17px 'Cutive Mono',monospace;
+  color:#2a0615;
+  background:var(--foil);background-size:200% 100%;
+  cursor:pointer;
+  box-shadow:0 0 24px #f3d9a455,0 8px 24px #0008,inset 0 1px 0 #fff9;
+  margin:8px 6px 0 0;
+  transition:box-shadow .3s,background-position .6s,transform .2s;
+}
+.btn:hover{
+  box-shadow:0 0 38px #f3d9a499,0 10px 28px #000a,inset 0 1px 0 #fff9;
+  background-position:100% 0;
+}
+.btn:after{
+  content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;
+  background:linear-gradient(100deg,transparent,#fffd,transparent);
+  transform:skewX(-20deg);
+  animation:sh 3.4s ease-in-out infinite;
+}
+@keyframes sh{0%,55%{left:-70%}100%{left:130%}}
+.btn:disabled{opacity:.35;cursor:not-allowed}
+.btn:disabled:after{display:none}
+.btn.sm{padding:7px 14px;font-size:14px}
+.btn.red{background:linear-gradient(135deg,#c0264f,#7a0f2e);color:#fff}
+input,select,textarea{
+  width:100%;padding:13px;margin:6px 0 14px;border-radius:14px;
+  border:1px solid #f3d9a477;background:#ffffff12;color:var(--iv);
+  font:inherit;
+}
+input:focus,select:focus,textarea:focus{
+  outline:none;border-color:var(--g);box-shadow:0 0 0 3px #f3d9a42e;
+}
+select option{color:#000;background:#fbf4ea}
+.opt{
+  position:relative;overflow:hidden;display:block;
+  padding:14px 16px;margin:9px 0;
+  border:1px solid #f3d9a455;border-radius:16px;
+  cursor:pointer;background:#ffffff0d;
+  transition:.25s;
+}
+.opt:hover,.opt.on{
+  border-color:var(--g);
+  background:linear-gradient(90deg,#9b1b3fcc,#9b1b3f44);
+  transform:translateX(6px);
+}
+.opt.on{box-shadow:0 0 22px #f3d9a433}
+.rip{
+  position:absolute;width:320px;height:320px;
+  margin:-160px 0 0 -160px;border-radius:50%;
+  background:radial-gradient(#f3d9a4bb,transparent 65%);
+  pointer-events:none;
+}
+.prog{font-family:inherit;color:var(--g);letter-spacing:3px}
+.bar{height:4px;background:#fff3;border-radius:4px}
+.bar i{display:block;height:100%;background:var(--foil);border-radius:4px;box-shadow:0 0 10px #f3d9a4}
+.hw{
+  position:relative;width:min(70vw,300px);margin:0 auto;
+  display:grid;place-items:center;perspective:800px;
+}
+.aura{
+  position:absolute;width:85%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,#ff3b7fcc,#9b1b3f55 45%,transparent 68%);
+  animation:pu 2.6s ease-in-out infinite;
+}
+@keyframes pu{0%,100%{transform:scale(.8);opacity:.6}50%{transform:scale(1.15);opacity:1}}
+.heart{
+  position:relative;font-size:min(38vw,170px);line-height:1.1;text-align:center;
+  animation:spin 7s linear infinite;
+  filter:drop-shadow(0 0 40px #ff3b7f);
+  transform-style:preserve-3d;
+}
+@keyframes spin{to{transform:rotateY(360deg)}}
+.tw{
+  position:absolute;color:var(--g);font-style:normal;
+  text-shadow:0 0 10px #fff;
+  animation:tw 2.2s ease-in-out infinite;
+}
+@keyframes tw{0%,100%{opacity:.1;transform:scale(.4)}50%{opacity:1;transform:scale(1.3) rotate(30deg)}}
+.hl{
+  color:#fff3d0;font-weight:700;padding:1px 8px;border-radius:6px;
+  background:linear-gradient(transparent 10%,#ff4d8d88 10% 94%,transparent 94%);
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;
+  text-shadow:0 0 12px #f3d9a4,0 0 26px #f3d9a4aa;
+  animation:hlp 2.4s ease-in-out infinite;
+}
+@keyframes hlp{50%{text-shadow:0 0 20px #f3d9a4,0 0 46px #f3d9a4;filter:brightness(1.25)}}
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:18px;perspective:900px;
+}
+.env{
+  position:relative;height:150px;background:var(--e);
+  border-radius:8px;border:1px solid #f3d9a455;cursor:pointer;
+  box-shadow:0 14px 30px #0008;transition:.4s;
+  text-align:center;padding-top:80px;
+  font:400 13px 'Cutive Mono',monospace;color:#fff;letter-spacing:1px;
+  transform-style:preserve-3d;
+}
+.env:before{
+  content:"";position:absolute;left:0;top:0;width:100%;height:80px;
+  background:var(--e);filter:brightness(.8);
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top;transition:.6s;
+}
+.env:hover,.env.op{transform:translateY(-8px) rotateX(10deg)}
+.env:hover:before,.env.op:before{transform:rotateX(180deg)}
+.seal{
+  position:absolute;left:50%;top:62px;transform:translateX(-50%);
+  width:34px;height:34px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#e0314f,#7a0f2e);
+  display:grid;place-items:center;
+  box-shadow:0 0 12px #f55;
+  animation:sp 2s ease-in-out infinite;
+}
+@keyframes sp{50%{box-shadow:0 0 26px #ff7a8f;filter:brightness(1.25)}}
+.env.done{outline:2px solid var(--g)}
+.paper{
+  background:linear-gradient(#fffaf0,#f6e8d4);
+  color:#4a1128;border:1px solid var(--g2);border-radius:6px;
+  padding:28px 22px;
+  font:400 19px/1.6 'Cutive Mono',monospace;
+  box-shadow:0 20px 60px #000a;margin:12px 0;
+}
+.paper h2{font-family:inherit;font-size:24px;color:#b3123f;text-shadow:none;margin:0 0 8px}
+.fl{position:fixed;pointer-events:none;z-index:40;font-size:24px}
+.err{color:#ffb3c6}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.k{color:var(--g)}
+.adm{border-bottom:1px solid #fff3;padding:10px 0}
+details summary{cursor:pointer}
+@media print{
+  body{background:#fff;color:#000}
+  body:before,#bg,#cu,.fl,.noprint{display:none!important}
+  .glass{background:#fff;border:1px solid #999;box-shadow:none}
+  .k{color:#800}
+  .sc,.foil{color:#800;-webkit-text-fill-color:#800;background:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  body:before,#cu{display:none}
+}
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+<div id="cu"></div>
+<div id="app"></div>
 <script type="module">
 import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import{getDatabase,ref,push,set,onValue,remove}from"https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
@@ -31,7 +224,8 @@ import{getAuth,signInWithEmailAndPassword,signOut,onAuthStateChanged}from"https:
 const fa=initializeApp({apiKey:"AIzaSyCzx5PjKJNlKMJC4evQPjyXmdp1sTwpCP4",authDomain:"my-website-ctg.firebaseapp.com",databaseURL:"https://my-website-ctg-default-rtdb.firebaseio.com",projectId:"my-website-ctg",storageBucket:"my-website-ctg.firebasestorage.app",messagingSenderId:"655567782113",appId:"1:655567782113:web:a5adaa922a76bc58f5b7a0",measurementId:"G-8LBRH0WSEQ"});
 const db=getDatabase(fa),auth=getAuth(fa),SUB=()=>ref(db,'herHeart/submissions');
 const $=s=>document.querySelector(s),app=$('#app'),RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
-const NICK='Pookie Waisuuu';const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const NICK='Pookie Waisuuu';
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const br=s=>esc(s).replace(/\n/g,'<br>');
 
 // ---- STARTUP RESET (only on full load / refresh) ----
@@ -61,56 +255,81 @@ const Q=[
 ["Jodi amader golper last page ekhono lekha na hoy, tumi last page-e ki dekhte chao?",[["Ekta shundor biye.","RF"],["Ek shathe buro hoye jawa.","FL"],["Smriti-te bhora shanti-r jibon.","SF"],["Arafat ar Pookie Waisuuu, ekhono dujon dujonke choose kore.","LFR"]]]];
 const FOR=["99 bochhor","90 bochhor","Jotodin Arafat chai","Mrittu-r ag porjonto ❤️"];
 const AN=[v=>gsap.from(v,{x:-60,opacity:0}),v=>gsap.from(v,{scale:.8,opacity:0}),v=>gsap.from(v,{rotateX:-60,opacity:0,transformPerspective:600}),v=>gsap.from(v,{y:60,opacity:0,stagger:.1}),v=>gsap.from(v,{x:60,opacity:0,stagger:.08}),v=>gsap.from(v,{rotate:6,opacity:0}),v=>gsap.from(v,{scaleY:.4,opacity:0}),v=>gsap.from(v,{filter:'blur(14px)',opacity:0}),v=>gsap.from(v,{y:-50,opacity:0,stagger:.1}),v=>gsap.from(v,{scale:1.3,opacity:0})];
-function view(h,fx){app.innerHTML=h;lucide.createIcons();if(!RM){(fx||(v=>gsap.from(v,{y:30,opacity:0,stagger:.1,duration:.8})))(app.children)}scrollTo(0,0)}
+
+// ---- FX helpers ----
+const H=(e='💗',s='')=>`<div class="hw"><i class="aura"></i><div class="heart"${s?` style="font-size:${s}"`:''}>${e}</div>${[[8,20],[88,12],[14,78],[84,70],[50,2],[94,45]].map((p,i)=>`<i class="tw" style="left:${p[0]}%;top:${p[1]}%;animation-delay:${i*.35}s">✦</i>`).join('')}</div>`;
+function split(){app.querySelectorAll(':scope>h1:not(.sc):not(.foil),:scope>h2').forEach(h=>{const t=h.textContent;h.setAttribute('aria-label',t);h.innerHTML=t.split(' ').map(w=>`<span class="w">${[...w].map(c=>`<span class="ch">${esc(c)}</span>`).join('')}</span>`).join(' ');gsap.from(h.querySelectorAll('.ch'),{opacity:0,y:18,rotateX:-70,duration:.6,stagger:.015,delay:.25,ease:'back.out(2)'})})}
+function pop(x,y,n=8,set=['💗','✦','💞']){if(RM)return;for(let i=0;i<n;i++){const s=document.createElement('span');s.className='fl';s.textContent=set[i%set.length];s.style.cssText=`left:${x}px;top:${y}px;font-size:16px;color:#f3d9a4`;document.body.append(s);const a=Math.random()*6.28,d=40+Math.random()*70;gsap.to(s,{x:Math.cos(a)*d,y:Math.sin(a)*d-30,opacity:0,scale:.4,duration:.9,ease:'power2.out',onComplete:()=>s.remove()})}}
+function pick(el,e){if(RM)return;const r=el.getBoundingClientRect(),s=document.createElement('span');s.className='rip';s.style.cssText=`left:${e.clientX-r.left}px;top:${e.clientY-r.top}px`;el.append(s);gsap.fromTo(s,{scale:0,opacity:.7},{scale:1,opacity:0,duration:.8,onComplete:()=>s.remove()});gsap.fromTo(el,{boxShadow:'0 0 0 #f3d9a400'},{boxShadow:'0 0 30px #f3d9a4cc',duration:.35,yoyo:true,repeat:1,clearProps:'boxShadow'});pop(e.clientX,e.clientY,8)}
+function curtain(){const c=$('#cu');gsap.killTweensOf(c);gsap.fromTo(c,{yPercent:0},{yPercent:-100,duration:.9,ease:'power3.inOut'});pop(innerWidth/2,innerHeight/2,10,['✦','✧','✦'])}
+let first=1;
+function view(h,fx){app.innerHTML=h;lucide.createIcons();scrollTo(0,0);if(RM)return;split();(fx||(v=>gsap.from(v,{y:30,opacity:0,stagger:.1,duration:.8})))(app.children);if(first)first=0;else curtain()}
 function burst(n=40,e=['💗','🌹','✨','🦋','💞']){if(RM)return;for(let i=0;i<n;i++){const s=document.createElement('span');s.className='fl';s.textContent=e[i%e.length];s.style.left=Math.random()*100+'vw';s.style.top='105vh';document.body.append(s);gsap.to(s,{y:-(innerHeight*(.8+Math.random())),x:(Math.random()-.5)*160,rotate:Math.random()*360,opacity:0,duration:3+Math.random()*3,delay:Math.random()*2,onComplete:()=>s.remove()})}}
-// background particles
-(()=>{const c=$('#bg'),x=c.getContext('2d');if(RM)return;let P=[];const R=()=>{c.width=innerWidth;c.height=innerHeight};R();onresize=R;for(let i=0;i<(innerWidth<600?35:70);i++)P.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:1+Math.random()*3,v:.2+Math.random()*.7,p:Math.random()*6});(function t(){x.clearRect(0,0,c.width,c.height);P.forEach(p=>{p.y+=p.v;p.p+=.02;p.x+=Math.sin(p.p)*.4;if(p.y>c.height)p.y=-5;x.fillStyle=p.r>2.5?'#ff8fb3aa':'#e7c27d88';x.beginPath();x.ellipse(p.x,p.y,p.r*1.6,p.r,p.p,0,7);x.fill()});requestAnimationFrame(t)})()})();
+function fly(n=4){if(RM)return;for(let i=0;i<n;i++){const s=document.createElement('span'),l=Math.random()<.5,d=l?1:-1,W=innerWidth;s.className='fl';s.textContent='🦋';s.style.cssText=`left:${l?-30:W+10}px;top:${innerHeight*(.4+Math.random()*.5)}px;font-size:${22+Math.random()*14}px`;document.body.append(s);gsap.to(s,{keyframes:[{x:d*W*.3,y:-80,rotate:d*15},{x:d*W*.6,y:-30,rotate:-d*10},{x:d*W*.9,y:-190,rotate:d*20},{x:d*(W+60),y:-260,opacity:0}],duration:6+Math.random()*3,delay:i*.7,ease:'sine.inOut',onComplete:()=>s.remove()})}}
+if(!RM){
+ if(matchMedia('(pointer:fine)').matches){document.addEventListener('pointermove',e=>{const b=e.target.closest&&e.target.closest('.btn:not(:disabled)');if(b){const r=b.getBoundingClientRect();gsap.to(b,{x:(e.clientX-r.left-r.width/2)*.25,y:(e.clientY-r.top-r.height/2)*.35,duration:.3})}},{passive:true});
+ document.addEventListener('pointerout',e=>{const b=e.target.closest&&e.target.closest('.btn');if(b&&!b.contains(e.relatedTarget))gsap.to(b,{x:0,y:0,duration:.7,ease:'elastic.out(1,.4)'})})}
+ let lt=0,live=0;const trail=e=>{const t=performance.now();if(t-lt<(e.pointerType==='touch'?110:45)||live>22)return;lt=t;live++;const s=document.createElement('span');s.className='fl';s.textContent='✦';s.style.cssText=`left:${e.clientX}px;top:${e.clientY}px;font-size:${8+Math.random()*8}px;color:#f3d9a4;text-shadow:0 0 8px #f3d9a4`;document.body.append(s);gsap.to(s,{y:20+Math.random()*20,x:(Math.random()-.5)*30,opacity:0,rotate:180,duration:.8,onComplete:()=>{s.remove();live--}});};
+ addEventListener('pointermove',trail,{passive:true});addEventListener('pointerdown',trail,{passive:true})}
+// background: bokeh orbs, floating hearts, rose petals (parallax)
+(()=>{const c=$('#bg'),x=c.getContext('2d');if(RM)return;const M=innerWidth<600,rnd=(a,b)=>a+Math.random()*(b-a);let W,H_,mx=0,my=0,sy=0;
+const Rz=()=>{W=c.width=innerWidth;H_=c.height=innerHeight};Rz();addEventListener('resize',Rz);
+addEventListener('pointermove',e=>{mx=e.clientX/W-.5;my=e.clientY/H_-.5},{passive:true});addEventListener('scroll',()=>sy=scrollY,{passive:true});
+const O=Array.from({length:M?5:8},()=>({x:rnd(0,1),y:rnd(0,1),r:rnd(60,160),d:rnd(.2,1),p:rnd(0,6),c:['255,77,141','243,217,164','232,180,160'][rnd(0,3)|0]}));
+const Hh=Array.from({length:M?10:18},()=>({x:rnd(0,1),y:rnd(0,1.2),s:rnd(10,34),v:rnd(.15,.55),d:rnd(.3,1.4),p:rnd(0,6)}));
+const Pt=Array.from({length:M?10:20},()=>({x:rnd(0,1),y:rnd(0,1),s:rnd(4,9),v:rnd(.3,.9),p:rnd(0,6),d:rnd(.5,1.2)}));
+(function t(){x.clearRect(0,0,W,H_);
+O.forEach(o=>{o.p+=.004;const px=o.x*W+Math.sin(o.p)*30+mx*40*o.d,py=o.y*H_+Math.cos(o.p)*30+my*40*o.d-sy*.05*o.d,g=x.createRadialGradient(px,py,0,px,py,o.r);g.addColorStop(0,`rgba(${o.c},.2)`);g.addColorStop(1,`rgba(${o.c},0)`);x.fillStyle=g;x.fillRect(px-o.r,py-o.r,o.r*2,o.r*2)});
+x.textAlign='center';x.fillStyle='#ff6b9a';Hh.forEach(h=>{h.y-=h.v/H_;h.p+=.02;if(h.y<-.1)h.y=1.1;x.globalAlpha=.1+.1*h.d/1.4;x.font=h.s+'px serif';x.fillText('♥',h.x*W+Math.sin(h.p)*20+mx*60*h.d,h.y*H_+my*40*h.d)});
+x.globalAlpha=.55;x.fillStyle='#e8b4a0';Pt.forEach(p=>{p.y+=p.v/H_;p.p+=.025;if(p.y>1.05)p.y=-.05;x.beginPath();x.ellipse(p.x*W+Math.sin(p.p)*40+mx*30*p.d,p.y*H_,p.s*1.5,p.s*.8,p.p,0,7);x.fill()});
+x.globalAlpha=1;requestAnimationFrame(t)})()})();
 // analysis
 function analyze(){const sc={};Object.keys(DIM).forEach(k=>sc[k]=0);S.a.forEach((a,i)=>[...Q[i][1][a][1]].forEach(d=>sc[d]+=2));const T=S.w.join(' ');Object.keys(KW).forEach(k=>sc[k]+=Math.min(3,(T.match(KW[k])||[]).length));
 const raw={...sc},pct={};Object.keys(sc).forEach(k=>pct[k]=Math.min(100,25+sc[k]*11));const top=Object.keys(pct).sort((a,b)=>pct[b]-pct[a]);
 return{name:PN[top[0]],scores:pct,raw,why:`Tomar choose kora option ar likha kotha scan kore dekha gelo "${DIM[top[0]]}" (${pct[top[0]]}/100) ar "${DIM[top[1]]}" (${pct[top[1]]}/100) shobcheye beshi. Rule: prottek option-er ekta/duita dimension-e +2 point, ar tomar likha kothay related keyword pele +1 (max 3). Eta shudhu ekta playful interpretation, tomar moner kono nishchit bishleshon na. 💗`}}
-function letters(){const n=NICK,A=i=>Q[i][1][S.a[i]][0],W=i=>`“${S.w[i].trim()}”`,a=S.a;
-const c2=['Ego-r kotha tumi bolecho — ar ami jani, ei kothata shotto bolar shahosh-o bhalobashar ongsho.','Silent treatment-er kotha tumi shikar koreo, ami bujhi kokhono kokhono chup thakai tomar bhasha.','Tumi open communication choose korecho — ei jonnoi tomar shathe kotha bola eto shohoj, ar ami eta nie gorbito.','Tumi dujon mile try korar kotha bolecho; tumi amader-ke "ami" ar "tumi"-r cheye boro kore dekho.'][a[1]];
-const f9=['Tumi bolecho misunderstood hoyar bhoy share korte paro na. Ami promise kori, tomar kotha shunbo, ar jodi bujhte deri hoy-o, chere jabo na.','Tumi bolecho special kauke harano-r bhoy tomar. Ami tomar pashei achi ar thakbo.','Tumi bolecho appreciated na hoyar bhoy. Tai ajke boli: tumi onek, onek bhalo — ar ami protidin ta bolbo.','Tumi bolecho feelings express korte na parar bhoy. Tumi tomar moto kore bolo, ami dhoirjo niye shunbo.'][a[8]];
-const f10=['Tumi "ekta shundor biye"-ke tomar shesh pata bhebecho — ami shei pata-i tomar shathe likhte chai.','Tumi "ek shathe buro hoye jawa" bolecho — ami tomar shathe pakha chul ar hasi niye buro hote chai.','Tumi "smriti-te bhora shanti-r jibon" chao — ami choto choto muhurto jomate chai tomar jonno.','Tumi bolecho "Arafat ar Pookie Waisuuu, ekhono dujon dujonke choose kore" — ami protidin tomake abar choose kori.'][a[9]];
-const P=S.pa;return[
-{t:'TUMI JEMON BHALOBASHO',b:`Priyo ${n},\n\nTumi bolecho Arafat-er shobcheye irreplaceable jinish "${A(2)}". Arafat tomar mon bujhte na parle tumi choose koro: "${A(0)}", ar likhecho: ${W(0)}.\nTrue love tomar kache "${A(4)}" — ${W(4)}.\n\nEi uttor gulo bole dey, tumi bhalobasha-ke jotno kore dhoro. "${P.name}" — eta amar chokhe tomar ekdom shothik naam. ❤️\n\n— Arafat`},
-{t:'TOMAR CHOTO CHOTO BHOY',b:`Priyo ${n},\n\n${c2}\nTomar mon ar ego opposite dike gele tumi bolecho: "${A(7)}" — ${W(7)}.\n\n${f9} Tumi likhecho: ${W(8)}.\n\nTomar choto choto bhoy gulo-ke ami hasbo na — ami shegulo-ke jotno korbo. 🥺\n\n— Arafat`},
-{t:'TOMAR MON KI CHAY',b:`Priyo ${n},\n\nArafat emotionally weak hole tumi bolecho: "${A(3)}" — ${W(3)}. Tumi onno ke ei bhabe bhalobash, tai tomar nijer jonno-o ei bhalobasha dorkar.\n\nTomar future self-er advice: "${A(5)}" — ${W(5)}. Ar tumi gift hishebe chao: "${A(6)}" — ${W(6)}.\n\nEi ta ki tomar mon chay? Ami shei jinish-gulo dite chai, pratidin. 💞\n\n— Arafat`},
-{t:'AMADER BHOBISHYOT',b:`Priyo ${n},\n\nAmader golper last page-er jonno tumi likhecho: ${W(9)}.\n${f10}\n\nTumi bolecho Amar shathe "${FOR[S.fv]}" survive korbe. Ei kothata ami hridoye lekhe rakhlam. 🌹\n\n— Arafat`},
-{t:'ARAFAT-ER CHITHI',b:`Priyo ${n},\n\nTumi amar shathe "${FOR[S.fv]}" thakar kotha bolecho, ar ami protiti uttor ekta ekta kore pore dekhlam. Tomar "${A(2)}"-r kotha, tomar "${A(6)}"-r kotha, tomar "${A(8)}"-r bhoy — shob. Ami kichu bhul bujhle tumi amake shikhiye dio.\n\nAmi tomake bhalobashi, ${n}. Ajker pore-o, protidin.\n\nTomar,\nArafat ❤️`}]}
+// letters: written by an AI, answering her actual choices + words
+const REP={E:'Nijer feelings bolte chawar icche ta shunte bhalo laglo — eta shotti shundor ekta jinish.',L:'Biswasto thakar kotha ta ami dhore rakhlam; eta ekta mishti icche.',C:'Kotha bola ar shona-r ei bhabna ta shundor — ami eta mone rakhlam.',R:'Romantic hote chawa ta ekdom playful ar shundor; ami hashte hashte eta likhlam.',K:'Jhogra mitano-r ei bhabna ta narom ar mature lagche — onek bhalo ekta chinta.',S:'Nijeke nirapod rakhar kotha ta ami respect kori; judge kori na.',F:'Bhobishyot niye bhabar ei shopno ta shunte shundor lagche.',A:'Jotno ar ador-er kotha ta shunte mishti laglo.',_:'Tumi shotti ta likhecho — eta niye ami judge kori na; shotti bola-i boro ekta bepar.'};
+function letters(){const n=NICK,W=i=>`“${S.w[i].trim()}”`,P=S.pa,
+U=i=>{const o=Q[i][1][S.a[i]];return `Q${i+1}. Tumi bolecho “${o[0]}” — tumi likhecho ${W(i)}.\nAmar uttor: ${REP[o[1][0]]||REP._}`},J=(...a)=>a.map(U).join('\n\n'),sg='\n\n— Tomar AI';
+return[
+{t:'TUMI JEMON BHALOBASHO',b:`Priyo ${n},\n\nAmi Arafat na — ami ekta AI (ChatGPT/Gemini-r moto). Tumi je uttor gulo dile, ami shegulo-r shorashori uttor dichchi. Ami tomar mon bujhe feli bole dabi kori na, kono diagnosis-o kori na — shudhu playful ar warm bhabe porlam. 💗\n\n${J(2,4)}\n\nTomar result "${P.name}" — eta ekta mojar label, ar kichu na. ❤️${sg}`},
+{t:'TOMAR CHOTO CHOTO BHOY',b:`Priyo ${n},\n\n${J(1,7,8)}\n\nChoto choto bhoy gulo niye ami hashbo na — ami shegulo shunbo. 🥺${sg}`},
+{t:'TOMAR MON KI CHAY',b:`Priyo ${n},\n\n${J(3,5,6)}\n\nEi uttor gulo tomar-i bola; ami shudhu ekta AI hishebe tar pashe uttor likhlam. 💞${sg}`},
+{t:'AMADER BHOBISHYOT',b:`Priyo ${n},\n\n${J(9)}\n\nArafat-er sathe koto din? Tumi bolecho “${FOR[S.fv]}”. Amar uttor: eta tomar nijer choice — ami shudhu eta ekta playful uttor hishebe nilam; Arafat-er hoye kono promise ami dichchi na. 🌹${sg}`},
+{t:'A LETTER FROM YOUR AI',b:`Priyo ${n},\n\nAmi abar bolchi: ami Arafat na, ami ekta AI. Ami tomar proti-ti uttor porlam — option ar likha kotha duto-i.\n\n${J(0)}\n\nAmi tomar mon bujhi na, diagnose-o kori na. Tobe tomar kotha gulo shundor chilo, ${n}. Arafat-ke ei kotha gulo tumi nijer moto kore bolo, se shunte chaibe. 🌹${sg}`}]}
 // firebase save
 async function saveSub(){const st=$('#st');const set_=t=>st&&(st.innerHTML=t);if(S.sk){set_('✅ Firebase-e save hoyeche');return}
 set_('Firebase-e save hocche…');try{const r=push(SUB());const data={...S.id,forever:FOR[S.fv],questions:Q.map((q,i)=>({q:q[0],option:q[1][S.a[i]][0],written:S.w[i]})),personality:S.pa.name,scores:S.pa.scores,why:S.pa.why,letters:S.le,status:'completed',createdAt:Date.now()};
-const p=set(r,data);await Promise.race([p,new Promise((_,j)=>setTimeout(()=>j({code:'timeout'}),9000))]);S.sk=r.key;sv();set_('✅ Firebase-e save hoyeche')}catch(e){const m=e.code==='timeout'?(navigator.onLine?'Server slow ba network issue.':'Tumi offline. Online hole auto-sync hobe.'):e.code==='PERMISSION_DENIED'||/permission/i.test(e.message||'')?'Permission denied — Firebase rules check koro.':'Error: '+esc(e.message||e.code);set_(`<span class="err">${m}</span> <button class="btn sm" id="rt">Abar chesta</button>`);$('#rt')&&($('#rt').onclick=saveSub)}}
+const p=set(r,data);await Promise.race([p,new Promise((_,j)=>setTimeout(()=>j({code:'timeout'}),9000))]);S.sk=r.key;sv();set_('✅ Firebase-e save hoyeche')}catch(e){const m=e.code==='timeout'?(navigator.onLine?'Server slow ba network issue.':'Tumi offline. Online hole auto-sync hobe.'):e.code==='PERMISSION_DENIED'||/permission/i.test(e.message||'')?'Permission denied — Firebase rules check koro.':'Error: '+esc(e.message||e.code);set_(`<span class="err">${m}</span> <button class="btn sm" id="rt">Retry</button>`);$('#rt')&&($('#rt').onclick=saveSub)}}
 // routes
 function R(){const h=location.hash.slice(2).split('/'),r=h[0]||'welcome',n=+h[1]||1;
 if(r==='admin')return admin();
 if(['experience','question','personality','letters','letter','report'].includes(r)&&(!S.id||S.fv==null))return go('identity');
 if(['personality','letters','letter','report'].includes(r)&&!S.pa)return go(S.a.length>=10?'question/10':'question/'+(S.a.length+1));
-if(r==='welcome')return view(`<div class="heart">💗</div><h1 style="text-align:center">HER HEART</h1><p style="text-align:center">Hahaha waisa bbz 🥺 tomar jonno shobcheye hard ekta mission eta. Shesh korte parle tomar psy (moner dhoron) jante parbe, ar pabe ekta choto surprise 💗</p><p style="text-align:center"><button class="btn" id="b">Mission shuru 💗</button></p>`,v=>gsap.from(v,{opacity:0,y:40,stagger:.2,duration:1.2})),$('#b').onclick=()=>go('identity');
-if(r==='identity')return view(`<h1>Tomar choto universe-e dhukar age... 💗</h1><form class="glass" id="f"><label>Tomar Naam<input name="name" required></label><label>Tomar Boyosh<input name="age" type="number" min="1" max="120" required></label><label>Tomar Gender<select name="gender" required><option value="">Bachai koro…</option><option>Meye</option><option>Chele</option><option>Onno kichu</option><option>Bolte chai na</option></select></label><label>Arafat-er sathe tomar shomporko<select name="rel" required><option value="">Bachai koro…</option><option>Oor Girlfriend ❤️</option><option>Oor Bou 💍</option><option>Oor Special Manush 🥺</option><option>Onno kichu</option></select></label><button class="btn">Egiye jai 💗</button></form>`),(()=>{const f=$('#f');if(S.id)['name','age','gender','rel'].forEach(k=>f[k].value=S.id[k]);f.onsubmit=e=>{e.preventDefault();S.id={name:f.name.value.trim(),age:+f.age.value,gender:f.gender.value,rel:f.rel.value};if(!S.id.name)return;sv();go('forever')}})();
-if(r==='forever')return view(`<div class="heart" style="font-size:90px">❤️</div><h1>Amar sathe tumi ei world-e koto din survive korba? 🥺❤️</h1><div id="o"></div><button class="btn" id="b" disabled>Egiye jai</button>`),(()=>{const o=$('#o');FOR.forEach((t,i)=>{const d=document.createElement('label');d.className='opt'+(S.fv===i?' on':'');d.textContent='ABCD'[i]+'. '+t;d.onclick=()=>{S.fv=i;sv();[...o.children].forEach((c,j)=>c.classList.toggle('on',j===i));$('#b').disabled=false};o.append(d)});$('#b').disabled=S.fv==null;$('#b').onclick=()=>go('experience')})();
-if(r==='experience'){view(`<div style="text-align:center;padding-top:6vh"><div class="heart">💗</div><p class="sc">Tomar nijer choto universe-e shagotom, ${NICK}.</p><p>Ajke tomar moner kichu secret jante chai... Ready, princess? 🥺</p><button class="btn" id="b">SHURU KORI ❤️</button></div>`,v=>gsap.from(v,{opacity:0,duration:2.5}));burst(70);return $('#b').onclick=()=>go('question/1')}
+if(r==='welcome')return view(`${H()}<h1 class="foil" style="text-align:center">HER HEART</h1><p style="text-align:center">Hahaha waisa bbz 🥺 tomar jonno shobcheye hard ekta mission eta. <span class="hl">Korte parle tomar psy paita jaibo.</span></p><p style="text-align:center"><button class="btn" id="b">Start Mission 💗</button></p>`,v=>gsap.from(v,{opacity:0,y:40,stagger:.2,duration:1.2})),$('#b').onclick=()=>go('identity');
+if(r==='identity')return view(`<h1>Tomar choto universe-e dhukar age... 💗</h1><form class="glass" id="f"><label>Tomar Naam<input name="name" required></label><label>Tomar Boyosh<input name="age" type="number" min="1" max="120" required></label><label>Tomar Gender<select name="gender" required><option value="">Select…</option><option>Female</option><option>Male</option><option>Other</option><option>Prefer not to say</option></select></label><label>Arafat-er sathe tomar shomporko<select name="rel" required><option value="">Select…</option><option>His Girlfriend ❤️</option><option>His Wife 💍</option><option>His Special Person 🥺</option><option>Other</option></select></label><button class="btn">Continue 💗</button></form>`),(()=>{const f=$('#f');if(S.id)['name','age','gender','rel'].forEach(k=>f[k].value=S.id[k]);f.onsubmit=e=>{e.preventDefault();S.id={name:f.name.value.trim(),age:+f.age.value,gender:f.gender.value,rel:f.rel.value};if(!S.id.name)return;sv();go('forever')}})();
+if(r==='forever')return view(`${H('❤️','90px')}<h1>Amar sathe tumi ei world-e koto din survive korba? 🥺❤️</h1><div id="o"></div><button class="btn" id="b" disabled>Continue 💗</button>`),(()=>{const o=$('#o');FOR.forEach((t,i)=>{const d=document.createElement('label');d.className='opt'+(S.fv===i?' on':'');d.textContent='ABCD'[i]+'. '+t;d.onclick=e=>{S.fv=i;sv();[...o.children].forEach((c,j)=>c.classList.toggle('on',j===i));$('#b').disabled=false;pick(d,e)};o.append(d)});$('#b').disabled=S.fv==null;$('#b').onclick=()=>go('experience')})();
+if(r==='experience'){view(`<div style="text-align:center;padding-top:6vh">${H()}<p class="sc">Tomar nijer choto universe-e shagotom, ${NICK}.</p><p>Ajke tomar moner kichu secret jante chai... Ready, princess? 🥺</p><button class="btn" id="b">START ❤️</button></div>`,v=>gsap.from(v,{opacity:0,duration:2.5}));burst(70);return $('#b').onclick=()=>go('question/1')}
 if(r==='question'){const i=Math.min(Math.max(n,1),10)-1;if(S.a.length<i)return go('question/'+(S.a.length+1));const q=Q[i];
-view(`<div class="row"><span class="prog">${String(i+1).padStart(2,'0')}/10</span><div class="bar" style="flex:1"><i style="width:${(i+1)*10}%"></i></div></div><h2>${q[0]}</h2><div id="o"></div><textarea id="w" rows="4" placeholder="Tomar nijer moner kotha bolo... 💌">${esc(S.w[i]||'')}</textarea><div class="row">${i?'<button class="btn sm" id="p">Pechone</button>':''}<button class="btn" id="nx" disabled>${i<9?'Pore':'Shesh'} ❤️</button></div>`,AN[i]);
+view(`<div class="row"><span class="prog">${String(i+1).padStart(2,'0')}/10</span><div class="bar" style="flex:1"><i style="width:${(i+1)*10}%"></i></div></div><h2>${q[0]}</h2><div id="o"></div><textarea id="w" rows="4" placeholder="Tomar nijer moner kotha bolo... 💌">${esc(S.w[i]||'')}</textarea><div class="row">${i?'<button class="btn sm" id="p">Back</button>':''}<button class="btn" id="nx" disabled>${i<9?'Next ❤️':'Finish ❤️'}</button></div>`,AN[i]);
 let sel=S.a[i];const nx=$('#nx'),w=$('#w'),ck=()=>nx.disabled=!(sel!=null&&w.value.trim());
-q[1].forEach((x,j)=>{const d=document.createElement('label');d.className='opt'+(sel===j?' on':'');d.textContent='ABCD'[j]+'. '+x[0];d.onclick=()=>{sel=j;[...$('#o').children].forEach((c,k)=>c.classList.toggle('on',k===j));ck()};$('#o').append(d)});w.oninput=ck;ck();$('#p')&&($('#p').onclick=()=>go('question/'+i));
+q[1].forEach((x,j)=>{const d=document.createElement('label');d.className='opt'+(sel===j?' on':'');d.textContent='ABCD'[j]+'. '+x[0];d.onclick=e=>{sel=j;[...$('#o').children].forEach((c,k)=>c.classList.toggle('on',k===j));ck();pick(d,e)};$('#o').append(d)});w.oninput=ck;ck();$('#p')&&($('#p').onclick=()=>go('question/'+i));
 nx.onclick=()=>{S.a[i]=sel;S.w[i]=w.value.trim();sv();if(i<9)return go('question/'+(i+2));S.pa=analyze();S.le=letters();S.op=[];delete S.sk;sv();go('personality')}}
-if(r==='personality'){view(`<p class="prog">Tomar result</p><h1 class="sc" style="font-size:clamp(28px,7vw,44px)">${S.pa.name}</h1><div class="glass"><canvas id="rc"></canvas></div><div class="glass">${esc(S.pa.why)}</div><button class="btn" id="b">Amar 5 ta chithi kholo 💌</button>`);
-new Chart($('#rc'),{type:'radar',data:{labels:Object.values(DIM),datasets:[{data:Object.keys(DIM).map(k=>S.pa.scores[k]),backgroundColor:'#ff4d8d55',borderColor:'#e7c27d',pointBackgroundColor:'#fff'}]},options:{plugins:{legend:{display:false}},scales:{r:{min:0,max:100,ticks:{display:false},grid:{color:'#fff3'},angleLines:{color:'#fff3'},pointLabels:{color:'#fff8ee',font:{size:11}}}}}});
-saveSub.call&&0;S.sk||saveBg();return $('#b').onclick=()=>go('letters')}
-if(r==='letters'){const col=['#d6336c','#7a1fa2','#1f7a8c','#c9974a','#a3122f'];view(`<h1>Tomar 5 ta chithi 💌</h1><div class="grid">${S.le.map((l,i)=>`<div class="env ${S.op.includes(i)?'done':''}" data-i="${i}" style="--e:${col[i]}"><span class="seal">💗</span>0${i+1}<br>${l.t}</div>`).join('')}</div><p class="k">${S.op.length}/5 ta khola holo</p>${S.op.length>=5?'<button class="btn" id="b">POOKIE WAISUUU-ER MON 💗</button>':''}`);
-document.querySelectorAll('.env').forEach(e=>e.onclick=()=>go('letter/'+(+e.dataset.i+1)));$('#b')&&($('#b').onclick=()=>go('report'));burst(15,['🦋']);return}
-if(r==='letter'){const i=Math.min(Math.max(n,1),5)-1;if(!S.op.includes(i)){S.op.push(i);sv()}view(`<div class="paper"><h2>${S.le[i].t}</h2>${br(S.le[i].b)}</div><button class="btn" id="b">Chithi-te ferot jao</button>`,v=>gsap.from(v,{rotateX:-80,transformPerspective:900,transformOrigin:'top',opacity:0,duration:1.1}));burst(12,['💗','🦋']);return $('#b').onclick=()=>go('letters')}
-if(r==='report'){if(S.op.length<5)return go('letters');view(`<h1 class="sc">POOKIE WAISUUU-ER MON</h1><div class="glass"><b class="k">Tomar tothyo</b><br>${esc(S.id.name)}, ${S.id.age}, ${esc(S.id.gender)}, ${esc(S.id.rel)}<br><b class="k">Forever uttor:</b> ${esc(FOR[S.fv])}</div><div class="glass"><b class="k">${S.pa.name}</b><br>${Object.keys(DIM).map(k=>`${DIM[k]}: ${S.pa.scores[k]}`).join(' · ')}<br>${esc(S.pa.why)}</div>${Q.map((q,i)=>`<div class="glass"><b>Q${i+1}. ${q[0]}</b><br>${'ABCD'[S.a[i]]}. ${q[1][S.a[i]][0]}<br><i>“${esc(S.w[i])}”</i></div>`).join('')}${S.le.map(l=>`<div class="paper"><h2>${l.t}</h2>${br(l.b)}</div>`).join('')}<p id="st" class="noprint"></p><button class="btn noprint" onclick="print()"><i data-lucide="printer"></i> Print / PDF save koro</button>`);saveSub()}}
+if(r==='personality'){view(`<p class="prog">Tomar result</p><h1 class="sc" style="font-size:clamp(28px,7vw,44px)">${S.pa.name}</h1><div class="glass"><canvas id="rc"></canvas></div><div class="glass">${esc(S.pa.why)}</div><button class="btn" id="b">Open my 5 letters 💌</button>`);
+const ch=new Chart($('#rc'),{type:'radar',data:{labels:Object.values(DIM),datasets:[{data:Object.keys(DIM).map(()=>0),backgroundColor:'#ff4d8d55',borderColor:'#f3d9a4',borderWidth:2,pointBackgroundColor:'#fff',pointRadius:4}]},options:{animation:{duration:RM?0:1800,easing:'easeOutQuart'},plugins:{legend:{display:false}},scales:{r:{min:0,max:100,ticks:{display:false},grid:{color:'#fff3'},angleLines:{color:'#fff3'},pointLabels:{color:'#fbf4ea',font:{size:11}}}}}});
+setTimeout(()=>{ch.data.datasets[0].data=Object.keys(DIM).map(k=>S.pa.scores[k]);ch.update()},RM?0:400);
+S.sk||saveBg();return $('#b').onclick=()=>go('letters')}
+if(r==='letters'){const col=['#9b1b3f','#6d1f5a','#2a5f6b','#b07a3c','#7a0f2e'];view(`<h1>Tomar 5 ta chithi 💌</h1><div class="grid">${S.le.map((l,i)=>`<div class="env ${S.op.includes(i)?'done':''}" data-i="${i}" style="--e:${col[i]}"><span class="seal">💗</span>0${i+1}<br>${l.t}</div>`).join('')}</div><p class="k">${S.op.length}/5 ta khola holo</p>${S.op.length>=5?`<button class="btn" id="b">Pookie Waisuuu's Heart 💗</button>`:''}`);
+document.querySelectorAll('.env').forEach(e=>e.onclick=()=>{e.classList.add('op');setTimeout(()=>go('letter/'+(+e.dataset.i+1)),RM?0:700)});$('#b')&&($('#b').onclick=()=>go('report'));fly(3);return}
+if(r==='letter'){const i=Math.min(Math.max(n,1),5)-1;if(!S.op.includes(i)){S.op.push(i);sv()}view(`<div class="paper"><h2>${S.le[i].t}</h2>${br(S.le[i].b)}</div><button class="btn" id="b">Back to letters</button>`,v=>{gsap.fromTo(v[0],{rotateX:-90,opacity:0,scaleY:.6},{rotateX:0,opacity:1,scaleY:1,transformPerspective:900,transformOrigin:'top',duration:1.4,ease:'back.out(1.2)'});gsap.from(v[1],{opacity:0,delay:1,duration:.6})});burst(12,['💗','✦']);fly(4);return $('#b').onclick=()=>go('letters')}
+if(r==='report'){if(S.op.length<5)return go('letters');view(`<h1 class="sc">POOKIE WAISUUU-ER MON</h1><div class="glass"><b class="k">Tomar tothyo</b><br>${esc(S.id.name)}, ${S.id.age}, ${esc(S.id.gender)}, ${esc(S.id.rel)}<br><b class="k">Forever uttor:</b> ${esc(FOR[S.fv])}</div><div class="glass"><b class="k">${S.pa.name}</b><br>${Object.keys(DIM).map(k=>`${DIM[k]}: ${S.pa.scores[k]}`).join(' · ')}<br>${esc(S.pa.why)}</div>${Q.map((q,i)=>`<div class="glass"><b>Q${i+1}. ${q[0]}</b><br>${'ABCD'[S.a[i]]}. ${q[1][S.a[i]][0]}<br><i>“${esc(S.w[i])}”</i></div>`).join('')}${S.le.map(l=>`<div class="paper"><h2>${l.t}</h2>${br(l.b)}</div>`).join('')}<p id="st" class="noprint"></p><button class="btn noprint" onclick="print()"><i data-lucide="printer"></i> Print / Save PDF</button>`);saveSub()}}
 async function saveBg(){view_st();await saveSub()}function view_st(){if(!$('#st'))app.insertAdjacentHTML('beforeend','<p id="st" class="noprint"></p>')}
 // admin
 let unsub=null;
 function admin(){view(`<h1>Admin</h1><div id="ad"></div>`);dash($('#ad'),{email:'Admin panel'})}
 function login(ad,m=''){ad.innerHTML=`<form class="glass" id="lf"><p class="err">${m}</p><input name="e" type="email" placeholder="Admin email" required autocomplete="username"><input name="p" type="password" placeholder="Password" required autocomplete="current-password"><button class="btn">Login</button></form>`;$('#lf').onsubmit=async e=>{e.preventDefault();try{await signInWithEmailAndPassword(auth,e.target.e.value,e.target.p.value)}catch(x){login(ad,'Login failed: '+esc(x.code))}}}
 function dash(ad,u){let rows=[],q='',desc=true,sel=new Set();
-ad.innerHTML=`<div class="row"><span>${esc(u.email)}</span><button class="btn sm" id="lo"><i data-lucide="log-out"></i> Bondho koro</button></div><div class="row"><input id="q" placeholder="Search name…" style="flex:1"><button class="btn sm" id="so">Newest first</button><button class="btn sm" id="ex">Export CSV</button><button class="btn sm red" id="da">Delete all</button></div><p id="m" class="k">Loading…</p><div id="ls"></div>`;lucide.createIcons();
+ad.innerHTML=`<div class="row"><span>${esc(u.email)}</span><button class="btn sm" id="lo"><i data-lucide="log-out"></i> Log out</button></div><div class="row"><input id="q" placeholder="Search name…" style="flex:1"><button class="btn sm" id="so">Newest first</button><button class="btn sm" id="ex">Export CSV</button><button class="btn sm red" id="da">Delete all</button></div><p id="m" class="k">Loading…</p><div id="ls"></div>`;lucide.createIcons();
 const draw=()=>{let v=rows.filter(r=>(r.name||'').toLowerCase().includes(q.toLowerCase())).sort((a,b)=>desc?b.createdAt-a.createdAt:a.createdAt-b.createdAt);$('#m').textContent=`${v.length} submission(s) · live`;
 $('#ls').innerHTML=v.map(r=>`<div class="adm glass"><div class="row"><input type="checkbox" data-s="${esc(r.id)}" style="width:auto;margin:0" ${sel.has(r.id)?'checked':''}><b>${esc(r.name)}</b> ${esc(r.age)} · ${esc(r.gender)} · ${esc(r.rel)} · ${new Date(r.createdAt).toLocaleString()}<button class="btn sm red" data-d="${esc(r.id)}">Delete</button></div><details><summary>${esc(r.personality)} · Forever: ${esc(r.forever)}</summary>${(r.questions||[]).map((x,i)=>`<p><b>Q${i+1}.</b> ${esc(x.option)}<br><i>${esc(x.written)}</i></p>`).join('')}<p>${esc(JSON.stringify(r.scores))}</p>${(r.letters||[]).map(l=>`<div class="paper"><h2>${esc(l.t)}</h2>${br(l.b)}</div>`).join('')}</details></div>`).join('')||'<p>No submissions yet.</p>';
 document.querySelectorAll('[data-s]').forEach(c=>c.onchange=()=>c.checked?sel.add(c.dataset.s):sel.delete(c.dataset.s));
@@ -122,4 +341,6 @@ $('#da').onclick=async()=>{if(!confirm('Delete ALL submissions?'))return;if(prom
 // hidden shortcut: A twice quickly
 let la=0;addEventListener('keydown',e=>{if(e.key.toLowerCase()!=='a'||e.repeat||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;const t=Date.now();if(t-la<450){go('admin');la=0}else la=t});
 addEventListener('hashchange',()=>{if(unsub){unsub();unsub=null}R()});R();
-</script></body></html>
+</script>
+</body>
+</html>
