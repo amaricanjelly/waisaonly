@@ -33,7 +33,17 @@ const db=getDatabase(fa),auth=getAuth(fa),SUB=()=>ref(db,'herHeart/submissions')
 const $=s=>document.querySelector(s),app=$('#app'),RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
 const NICK='Pookie Waisuuu';const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const br=s=>esc(s).replace(/\n/g,'<br>');
-let S=JSON.parse(sessionStorage.hh||'{}');S.a=S.a||[];S.w=S.w||[];S.op=S.op||[];const sv=()=>sessionStorage.hh=JSON.stringify(S);
+
+// ---- STARTUP RESET (only on full load / refresh) ----
+const isAdminRoute = () => location.hash === '#/admin' || location.hash.startsWith('#/admin/');
+try { sessionStorage.removeItem('hh'); } catch(_) {}
+let S = {a:[],w:[],op:[]};
+if (!isAdminRoute()) {
+  history.replaceState(null, '', location.pathname + location.search + '#/welcome');
+}
+// ---- END STARTUP RESET ----
+
+const sv=()=>sessionStorage.hh=JSON.stringify(S);
 const go=h=>location.hash='#/'+h;
 const DIM={E:'Moner kotha bola',L:'Biswasto thaka',C:'Kotha bolar dhoron',R:'Romantic shotta',K:'Jhogra mitano',S:'Moner nirapotta',F:'Bhobishyot commitment',A:'Ador-er dhoron'};
 const KW={E:/bol|feel|express|mon|kotha/gi,L:/loyal|trust|pashe|chere|biswas/gi,C:/bujh|shun|talk|shoman/gi,R:/love|bhalobash|romantic|shundor|dream/gi,K:/sorry|mile|solve|maf/gi,S:/bhoy|fear|safe|nirapod|ekla|chinta/gi,F:/future|ek sathe|buro|jibon|always|shob shomoy/gi,A:/care|jotno|attention|hug|ador/gi};
