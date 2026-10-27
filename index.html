@@ -1,1904 +1,909 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>THE SECRET OF MY HEART ❤️</title>
-    <style>
-        /* ===== RESET & GLOBAL ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, sans-serif;
-        }
-
-        body {
-            background: linear-gradient(145deg, #2d0b2e 0%, #4a1a4b 40%, #7a2e6e 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 16px;
-            color: #fff0f5;
-            animation: bgGlow 18s infinite alternate;
-        }
-
-        @keyframes bgGlow {
-            0% { background: linear-gradient(145deg, #2d0b2e, #4a1a4b, #7a2e6e); }
-            100% { background: linear-gradient(145deg, #3d1540, #5e2260, #8b3a7c); }
-        }
-
-        .app-container {
-            max-width: 900px;
-            width: 100%;
-            background: rgba(255, 220, 240, 0.08);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border-radius: 48px;
-            padding: 28px 22px 32px;
-            box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(255, 200, 230, 0.15) inset;
-            border: 1px solid rgba(255, 180, 220, 0.25);
-            transition: all 0.3s ease;
-        }
-
-        /* ===== TYPOGRAPHY ===== */
-        h1, h2, h3 {
-            font-weight: 600;
-            letter-spacing: -0.02em;
-        }
-
-        .main-title {
-            font-size: clamp(1.9rem, 6vw, 3.2rem);
-            text-align: center;
-            background: linear-gradient(135deg, #ffb6d9, #ff8ab5, #f7a8d8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
-            text-shadow: 0 0 30px rgba(255, 130, 180, 0.4);
-            line-height: 1.2;
-        }
-
-        .subtitle {
-            text-align: center;
-            font-size: 1rem;
-            color: #e8c8e0;
-            margin-bottom: 22px;
-            opacity: 0.9;
-            font-weight: 300;
-            letter-spacing: 0.3px;
-        }
-
-        /* ===== SCREENS ===== */
-        .screen {
-            display: none;
-            animation: fadeSlide 0.45s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        .screen.active {
-            display: block;
-        }
-
-        @keyframes fadeSlide {
-            0% { opacity: 0; transform: translateY(16px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ===== REGISTRATION FORM ===== */
-        .form-group {
-            margin-bottom: 16px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: #f0c0d8;
-            margin-bottom: 6px;
-            letter-spacing: 0.3px;
-        }
-
-        .form-group label .optional {
-            font-weight: 300;
-            font-size: 0.7rem;
-            color: #c99ab8;
-            margin-left: 6px;
-        }
-
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 13px 16px;
-            border-radius: 60px;
-            border: 1.5px solid rgba(255, 160, 200, 0.3);
-            background: rgba(30, 10, 30, 0.55);
-            color: #fff0f5;
-            font-size: 0.95rem;
-            outline: none;
-            transition: border 0.25s, box-shadow 0.25s;
-            -webkit-appearance: none;
-            appearance: none;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus {
-            border-color: #ff8ab5;
-            box-shadow: 0 0 0 3px rgba(255, 130, 180, 0.2);
-        }
-
-        .form-group input::placeholder {
-            color: #b88aa8;
-            font-weight: 300;
-        }
-
-        .form-group select option {
-            background: #2d0b2e;
-            color: #fff0f5;
-        }
-
-        .row-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-        }
-
-        @media (max-width: 480px) {
-            .row-2 {
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
-        }
-
-        /* ===== PRIVACY NOTICE ===== */
-        .privacy-box {
-            background: rgba(255, 200, 230, 0.07);
-            border: 1px solid rgba(255, 160, 200, 0.2);
-            border-radius: 20px;
-            padding: 14px 16px;
-            font-size: 0.75rem;
-            color: #dbb8ce;
-            line-height: 1.5;
-            margin: 18px 0 12px;
-        }
-
-        .privacy-box strong {
-            color: #ffb6d9;
-            font-weight: 600;
-        }
-
-        .consent-check {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin: 12px 0 18px;
-            font-size: 0.8rem;
-            color: #e0b8d0;
-        }
-
-        .consent-check input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            margin-top: 2px;
-            accent-color: #ff6a9e;
-            flex-shrink: 0;
-        }
-
-        /* ===== BUTTONS ===== */
-        .btn-primary {
-            width: 100%;
-            padding: 15px 20px;
-            border-radius: 60px;
-            border: none;
-            background: linear-gradient(135deg, #ff6a9e, #d44a8a, #b83a7a);
-            color: #fff;
-            font-size: 1.05rem;
-            font-weight: 600;
-            letter-spacing: 0.4px;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.25s, filter 0.2s;
-            box-shadow: 0 8px 24px -6px rgba(255, 80, 140, 0.45);
-            margin-top: 6px;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 30px -6px rgba(255, 80, 140, 0.6);
-            filter: brightness(1.05);
-        }
-
-        .btn-primary:active {
-            transform: scale(0.97);
-        }
-
-        .btn-primary:disabled {
-            opacity: 0.45;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        .btn-secondary {
-            padding: 11px 22px;
-            border-radius: 60px;
-            border: 1.5px solid rgba(255, 160, 200, 0.5);
-            background: rgba(255, 200, 230, 0.08);
-            color: #ffb6d9;
-            font-size: 0.85rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background 0.2s, border 0.2s, transform 0.15s;
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 160, 200, 0.18);
-            border-color: #ff8ab5;
-        }
-
-        .btn-secondary:active {
-            transform: scale(0.95);
-        }
-
-        .btn-location {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 12px 26px;
-            border-radius: 60px;
-            border: 1.5px dashed rgba(255, 170, 200, 0.5);
-            background: rgba(255, 200, 230, 0.06);
-            color: #ffc0d8;
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.25s;
-            margin: 6px auto 14px;
-            width: fit-content;
-        }
-
-        .btn-location:hover {
-            background: rgba(255, 160, 200, 0.15);
-            border-color: #ff8ab5;
-        }
-
-        .btn-location:disabled {
-            opacity: 0.5;
-            cursor: default;
-        }
-
-        /* ===== LOCATION SECTION ===== */
-        .location-section {
-            text-align: center;
-            margin: 10px 0 6px;
-        }
-
-        .location-section h3 {
-            font-size: 1rem;
-            color: #f0c0d8;
-            font-weight: 500;
-            margin-bottom: 4px;
-        }
-
-        .location-section .small-note {
-            font-size: 0.7rem;
-            color: #c99ab8;
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
-
-        .location-status {
-            font-size: 0.8rem;
-            color: #a8e6a8;
-            min-height: 20px;
-            margin: 4px 0 8px;
-            transition: opacity 0.3s;
-        }
-
-        /* ===== WELCOME SCREEN ===== */
-        .welcome-box {
-            text-align: center;
-            padding: 20px 0 10px;
-        }
-
-        .welcome-box .greeting {
-            font-size: clamp(1.6rem, 5vw, 2.4rem);
-            font-weight: 700;
-            background: linear-gradient(135deg, #ffb6d9, #ff8ab5, #f7a8d8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
-        }
-
-        .welcome-box .sub-greeting {
-            font-size: 1rem;
-            color: #dbb8ce;
-            margin-bottom: 28px;
-            font-weight: 300;
-        }
-
-        .envelope-anim {
-            font-size: 4rem;
-            animation: floatEnvelope 2.6s ease-in-out infinite;
-            display: inline-block;
-            margin: 10px 0 20px;
-            filter: drop-shadow(0 0 24px rgba(255, 150, 200, 0.5));
-        }
-
-        @keyframes floatEnvelope {
-            0%, 100% { transform: translateY(0) rotate(-3deg) scale(1); }
-            50% { transform: translateY(-12px) rotate(3deg) scale(1.06); }
-        }
-
-        /* ===== GAME SCREENS ===== */
-        .game-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .level-badge {
-            background: linear-gradient(135deg, #ff6a9e, #c44a7a);
-            padding: 6px 18px;
-            border-radius: 60px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            color: #fff;
-            box-shadow: 0 4px 14px rgba(255, 80, 140, 0.3);
-        }
-
-        .progress-text {
-            font-size: 0.8rem;
-            color: #dbb8ce;
-            font-weight: 400;
-        }
-
-        .question-box {
-            background: rgba(255, 200, 230, 0.07);
-            border: 1px solid rgba(255, 160, 200, 0.2);
-            border-radius: 28px;
-            padding: 24px 20px;
-            margin-bottom: 18px;
-        }
-
-        .question-box h3 {
-            font-size: 1.2rem;
-            color: #ffd6e8;
-            margin-bottom: 18px;
-            font-weight: 500;
-            line-height: 1.4;
-        }
-
-        .quiz-option {
-            display: block;
-            width: 100%;
-            text-align: left;
-            padding: 14px 20px;
-            margin: 10px 0;
-            border-radius: 60px;
-            border: 1.5px solid rgba(255, 160, 200, 0.3);
-            background: rgba(30, 10, 30, 0.5);
-            color: #f0d6e4;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.22s ease;
-        }
-
-        .quiz-option:hover {
-            background: rgba(255, 160, 200, 0.15);
-            border-color: #ff8ab5;
-            transform: translateX(4px);
-        }
-
-        .quiz-option.selected {
-            background: linear-gradient(135deg, rgba(255, 106, 158, 0.35), rgba(212, 74, 138, 0.35));
-            border-color: #ff6a9e;
-            color: #fff;
-            box-shadow: 0 0 16px rgba(255, 100, 160, 0.25);
-        }
-
-        .quiz-option.correct {
-            background: rgba(100, 220, 130, 0.25);
-            border-color: #6ee68a;
-            color: #b0ffc0;
-        }
-
-        .quiz-option.wrong {
-            background: rgba(255, 80, 100, 0.2);
-            border-color: #ff6a7a;
-            color: #ffb0b8;
-        }
-
-        /* ===== HEART LOCK ===== */
-        .heart-lock-container {
-            text-align: center;
-            padding: 10px 0 20px;
-        }
-
-        .heart-lock-icon {
-            font-size: 5rem;
-            animation: heartBeat 1.6s ease-in-out infinite;
-            display: inline-block;
-            filter: drop-shadow(0 0 30px rgba(255, 100, 160, 0.6));
-        }
-
-        @keyframes heartBeat {
-            0%, 100% { transform: scale(1); }
-            14% { transform: scale(1.12); }
-            28% { transform: scale(1); }
-            42% { transform: scale(1.08); }
-            70% { transform: scale(1); }
-        }
-
-        .lock-code-input {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin: 20px 0 14px;
-            flex-wrap: wrap;
-        }
-
-        .lock-code-input input {
-            width: 56px;
-            height: 60px;
-            text-align: center;
-            font-size: 1.6rem;
-            font-weight: 600;
-            border-radius: 16px;
-            border: 1.5px solid rgba(255, 160, 200, 0.35);
-            background: rgba(30, 10, 30, 0.6);
-            color: #fff0f5;
-            outline: none;
-            transition: border 0.2s;
-        }
-
-        .lock-code-input input:focus {
-            border-color: #ff8ab5;
-            box-shadow: 0 0 0 3px rgba(255, 130, 180, 0.2);
-        }
-
-        /* ===== LOVE LETTERS ===== */
-        .envelope-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 16px;
-            margin: 20px 0;
-        }
-
-        .envelope-card {
-            background: rgba(255, 200, 230, 0.07);
-            border: 1px solid rgba(255, 160, 200, 0.2);
-            border-radius: 24px;
-            padding: 24px 14px 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .envelope-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 160, 200, 0.12);
-            border-color: #ff8ab5;
-            box-shadow: 0 14px 30px -10px rgba(255, 100, 160, 0.3);
-        }
-
-        .envelope-card .env-icon {
-            font-size: 2.4rem;
-            display: block;
-            margin-bottom: 8px;
-            transition: transform 0.3s;
-        }
-
-        .envelope-card:hover .env-icon {
-            transform: scale(1.15) rotate(-6deg);
-        }
-
-        .envelope-card .env-label {
-            font-size: 0.75rem;
-            color: #dbb8ce;
-            font-weight: 400;
-        }
-
-        .envelope-card.opened {
-            background: rgba(255, 160, 200, 0.18);
-            border-color: #ff6a9e;
-        }
-
-        .envelope-card.opened .env-label {
-            color: #ffb6d9;
-        }
-
-        /* ===== REASONS ===== */
-        .reason-card {
-            background: rgba(255, 200, 230, 0.09);
-            border: 1px solid rgba(255, 160, 200, 0.25);
-            border-radius: 28px;
-            padding: 28px 22px;
-            margin: 18px 0;
-            text-align: center;
-            min-height: 140px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-
-        .reason-number {
-            font-size: 0.75rem;
-            color: #c99ab8;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            font-weight: 500;
-        }
-
-        .reason-text {
-            font-size: 1.05rem;
-            color: #ffd6e8;
-            line-height: 1.6;
-            font-weight: 400;
-        }
-
-        .reason-nav {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 16px 0;
-        }
-
-        .reason-progress-bar {
-            width: 100%;
-            height: 5px;
-            background: rgba(255, 160, 200, 0.15);
-            border-radius: 60px;
-            margin: 12px 0 6px;
-            overflow: hidden;
-        }
-
-        .reason-progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #ff6a9e, #d44a8a);
-            border-radius: 60px;
-            transition: width 0.35s ease;
-            width: 0%;
-        }
-
-        /* ===== FINAL SCREEN ===== */
-        .final-heart {
-            text-align: center;
-            padding: 10px 0 6px;
-        }
-
-        .final-heart-icon {
-            font-size: 7rem;
-            animation: finalPulse 2.2s ease-in-out infinite;
-            display: inline-block;
-            filter: drop-shadow(0 0 50px rgba(255, 100, 160, 0.7));
-        }
-
-        @keyframes finalPulse {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.1) rotate(3deg); }
-        }
-
-        .final-letter {
-            background: linear-gradient(145deg, rgba(255, 220, 240, 0.1), rgba(255, 180, 220, 0.06));
-            border: 1.5px solid rgba(255, 160, 200, 0.3);
-            border-radius: 32px;
-            padding: 28px 22px;
-            margin: 16px 0 20px;
-            line-height: 1.75;
-            font-size: 0.95rem;
-            color: #f5dae8;
-            text-align: left;
-        }
-
-        .final-letter .letter-greeting {
-            font-size: 1.15rem;
-            color: #ffb6d9;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .final-letter .letter-signature {
-            margin-top: 18px;
-            text-align: right;
-            font-style: italic;
-            color: #ffb6d9;
-            font-weight: 500;
-        }
-
-        /* ===== MUSIC PLAYER ===== */
-        .music-player {
-            position: fixed;
-            bottom: 18px;
-            right: 18px;
-            background: rgba(30, 10, 30, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 60px;
-            padding: 10px 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border: 1px solid rgba(255, 160, 200, 0.3);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-            z-index: 100;
-            transition: opacity 0.3s;
-        }
-
-        .music-disc {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: conic-gradient(#ff6a9e, #d44a8a, #ff8ab5, #b83a7a, #ff6a9e);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            animation: spinDisc 4s linear infinite;
-            animation-play-state: paused;
-            flex-shrink: 0;
-        }
-
-        .music-disc.playing {
-            animation-play-state: running;
-        }
-
-        @keyframes spinDisc {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .music-controls {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .music-btn {
-            background: none;
-            border: none;
-            color: #ffb6d9;
-            font-size: 1.1rem;
-            cursor: pointer;
-            padding: 4px;
-            transition: transform 0.15s, color 0.2s;
-        }
-
-        .music-btn:hover {
-            color: #fff;
-            transform: scale(1.15);
-        }
-
-        .music-volume {
-            width: 60px;
-            accent-color: #ff6a9e;
-            cursor: pointer;
-            height: 4px;
-            border-radius: 60px;
-        }
-
-        @media (max-width: 480px) {
-            .music-player {
-                bottom: 12px;
-                right: 12px;
-                padding: 8px 12px;
-                gap: 8px;
-            }
-            .music-volume { width: 40px; }
-            .music-disc { width: 32px; height: 32px; font-size: 0.85rem; }
-        }
-
-        /* ===== ADMIN SHORTCUT HINT ===== */
-        .admin-hint {
-            text-align: center;
-            font-size: 0.6rem;
-            color: rgba(255, 200, 230, 0.15);
-            margin-top: 14px;
-            letter-spacing: 1px;
-        }
-
-        /* ===== UTILS ===== */
-        .hidden { display: none !important; }
-        .text-center { text-align: center; }
-        .mt-12 { margin-top: 12px; }
-        .mt-20 { margin-top: 20px; }
-        .mb-12 { margin-bottom: 12px; }
-
-        /* ===== LOADING SPINNER ===== */
-        .spinner {
-            display: inline-block;
-            width: 18px;
-            height: 18px;
-            border: 2.5px solid rgba(255, 200, 230, 0.25);
-            border-top-color: #ff6a9e;
-            border-radius: 50%;
-            animation: spin 0.7s linear infinite;
-            vertical-align: middle;
-            margin-right: 8px;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        /* ===== TOAST ===== */
-        .toast {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%) translateY(-80px);
-            background: rgba(30, 10, 30, 0.92);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 160, 200, 0.4);
-            color: #ffd6e8;
-            padding: 12px 26px;
-            border-radius: 60px;
-            font-size: 0.85rem;
-            z-index: 999;
-            opacity: 0;
-            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.4s;
-            pointer-events: none;
-            max-width: 90vw;
-            text-align: center;
-        }
-
-        .toast.show {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-        }
-
-        /* ===== ANIMATED HEARTS BG ===== */
-        .floating-heart {
-            position: fixed;
-            color: rgba(255, 150, 200, 0.12);
-            font-size: 2rem;
-            pointer-events: none;
-            z-index: 0;
-            animation: floatUp 12s linear infinite;
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(100vh) rotate(0deg) scale(0.6); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-10vh) rotate(360deg) scale(1.2); opacity: 0; }
-        }
-
-        /* ===== SCROLLBAR ===== */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: rgba(255, 160, 200, 0.3); border-radius: 60px; }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Her Heart — A Little Universe for Mimi</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+  :root{
+    --cherry:#8e1e3f;
+    --burgundy:#4a0d20;
+    --blush:#f7dfe4;
+    --gold:#d8b46a;
+    --ivory:#fdf8f3;
+    --ink:#2a1017;
+    --glass:rgba(255,255,255,.08);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;min-height:100%;}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ivory);
+    background:
+      radial-gradient(1200px 800px at 15% 0%, #6d1330 0%, transparent 60%),
+      radial-gradient(900px 700px at 100% 100%, #3b0a1a 0%, transparent 60%),
+      linear-gradient(160deg,#2a0712 0%,#4a0d20 45%,#6b1230 100%);
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+  .display{font-family:'Cormorant Garamond',serif;}
+  .script{font-family:'Dancing Script',cursive;}
+  .screen{display:none;min-height:100vh;padding:24px;align-items:center;justify-content:center;}
+  .screen.active{display:flex;}
+  .card{
+    width:100%;max-width:720px;background:var(--glass);
+    border:1px solid rgba(216,180,106,.35);border-radius:24px;
+    padding:32px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    box-shadow:0 30px 80px rgba(0,0,0,.45);position:relative;z-index:2;
+  }
+  h1,h2,h3{font-family:'Cormorant Garamond',serif;margin:0 0 12px;line-height:1.15;}
+  h1{font-size:clamp(28px,4.2vw,44px);font-weight:600;color:var(--ivory);}
+  h2{font-size:clamp(22px,3vw,32px);font-weight:600;}
+  p{line-height:1.6;color:#f3e6ea;}
+  .eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;justify-content:center;
+    padding:14px 26px;border-radius:999px;border:1px solid var(--gold);
+    background:linear-gradient(135deg,var(--cherry),#5c1228);
+    color:var(--ivory);font-weight:600;font-size:15px;cursor:pointer;
+    transition:transform .2s ease,box-shadow .2s ease;font-family:inherit;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.35);}
+  .btn:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none;}
+  .btn.ghost{background:transparent;}
+  .field{margin-bottom:18px;}
+  .field label{display:block;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+  .field input,.field select,.field textarea{
+    width:100%;padding:14px 16px;border-radius:14px;
+    border:1px solid rgba(216,180,106,.35);background:rgba(0,0,0,.25);
+    color:var(--ivory);font-family:inherit;font-size:15px;outline:none;
+    transition:border-color .2s ease,box-shadow .2s ease;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{
+    border-color:var(--gold);box-shadow:0 0 0 3px rgba(216,180,106,.18);
+  }
+  .field textarea{resize:vertical;min-height:96px;}
+  .field select option{background:#3b0a1a;color:var(--ivory);}
+  .options{display:grid;gap:12px;margin:18px 0;}
+  .opt{
+    text-align:left;padding:16px 18px;border-radius:16px;
+    border:1px solid rgba(216,180,106,.35);background:rgba(0,0,0,.22);
+    color:var(--ivory);cursor:pointer;font-family:inherit;font-size:15px;
+    transition:all .18s ease;
+  }
+  .opt:hover{border-color:var(--gold);transform:translateX(4px);}
+  .opt.selected{background:linear-gradient(135deg,rgba(142,30,63,.85),rgba(74,13,32,.9));border-color:var(--gold);box-shadow:0 0 24px rgba(216,180,106,.25);}
+  .progress{display:flex;align-items:center;gap:12px;margin-bottom:20px;font-size:12px;letter-spacing:.2em;color:var(--gold);}
+  .progress .bar{flex:1;height:2px;background:rgba(216,180,106,.2);border-radius:2px;overflow:hidden;}
+  .progress .bar > span{display:block;height:100%;background:var(--gold);width:0;transition:width .4s ease;}
+  .letters{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;}
+  .envelope{
+    aspect-ratio:1/1.1;border-radius:18px;cursor:pointer;position:relative;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+    border:1px solid rgba(216,180,106,.4);transition:transform .25s ease,box-shadow .25s ease;
+    text-align:center;padding:12px;
+  }
+  .envelope:hover{transform:translateY(-6px) rotate(-1deg);box-shadow:0 20px 40px rgba(0,0,0,.4);}
+  .envelope .num{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold);}
+  .envelope .label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#ffe9ef;}
+  .envelope.opened{opacity:.55;}
+  .env-1{background:linear-gradient(160deg,#8e1e3f,#4a0d20);}
+  .env-2{background:linear-gradient(160deg,#b0576f,#5c1228);}
+  .env-3{background:linear-gradient(160deg,#6b1230,#2a0712);}
+  .env-4{background:linear-gradient(160deg,#a97b3a,#3b0a1a);}
+  .env-5{background:linear-gradient(160deg,#c98fa3,#4a0d20);}
+  .letter-paper{
+    background:var(--ivory);color:var(--ink);border-radius:20px;padding:32px;
+    box-shadow:0 30px 80px rgba(0,0,0,.5);max-width:680px;width:100%;
+    background-image:linear-gradient(rgba(0,0,0,.03) 1px,transparent 1px);
+    background-size:100% 32px;
+  }
+  .letter-paper h2{color:var(--burgundy);}
+  .letter-paper p{color:var(--ink);}
+  .letter-paper .sig{font-family:'Dancing Script',cursive;font-size:26px;color:var(--cherry);margin-top:18px;}
+  .hearts-bg{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden;}
+  .float-heart{position:absolute;color:rgba(255,200,215,.5);animation:floatUp linear infinite;}
+  @keyframes floatUp{
+    0%{transform:translateY(100vh) scale(.6);opacity:0;}
+    10%{opacity:.8;}
+    100%{transform:translateY(-10vh) scale(1.2);opacity:0;}
+  }
+  .topbar{position:fixed;top:0;left:0;right:0;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;z-index:5;font-size:12px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;}
+  .topbar .brand{font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:.05em;color:var(--ivory);text-transform:none;}
+  .chart-wrap{background:rgba(0,0,0,.25);border-radius:18px;padding:18px;margin:18px 0;}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120%);background:var(--burgundy);border:1px solid var(--gold);color:var(--ivory);padding:12px 22px;border-radius:999px;font-size:14px;z-index:100;transition:transform .35s ease;}
+  .toast.show{transform:translateX(-50%) translateY(0);}
+  .muted{color:#d8c3c9;font-size:13px;}
+  .pill{display:inline-block;padding:4px 10px;border-radius:999px;border:1px solid rgba(216,180,106,.4);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin:2px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+  }
+  @media (max-width:560px){
+    .card{padding:24px 18px;border-radius:18px;}
+    .letter-paper{padding:24px 18px;}
+  }
+  @media print{
+    body{background:#fff;color:#000;}
+    .no-print,.topbar,.hearts-bg,.btn{display:none !important;}
+    .screen{display:none !important;}
+    .screen.active{display:block !important;min-height:0;padding:0;}
+    .card,.letter-paper{box-shadow:none;border:1px solid #ccc;background:#fff;color:#000;}
+    .card p,.letter-paper p{color:#000;}
+  }
+</style>
 </head>
 <body>
 
-<!-- Floating hearts background -->
-<div id="heartBg"></div>
+<div class="hearts-bg" id="heartsBg"></div>
 
-<!-- Toast notification -->
-<div id="toast" class="toast"></div>
-
-<div class="app-container" id="appContainer">
-
-    <!-- ============================================ -->
-    <!-- SCREEN 1: REGISTRATION -->
-    <!-- ============================================ -->
-    <div id="screen-register" class="screen active">
-        <h1 class="main-title">WELCOME TO MY LITTLE LOVE WORLD! 🎀</h1>
-        <p class="subtitle">Before entering, tell me a little about yourself.</p>
-
-        <form id="regForm" autocomplete="off">
-            <div class="form-group">
-                <label for="regName">FULL NAME <span class="optional">(required)</span></label>
-                <input type="text" id="regName" placeholder="Your beautiful name..." required maxlength="60">
-            </div>
-
-            <div class="row-2">
-                <div class="form-group">
-                    <label for="regAge">AGE <span class="optional">(required)</span></label>
-                    <input type="number" id="regAge" placeholder="Your age" required min="1" max="120">
-                </div>
-                <div class="form-group">
-                    <label for="regDob">DATE OF BIRTH <span class="optional">(required)</span></label>
-                    <input type="date" id="regDob" required>
-                </div>
-            </div>
-
-            <div class="row-2">
-                <div class="form-group">
-                    <label for="regGender">GENDER <span class="optional">(optional)</span></label>
-                    <select id="regGender">
-                        <option value="">Select...</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
-                        <option value="Prefer not to say">Prefer not to say</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="regPersonality">PERSONALITY <span class="optional">(optional)</span></label>
-                    <select id="regPersonality">
-                        <option value="">Select...</option>
-                        <option value="POOKIE 🥹">POOKIE 🥹</option>
-                        <option value="TOXIC 😈">TOXIC 😈</option>
-                        <option value="BOTH 😭❤️">BOTH 😭❤️</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- Location section -->
-            <div class="location-section">
-                <h3>WHERE ARE YOU EXPLORING FROM? 🌍</h3>
-                <p class="small-note">Optional. If you share, your approximate city and country will be saved. Precise coordinates are visible to the administrator.</p>
-                <button type="button" class="btn-location" id="shareLocationBtn">
-                    📍 SHARE MY LOCATION
-                </button>
-                <div class="location-status" id="locationStatus"></div>
-            </div>
-
-            <!-- Privacy notice -->
-            <div class="privacy-box">
-                <strong>Privacy Notice:</strong> We collect your name, age, date of birth, and optionally your gender, personality, and location. This data is stored securely and visible to the site administrator. You can request deletion at any time. By submitting, you agree to this collection.
-            </div>
-
-            <div class="consent-check">
-                <input type="checkbox" id="consentCheck">
-                <label for="consentCheck">I understand and agree that my information will be collected and stored as described above.</label>
-            </div>
-
-            <button type="submit" class="btn-primary" id="submitBtn" disabled>
-                ENTER MY LOVE WORLD 💕
-            </button>
-        </form>
-
-        <p class="admin-hint">Press A twice quickly for admin access</p>
-    </div>
-
-    <!-- ============================================ -->
-    <!-- SCREEN 2: WELCOME -->
-    <!-- ============================================ -->
-    <div id="screen-welcome" class="screen">
-        <div class="welcome-box">
-            <div class="envelope-anim">💌</div>
-            <div class="greeting" id="welcomeName">HEY!</div>
-            <div class="sub-greeting">YOU ARE NOW ENTERING MY LITTLE WORLD.</div>
-            <button class="btn-primary" id="startAdventureBtn" style="max-width:340px;margin:0 auto;">
-                START MY ADVENTURE 💌
-            </button>
-        </div>
-    </div>
-
-    <!-- ============================================ -->
-    <!-- SCREEN 3: LEVEL 1 — QUIZ -->
-    <!-- ============================================ -->
-    <div id="screen-level1" class="screen">
-        <div class="game-header">
-            <span class="level-badge">LEVEL 01</span>
-            <span class="progress-text" id="quizProgressText">Question 1 / 5</span>
-        </div>
-        <div class="question-box">
-            <h3 id="quizQuestion">Loading question...</h3>
-            <div id="quizOptions"></div>
-        </div>
-        <button class="btn-primary" id="quizNextBtn" disabled>NEXT QUESTION →</button>
-    </div>
-
-    <!-- ============================================ -->
-    <!-- SCREEN 4: LEVEL 2 — HEART LOCK -->
-    <!-- ============================================ -->
-    <div id="screen-level2" class="screen">
-        <div class="game-header">
-            <span class="level-badge">LEVEL 02</span>
-            <span class="progress-text">UNLOCK MY HEART</span>
-        </div>
-        <div class="heart-lock-container">
-            <div class="heart-lock-icon" id="lockIcon">🔐</div>
-            <h3 style="color:#ffd6e8;font-weight:500;margin:14px 0 6px;" id="lockPrompt">Enter the secret code to unlock my heart</h3>
-            <p style="font-size:0.78rem;color:#c99ab8;" id="lockHint">Hint: The number of letters in "LOVE" (type below)</p>
-            <div class="lock-code-input" id="lockInputs">
-                <input type="text" maxlength="1" inputmode="numeric" class="lock-digit" data-idx="0" autocomplete="off">
-                <input type="text" maxlength="1" inputmode="numeric" class="lock-digit" data-idx="1" autocomplete="off">
-                <input type="text" maxlength="1" inputmode="numeric" class="lock-digit" data-idx="2" autocomplete="off">
-                <input type="text" maxlength="1" inputmode="numeric" class="lock-digit" data-idx="3" autocomplete="off">
-            </div>
-            <div id="lockStatus" style="min-height:24px;font-size:0.85rem;color:#ffb0b8;"></div>
-            <button class="btn-primary" id="lockSubmitBtn" style="max-width:280px;margin:12px auto 0;">UNLOCK ❤️</button>
-        </div>
-    </div>
-
-    <!-- ============================================ -->
-    <!-- SCREEN 5: LEVEL 3 — LOVE LETTERS -->
-    <!-- ============================================ -->
-    <div id="screen-level3" class="screen">
-        <div class="game-header">
-            <span class="level-badge">LEVEL 03</span>
-            <span class="progress-text" id="lettersProgressText">0 / 3 opened</span>
-        </div>
-        <h3 style="color:#ffd6e8;font-weight:500;text-align:center;margin-bottom:6px;">Secret Love Letters 💌</h3>
-        <p style="text-align:center;font-size:0.82rem;color:#c99ab8;margin-bottom:10px;">Tap each envelope to reveal its message.</p>
-        <div class="envelope-grid" id="envelopeGrid"></div>
-        <div id="letterReveal" class="question-box" style="display:none;margin-top:16px;">
-            <h3 id="letterTitle"></h3>
-            <p id="letterBody" style="font-size:0.95rem;color:#e8c8e0;line-height:1.7;"></p>
-            <button class="btn-secondary" id="closeLetterBtn" style="margin-top:14px;">CLOSE</button>
-        </div>
-        <button class="btn-primary" id="level3NextBtn" disabled style="max-width:340px;margin:18px auto 0;">CONTINUE TO LEVEL 4 →</button>
-    </div>
-
-    <!-- ============================================ -->
-    <!-- SCREEN 6: LEVEL 4 — 100 REASONS -->
-    <!-- ============================================ -->
-    <div id="screen-level4" class="screen">
-        <div class="game-header">
-            <span class="level-badge">LEVEL 04</span>
-            <span class="progress-text" id="reasonsProgressText">1 / 100</span>
-        </div>
-        <h3 style="color:#ffd6e8;font-weight:500;text-align:center;margin-bottom:10px;">100 Reasons Why I Love You</h3>
-        <div class="reason-card">
-            <div class="reason-number" id="reasonNumber">REASON #1</div>
-            <div class="reason-text" id="reasonText">Loading...</div>
-        </div>
-        <div class="reason-progress-bar"><div class="reason-progress-fill" id="reasonProgressFill"></div></div>
-        <div class="reason-nav">
-            <button class="btn-secondary" id="reasonPrevBtn">← PREVIOUS</button>
-            <button class="btn-secondary" id="reasonRandomBtn">🎲 RANDOM</button>
-            <button class="btn-secondary" id="reasonNextBtn">NEXT →</button>
-        </div>
-        <button class="btn-primary" id="level4NextBtn" style="max-width:340px;margin:18px auto 0;">GO TO FINAL LEVEL →</button>
-    </div>
-
-    <!-- ============================================ -->
-    <!-- SCREEN 7: FINAL LEVEL -->
-    <!-- ============================================ -->
-    <div id="screen-final" class="screen">
-        <div class="game-header">
-            <span class="level-badge">FINAL LEVEL</span>
-            <span class="progress-text">THE SECRET OF MY HEART</span>
-        </div>
-        <div class="final-heart">
-            <div class="final-heart-icon">❤️</div>
-        </div>
-        <div class="final-letter">
-            <div class="letter-greeting" id="finalGreeting">My Dearest,</div>
-            <p>You made it to the end of this little journey, and that means more to me than you know. Every quiz question, every locked heart, every letter, and every reason — they were all little pieces of something I've been trying to say.</p>
-            <p style="margin-top:12px;">The secret of my heart is simple: it beats for you. Not in a grand, dramatic way — but in the quiet, everyday way that feels like home. It's in the way I save the last bite for you, the way I look for you in every room, the way I'm writing this right now hoping it makes you smile.</p>
-            <p style="margin-top:12px;">You are my favorite hello and my hardest goodbye. You are the reason I believe in soft things, slow mornings, and love that doesn't need to shout to be real.</p>
-            <p style="margin-top:12px;">Thank you for playing, for reading, for being you. If you ever forget how loved you are, come back to this page. It will always be here — and so will I.</p>
-            <div class="letter-signature">Always yours,<br>Me ❤️</div>
-        </div>
-        <button class="btn-primary" id="restartBtn" style="max-width:300px;margin:0 auto;">PLAY AGAIN 💕</button>
-    </div>
-
+<div class="topbar no-print">
+  <span class="brand">Her Heart</span>
+  <span id="topStatus">for Mimi</span>
 </div>
 
-<!-- ============================================ -->
-<!-- MUSIC PLAYER -->
-<!-- ============================================ -->
-<div class="music-player" id="musicPlayer">
-    <div class="music-disc" id="musicDisc">🎵</div>
-    <div class="music-controls">
-        <button class="music-btn" id="musicPlayBtn" aria-label="Play">▶️</button>
-        <input type="range" class="music-volume" id="musicVolume" min="0" max="100" value="40" aria-label="Volume">
-    </div>
-</div>
+<!-- ============ WELCOME ============ -->
+<section class="screen active" id="screen-welcome">
+  <div class="card" style="text-align:center;">
+    <p class="eyebrow">A little universe, made for one person</p>
+    <h1>Before we enter your little universe… 💗</h1>
+    <p>A few gentle questions, some words from your own heart, and five letters waiting for you. Take your time.</p>
+    <button class="btn" id="btnBeginWelcome" style="margin-top:16px;">
+      Enter <i data-lucide="heart" style="width:18px;height:18px;"></i>
+    </button>
+    <p class="muted" style="margin-top:18px;">Your answers are saved to a private database you control. Nothing is shared.</p>
+  </div>
+</section>
 
-<!-- ============================================ -->
-<!-- FIREBASE + GAME SCRIPT -->
-<!-- ============================================ -->
+<!-- ============ IDENTITY ============ -->
+<section class="screen" id="screen-identity">
+  <div class="card">
+    <p class="eyebrow">Step 1 · A little about you</p>
+    <h2>Who is entering?</h2>
+    <form id="identityForm" novalidate>
+      <div class="field">
+        <label for="name">Your name</label>
+        <input id="name" name="name" type="text" required autocomplete="name" />
+      </div>
+      <div class="field">
+        <label for="age">Your age</label>
+        <input id="age" name="age" type="number" min="1" max="120" required />
+      </div>
+      <div class="field">
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender" required>
+          <option value="">Choose one…</option>
+          <option>Female</option>
+          <option>Male</option>
+          <option>Other</option>
+          <option>Prefer not to say</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="relationship">Your relationship with Arafat</label>
+        <select id="relationship" name="relationship" required>
+          <option value="">Choose one…</option>
+          <option>His Girlfriend ❤️</option>
+          <option>His Wife 💍</option>
+          <option>His Special Person 🥺</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <button class="btn" type="submit">Continue</button>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOREVER ============ -->
+<section class="screen" id="screen-forever">
+  <div class="card">
+    <p class="eyebrow">Step 2 · The forever question</p>
+    <h2>Amar sathe tumi ei world-e koto din survive korba? 🥺❤️</h2>
+    <div class="options" id="foreverOptions"></div>
+    <button class="btn" id="btnForeverNext" disabled>Continue</button>
+  </div>
+</section>
+
+<!-- ============ QUESTIONS ============ -->
+<section class="screen" id="screen-question">
+  <div class="card">
+    <div class="progress">
+      <span id="qCounter">01 / 10</span>
+      <span class="bar"><span id="qBar"></span></span>
+    </div>
+    <p class="eyebrow">Question <span id="qNum">1</span></p>
+    <h2 id="qText"></h2>
+    <div class="options" id="qOptions"></div>
+    <div class="field" style="margin-top:8px;">
+      <label for="qNote">Tomar nijer moner kotha bolo… 💌</label>
+      <textarea id="qNote" placeholder="Write freely — this is just for you and Arafat."></textarea>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <button class="btn ghost" id="btnQBack" type="button">Back</button>
+      <button class="btn" id="btnQNext" type="button" disabled>Next</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REFLECTION ============ -->
+<section class="screen" id="screen-reflection">
+  <div class="card">
+    <p class="eyebrow">A playful reflection — not a diagnosis</p>
+    <h2 id="reflectTitle"></h2>
+    <p id="reflectBlurb"></p>
+    <div class="chart-wrap">
+      <canvas id="radarChart" height="260"></canvas>
+    </div>
+    <p class="muted">This is a light-hearted reflection built from the answers you chose and wrote. It is not an assessment of your mind, and it does not claim to know you. Only you know you.</p>
+    <button class="btn" id="btnToLetters" style="margin-top:12px;">Open the letters</button>
+  </div>
+</section>
+
+<!-- ============ LETTERS ============ -->
+<section class="screen" id="screen-letters">
+  <div class="card">
+    <p class="eyebrow">Five letters, sealed with care</p>
+    <h2>Choose a letter to open</h2>
+    <p class="muted" style="margin-bottom:18px;">Each one is written from what you shared. Open all five to reach your final page.</p>
+    <div class="letters" id="lettersGrid"></div>
+    <button class="btn" id="btnToReport" style="margin-top:22px;" disabled>View the final page</button>
+  </div>
+</section>
+
+<!-- ============ LETTER VIEW ============ -->
+<section class="screen" id="screen-letter">
+  <div class="letter-paper" id="letterPaper">
+    <p class="eyebrow" style="color:var(--cherry);" id="letterEyebrow">Letter 01</p>
+    <h2 id="letterTitle"></h2>
+    <div id="letterBody"></div>
+    <p class="sig">— Arafat</p>
+    <button class="btn" id="btnLetterBack" style="margin-top:24px;">Back to letters</button>
+  </div>
+</section>
+
+<!-- ============ REPORT ============ -->
+<section class="screen" id="screen-report">
+  <div class="card">
+    <p class="eyebrow">The heart of Mimi</p>
+    <h1>Your little universe, in one page</h1>
+    <div id="reportBody"></div>
+    <div class="no-print" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;">
+      <button class="btn" onclick="window.print()">Print / Save as PDF</button>
+      <button class="btn ghost" id="btnStartOver">Start over</button>
+    </div>
+  </div>
+</section>
+
+<div class="toast" id="toast"></div>
+
 <script type="module">
-    // =============================================
-    // FIREBASE IMPORTS
-    // =============================================
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js";
-    import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
-    import { getDatabase, ref, set, update, get, serverTimestamp } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-database.js";
+/* ============================================================
+   FIREBASE  —  EDIT ME: replace with your own project config
+   ============================================================
+   The config below is intentionally left blank. Put YOUR
+   Firebase project's config here (from Firebase console →
+   Project settings → Your apps → Web). Then create a real
+   Realtime Database and paste your security rules.
+   ============================================================ */
+const firebaseConfig = {
+  apiKey: "PASTE_YOUR_API_KEY",
+  authDomain: "PASTE_YOUR_PROJECT.firebaseapp.com",
+  databaseURL: "https://PASTE_YOUR_PROJECT-default-rtdb.firebaseio.com",
+  projectId: "PASTE_YOUR_PROJECT",
+  storageBucket: "PASTE_YOUR_PROJECT.appspot.com",
+  messagingSenderId: "PASTE_SENDER_ID",
+  appId: "PASTE_APP_ID"
+};
 
-    // =============================================
-    // FIREBASE CONFIG
-    // =============================================
-    const firebaseConfig = {
-        apiKey: "AIzaSyCzx5PjKJNlKMJC4evQPjyXmdp1sTwpCP4",
-        authDomain: "my-website-ctg.firebaseapp.com",
-        databaseURL: "https://my-website-ctg-default-rtdb.firebaseio.com",
-        projectId: "my-website-ctg",
-        storageBucket: "my-website-ctg.firebasestorage.app",
-        messagingSenderId: "655567782113",
-        appId: "1:655567782113:web:a5adaa922a76bc58f5b7a0",
-        measurementId: "G-8LBRH0WSEQ"
+let db = null;
+async function initFirebase(){
+  try{
+    const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js");
+    const { getDatabase, ref, push, set } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js");
+    const app = initializeApp(firebaseConfig);
+    db = getDatabase(app);
+    window.__fb = { ref, push, set };
+    return true;
+  }catch(err){
+    console.warn("Firebase not configured / offline:", err.message);
+    return false;
+  }
+}
+
+/* ============================================================
+   STATE
+   ============================================================ */
+const QUESTIONS = [
+  { q:"Arafat jodi kokhono tomar mon bujhte na pare, tumi ki korba?", o:[
+    "Nijer feelings oke bujhanor try korbo.",
+    "Ektu oviman korbo, but dure jabo na.",
+    "Oke time debo, amake bujhte.",
+    "Amra dujon mile problem solve korbo." ]},
+  { q:"Jodi amader moddhe onek misunderstanding hoy, tumi ki choose korba?", o:[
+    "Ego.","Silent treatment.","Open communication.",
+    "Relationship-ta save korar jonno dujon mile try korbo." ]},
+  { q:"Arafat-er kon jinishta tomar kache sobcheye irreplaceable?", o:[
+    "Tar voice.","Tar care.","Tar personality.","Tar unconditional love." ]},
+  { q:"Jodi ekdin Arafat emotionally weak hoye pore, tumi ki korba?", o:[
+    "Tar kotha mon diye shunbo.","Take comfort debo.",
+    "Tar pashe thakbo.","Take bujhai dibo je she eka na." ]},
+  { q:"Tomar kache true love mane ki?", o:[
+    "Perfect romantic moments.","Loyalty and trust.",
+    "Imperfect manushke accept kora.","Sob situation-e ekshathe grow kora." ]},
+  { q:"Tomar future self jodi ajker tomake ekta secret advice dite parto, seta ki hoto?", o:[
+    "Never hide your feelings.","Never lose yourself in love.",
+    "Choose someone who understands you.","Protect the love that makes you happy." ]},
+  { q:"Arafat jodi tomake 3 ta gift-er moddhe ekta choose korte bole, konta nibe?", o:[
+    "Unlimited expensive gifts.","Unlimited attention.",
+    "Lifetime loyalty.","Every day a new reason to smile." ]},
+  { q:"Jodi tomar mon ar tomar ego opposite direction-e jay, tumi kontake follow korba?", o:[
+    "My ego.","My heart.","My logical mind.",
+    "I'll understand the situation before choosing." ]},
+  { q:"Tomar emon kon fear ache, jeta tumi relationship-e easily share korte paro na?", o:[
+    "Being misunderstood.","Losing someone special.",
+    "Not feeling appreciated.","Not being able to express my feelings." ]},
+  { q:"Jodi amader golper last page ekhono lekha na hoy, tumi last page-e ki dekhte chao?", o:[
+    "A beautiful wedding.","Growing old together.",
+    "A peaceful life full of memories.","Arafat and Mimi, still choosing each other." ]}
+];
+
+const FOREVER = [
+  "99 years","90 years","Jotodin Arafat chai","Mrittu-r ag porjonto ❤️"
+];
+
+const state = {
+  identity: { name:"", age:"", gender:"", relationship:"" },
+  forever: "",
+  answers: [], // {q, option, note}
+  qIndex: 0,
+  pendingOption: null,
+  reflection: null,
+  letters: [],
+  openedLetters: new Set()
+};
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+const $ = (sel, root=document) => root.querySelector(sel);
+const $$ = (sel, root=document) => [...root.querySelectorAll(sel)];
+const screens = {};
+function showScreen(name){
+  Object.entries(screens).forEach(([k,el])=>el.classList.toggle('active', k===name));
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(window.lucide) window.lucide.createIcons();
+}
+function toast(msg){
+  const t = $('#toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._t);
+  t._t = setTimeout(()=>t.classList.remove('show'),2600);
+}
+function escapeHTML(s){
+  return String(s).replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+}
+
+/* floating hearts */
+function spawnHearts(){
+  const bg = $('#heartsBg');
+  const symbols = ['❤','💗','💞','🌸','✨'];
+  const n = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 22;
+  for(let i=0;i<n;i++){
+    const s = document.createElement('span');
+    s.className = 'float-heart';
+    s.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+    s.style.left = Math.random()*100 + 'vw';
+    s.style.fontSize = (10 + Math.random()*22) + 'px';
+    s.style.animationDuration = (10 + Math.random()*14) + 's';
+    s.style.animationDelay = (-Math.random()*20) + 's';
+    bg.appendChild(s);
+  }
+}
+
+/* ============================================================
+   WELCOME
+   ============================================================ */
+function initWelcome(){
+  $('#btnBeginWelcome').addEventListener('click', ()=>{
+    showScreen('identity');
+    if(window.gsap){
+      gsap.from('#screen-identity .card',{y:30,opacity:0,duration:.6,ease:'power2.out'});
+    }
+  });
+}
+
+/* ============================================================
+   IDENTITY
+   ============================================================ */
+function initIdentity(){
+  $('#identityForm').addEventListener('submit', e=>{
+    e.preventDefault();
+    const name = $('#name').value.trim();
+    const age = $('#age').value.trim();
+    const gender = $('#gender').value;
+    const relationship = $('#relationship').value;
+    if(!name || !age || !gender || !relationship){
+      toast('Please fill in every field.');
+      return;
+    }
+    state.identity = { name, age, gender, relationship };
+    renderForever();
+    showScreen('forever');
+    if(window.gsap){ gsap.from('#screen-forever .card',{y:30,opacity:0,duration:.6,ease:'power2.out'}); }
+  });
+}
+
+/* ============================================================
+   FOREVER
+   ============================================================ */
+function renderForever(){
+  const wrap = $('#foreverOptions');
+  wrap.innerHTML = '';
+  FOREVER.forEach(text=>{
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'opt';
+    b.textContent = text;
+    b.addEventListener('click', ()=>{
+      $$('.opt', wrap).forEach(x=>x.classList.remove('selected'));
+      b.classList.add('selected');
+      state.forever = text;
+      $('#btnForeverNext').disabled = false;
+    });
+    wrap.appendChild(b);
+  });
+  $('#btnForeverNext').disabled = true;
+  state.forever = '';
+}
+
+function initForever(){
+  $('#btnForeverNext').addEventListener('click', ()=>{
+    if(!state.forever){ return; }
+    state.qIndex = 0;
+    state.pendingOption = null;
+    renderQuestion();
+    showScreen('question');
+    if(window.gsap){ gsap.from('#screen-question .card',{y:30,opacity:0,duration:.55,ease:'power2.out'}); }
+  });
+}
+
+/* ============================================================
+   QUESTIONS
+   ============================================================ */
+function renderQuestion(){
+  const i = state.qIndex;
+  const q = QUESTIONS[i];
+  state.pendingOption = null;
+
+  $('#qCounter').textContent = `${String(i+1).padStart(2,'0')} / 10`;
+  $('#qBar').style.width = `${((i+1)/10)*100}%`;
+  $('#qNum').textContent = i+1;
+  $('#qText').textContent = q.q;
+  $('#qNote').value = '';
+
+  const wrap = $('#qOptions');
+  wrap.innerHTML = '';
+  q.o.forEach(text=>{
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'opt';
+    b.textContent = text;
+    b.addEventListener('click', ()=>{
+      $$('.opt', wrap).forEach(x=>x.classList.remove('selected'));
+      b.classList.add('selected');
+      state.pendingOption = text;
+      updateQNext();
+    });
+    wrap.appendChild(b);
+  });
+
+  $('#btnQBack').disabled = i === 0;
+  updateQNext();
+  $('#qNote').oninput = updateQNext;
+}
+
+function updateQNext(){
+  const noteOk = $('#qNote').value.trim().length > 0;
+  const optOk = !!state.pendingOption;
+  $('#btnQNext').disabled = !(noteOk && optOk);
+  $('#btnQNext').textContent = state.qIndex === 9 ? 'See reflection' : 'Next';
+}
+
+function initQuestions(){
+  $('#btnQBack').addEventListener('click', ()=>{
+    if(state.qIndex === 0) return;
+    state.qIndex--;
+    renderQuestion();
+  });
+
+  $('#btnQNext').addEventListener('click', ()=>{
+    const note = $('#qNote').value.trim();
+    if(!state.pendingOption || !note) return;
+
+    state.answers[state.qIndex] = {
+      q: QUESTIONS[state.qIndex].q,
+      option: state.pendingOption,
+      note
     };
 
-    let app, auth, db;
-    let currentUser = null;
-    let visitorUID = null;
-
-    // =============================================
-    // GAME DATA
-    // =============================================
-    const QUIZ_QUESTIONS = [
-        {
-            question: "What's my favorite thing to do with you?",
-            options: ["Go on long walks", "Watch movies together", "Talk for hours", "All of the above ❤️"],
-            answer: 3
-        },
-        {
-            question: "What's the first thing I notice about you?",
-            options: ["Your smile", "Your eyes", "Your laugh", "Your kindness"],
-            answer: 0
-        },
-        {
-            question: "What's my idea of a perfect date?",
-            options: ["Fancy dinner", "Cozy night in", "Adventure trip", "Anywhere with you"],
-            answer: 3
-        },
-        {
-            question: "What do I love most about us?",
-            options: ["Our adventures", "Our quiet moments", "Our inside jokes", "Everything 💕"],
-            answer: 3
-        },
-        {
-            question: "What's the secret to my heart?",
-            options: ["Chocolate", "Flowers", "You", "Music"],
-            answer: 2
-        }
-    ];
-
-    const LOVE_LETTERS = [
-        {
-            title: "When I First Saw You",
-            body: "I remember the exact moment I realized you were different. It wasn't anything dramatic — just the way you laughed, the way you looked at me like I was worth looking at. From that day, my heart had a new favorite person."
-        },
-        {
-            title: "Every Little Thing",
-            body: "It's the little things, isn't it? The way you hum without realizing, the way you get excited about small wins, the way you make ordinary days feel like something worth remembering. You make the mundane magical."
-        },
-        {
-            title: "The Way You Make Me Feel",
-            body: "You make me feel safe. Not the boring kind of safe — the warm, cozy, wrapped-in-a-blanket kind. The kind where I can be completely myself and know that's exactly who you want me to be."
-        }
-    ];
-
-    const REASONS = [
-        "The way your smile lights up a room.",
-        "How you always know how to make me laugh.",
-        "Your kindness toward strangers.",
-        "The way you listen — really listen.",
-        "How passionate you get about your hobbies.",
-        "Your sleepy morning voice.",
-        "The way you hold my hand.",
-        "How you remember tiny details I mention.",
-        "Your terrible puns that somehow always work.",
-        "The way you dance when you think no one's watching.",
-        "How you make even grocery shopping fun.",
-        "Your unwavering support of my dreams.",
-        "The way you say my name.",
-        "How comfortable silence feels with you.",
-        "Your laugh — especially the ugly one.",
-        "The way you care for the people you love.",
-        "How you always steal my hoodies.",
-        "Your passion for justice and fairness.",
-        "The way you look when you're deep in thought.",
-        "How you always have a snack for me.",
-        "Your courage in hard moments.",
-        "The way you sing in the car.",
-        "How you never give up on us.",
-        "Your beautiful, messy, real morning hair.",
-        "The way you encourage me to be better.",
-        "How you handle stressful days with grace.",
-        "Your random facts that you're so proud of.",
-        "The way you always know when I need a hug.",
-        "How you make me feel seen.",
-        "The way you say 'I love you' in a hundred small ways.",
-        "Your patience with me on my worst days.",
-        "How you celebrate my wins like they're your own.",
-        "The way you look at me when you think I'm not looking.",
-        "Your willingness to try new things with me.",
-        "How you make our home feel like home.",
-        "The way you stand up for what's right.",
-        "Your endless curiosity about the world.",
-        "How you make time for us, even when life is busy.",
-        "The way you handle disagreements with love.",
-        "Your beautiful heart that loves so deeply.",
-        "How you always root for the underdog.",
-        "The way you remember our inside jokes.",
-        "Your sleepy text messages at midnight.",
-        "How you make me feel like the luckiest person alive.",
-        "The way you trust me with your secrets.",
-        "Your gentle spirit in a loud world.",
-        "How you always find the good in people.",
-        "The way you take care of yourself too.",
-        "Your excitement over small victories.",
-        "How you never make me feel small.",
-        "The way you show up, every single time.",
-        "Your ability to make anything an adventure.",
-        "How you respect my boundaries.",
-        "The way you say 'we' instead of 'I'.",
-        "Your beautiful mind and how it works.",
-        "How you never let me go to bed upset.",
-        "The way you handle my mood swings with patience.",
-        "Your consistency — you're always there.",
-        "How you make me feel proud to be yours.",
-        "The way you love your family.",
-        "Your honesty, even when it's hard.",
-        "How you always know how to fix a bad day.",
-        "The way you hold me when I'm overwhelmed.",
-        "Your ambition and drive.",
-        "How you still get butterflies when I text you.",
-        "The way you never give up on people.",
-        "Your warm, infectious energy.",
-        "How you always make room for my feelings.",
-        "The way you value my opinion.",
-        "Your loyalty — unwavering and strong.",
-        "How you make me feel like I'm enough.",
-        "The way you laugh at your own jokes.",
-        "Your ability to forgive and move forward.",
-        "How you never stop learning and growing.",
-        "The way you prioritize us.",
-        "Your thoughtfulness in the smallest gestures.",
-        "How you remember to say thank you.",
-        "The way you make me want to be better.",
-        "Your resilience through tough times.",
-        "How you always keep your promises.",
-        "The way you look when you wake up.",
-        "Your gentle honesty when I need to hear it.",
-        "How you never judge my weird habits.",
-        "The way you hold space for my feelings.",
-        "Your ability to make me laugh when I'm crying.",
-        "How you always choose us, even when it's hard.",
-        "The way you accept all my flaws.",
-        "Your patience with my overthinking.",
-        "How you make me feel beautiful on my worst days.",
-        "The way you always listen without interrupting.",
-        "Your commitment to our future.",
-        "How you never let distance feel like a problem.",
-        "The way you say goodnight and good morning.",
-        "Your beautiful, kind, loving soul.",
-        "How you make me feel like the only person in the room.",
-        "The way you handle my quirks with love.",
-        "Your ability to turn any day into a good one.",
-        "How you never forget what matters to me.",
-        "The way you love me — exactly as I am.",
-        "Because every day with you is a gift.",
-        "And because you're you — that's more than enough."
-    ];
-
-    const LOCK_CODE = "4"; // "LOVE" has 4 letters
-
-    // =============================================
-    // DOM REFERENCES
-    // =============================================
-    const screens = {
-        register: document.getElementById('screen-register'),
-        welcome: document.getElementById('screen-welcome'),
-        level1: document.getElementById('screen-level1'),
-        level2: document.getElementById('screen-level2'),
-        level3: document.getElementById('screen-level3'),
-        level4: document.getElementById('screen-level4'),
-        final: document.getElementById('screen-final')
-    };
-
-    // Registration
-    const regForm = document.getElementById('regForm');
-    const regName = document.getElementById('regName');
-    const regAge = document.getElementById('regAge');
-    const regDob = document.getElementById('regDob');
-    const regGender = document.getElementById('regGender');
-    const regPersonality = document.getElementById('regPersonality');
-    const consentCheck = document.getElementById('consentCheck');
-    const submitBtn = document.getElementById('submitBtn');
-    const shareLocationBtn = document.getElementById('shareLocationBtn');
-    const locationStatus = document.getElementById('locationStatus');
-
-    // Welcome
-    const welcomeName = document.getElementById('welcomeName');
-    const startAdventureBtn = document.getElementById('startAdventureBtn');
-
-    // Level 1
-    const quizQuestion = document.getElementById('quizQuestion');
-    const quizOptions = document.getElementById('quizOptions');
-    const quizNextBtn = document.getElementById('quizNextBtn');
-    const quizProgressText = document.getElementById('quizProgressText');
-
-    // Level 2
-    const lockIcon = document.getElementById('lockIcon');
-    const lockInputs = document.getElementById('lockInputs');
-    const lockSubmitBtn = document.getElementById('lockSubmitBtn');
-    const lockStatus = document.getElementById('lockStatus');
-
-    // Level 3
-    const envelopeGrid = document.getElementById('envelopeGrid');
-    const letterReveal = document.getElementById('letterReveal');
-    const letterTitle = document.getElementById('letterTitle');
-    const letterBody = document.getElementById('letterBody');
-    const closeLetterBtn = document.getElementById('closeLetterBtn');
-    const level3NextBtn = document.getElementById('level3NextBtn');
-    const lettersProgressText = document.getElementById('lettersProgressText');
-
-    // Level 4
-    const reasonNumber = document.getElementById('reasonNumber');
-    const reasonText = document.getElementById('reasonText');
-    const reasonPrevBtn = document.getElementById('reasonPrevBtn');
-    const reasonNextBtn = document.getElementById('reasonNextBtn');
-    const reasonRandomBtn = document.getElementById('reasonRandomBtn');
-    const reasonProgressFill = document.getElementById('reasonProgressFill');
-    const reasonsProgressText = document.getElementById('reasonsProgressText');
-    const level4NextBtn = document.getElementById('level4NextBtn');
-
-    // Final
-    const finalGreeting = document.getElementById('finalGreeting');
-    const restartBtn = document.getElementById('restartBtn');
-
-    // Music
-    const musicDisc = document.getElementById('musicDisc');
-    const musicPlayBtn = document.getElementById('musicPlayBtn');
-    const musicVolume = document.getElementById('musicVolume');
-
-    // =============================================
-    // STATE
-    // =============================================
-    let state = {
-        currentScreen: 'register',
-        visitorName: '',
-        locationShared: false,
-        locationData: null,
-        quizIndex: 0,
-        quizAnswers: [],
-        quizSelected: null,
-        quizAnswered: false,
-        lettersOpened: [false, false, false],
-        reasonsIndex: 0,
-        reasonsViewed: new Set()
-    };
-
-    let audioElement = null;
-    let musicPlaying = false;
-
-    // =============================================
-    // FIREBASE INIT
-    // =============================================
-    function initFirebase() {
-        try {
-            app = initializeApp(firebaseConfig);
-            auth = getAuth(app);
-            db = getDatabase(app);
-
-            onAuthStateChanged(auth, (user) => {
-                if (user) {
-                    currentUser = user;
-                    visitorUID = user.uid;
-                    console.log('✅ Signed in anonymously:', visitorUID);
-                } else {
-                    signInAnonymously(auth).catch((err) => {
-                        console.warn('Anonymous auth failed:', err.message);
-                    });
-                }
-            });
-
-            // Try to sign in anonymously immediately
-            signInAnonymously(auth).catch((err) => {
-                console.warn('Anonymous auth not available:', err.message);
-            });
-        } catch (err) {
-            console.warn('Firebase init error:', err.message);
-        }
+    if(state.qIndex === 9){
+      buildReflection();
+      saveSubmission();   // fire-and-forget save
+      renderReflection();
+      showScreen('reflection');
+      if(window.gsap){ gsap.from('#screen-reflection .card',{y:30,opacity:0,duration:.6,ease:'power2.out'}); }
+    }else{
+      state.qIndex++;
+      renderQuestion();
+      if(window.gsap){
+        gsap.fromTo('#qText',{opacity:0,y:12},{opacity:1,y:0,duration:.4});
+        gsap.fromTo('#qOptions .opt',{opacity:0,y:10},{opacity:1,y:0,duration:.4,stagger:.06});
+      }
     }
+  });
+}
 
-    // =============================================
-    // FIRESTORE HELPERS
-    // =============================================
-    async function saveVisitorProfile(data) {
-        if (!visitorUID || !db) return;
-        try {
-            const visitorRef = ref(db, `visitors/${visitorUID}/profile`);
-            await set(visitorRef, {
-                ...data,
-                createdAt: serverTimestamp()
-            });
-        } catch (err) {
-            console.warn('Save profile error:', err.message);
+/* ============================================================
+   REFLECTION  (transparent, rule-based, clearly labeled)
+   ============================================================ */
+const DIMENSIONS = [
+  "Emotional Expressiveness",
+  "Loyalty Preference",
+  "Communication Style",
+  "Romantic Nature",
+  "Conflict Resolution",
+  "Emotional Security"
+];
+
+function scoreAnswers(){
+  // Start neutral
+  const scores = Object.fromEntries(DIMENSIONS.map(d=>[d,5]));
+  const a = state.answers;
+
+  // simple transparent rules — each rule can add/subtract points
+  const add = (dim, pts) => { scores[dim] = Math.max(0, Math.min(10, scores[dim] + pts)); };
+
+  const opt = idx => (a[idx]?.option || "");
+
+  // Q1 — how she handles being misunderstood
+  if(opt(0).startsWith("Nijer feelings")) add("Emotional Expressiveness", 3);
+  if(opt(0).startsWith("Ektu oviman"))   { add("Emotional Expressiveness", 1); add("Conflict Resolution", -1); }
+  if(opt(0).startsWith("Oke time"))      add("Conflict Resolution", 2);
+  if(opt(0).startsWith("Amra dujon"))    { add("Conflict Resolution", 3); add("Communication Style", 2); }
+
+  // Q2 — misunderstanding choice
+  if(opt(1) === "Ego.")                  { add("Conflict Resolution", -4); add("Communication Style", -3); }
+  if(opt(1) === "Silent treatment.")     { add("Conflict Resolution", -3); add("Emotional Expressiveness", -2); }
+  if(opt(1) === "Open communication.")   { add("Communication Style", 4); add("Emotional Expressiveness", 2); }
+  if(opt(1).startsWith("Relationship-ta")){ add("Loyalty Preference", 3); add("Conflict Resolution", 3); }
+
+  // Q3 — irreplaceable
+  if(opt(2) === "Tar voice.")            add("Romantic Nature", 2);
+  if(opt(2) === "Tar care.")             { add("Emotional Security", 2); add("Romantic Nature", 1); }
+  if(opt(2) === "Tar personality.")      add("Communication Style", 1);
+  if(opt(2) === "Tar unconditional love."){ add("Loyalty Preference", 3); add("Romantic Nature", 2); }
+
+  // Q4 — when he's weak
+  if(opt(3).startsWith("Tar kotha"))     add("Communication Style", 2);
+  if(opt(3).startsWith("Take comfort"))  { add("Emotional Security", 2); add("Romantic Nature", 1); }
+  if(opt(3).startsWith("Tar pashe"))     add("Loyalty Preference", 3);
+  if(opt(3).startsWith("Take bujhai"))   { add("Emotional Expressiveness", 2); add("Emotional Security", 2); }
+
+  // Q5 — true love
+  if(opt(4).startsWith("Perfect romantic")) add("Romantic Nature", 3);
+  if(opt(4).startsWith("Loyalty and trust")){ add("Loyalty Preference", 3); add("Emotional Security", 2); }
+  if(opt(4).startsWith("Imperfect manushke")) add("Emotional Security", 2);
+  if(opt(4).startsWith("Sob situation"))  { add("Loyalty Preference", 2); add("Conflict Resolution", 2); }
+
+  // Q6 — future self advice
+  if(opt(5).startsWith("Never hide"))     add("Emotional Expressiveness", 3);
+  if(opt(5).startsWith("Never lose"))     add("Emotional Security", 2);
+  if(opt(5).startsWith("Choose someone")) add("Communication Style", 2);
+  if(opt(5).startsWith("Protect the love")) add("Loyalty Preference", 2);
+
+  // Q7 — gift
+  if(opt(6).startsWith("Unlimited expensive")) add("Romantic Nature", 1);
+  if(opt(6).startsWith("Unlimited attention")) { add("Romantic Nature", 2); add("Emotional Security", 1); }
+  if(opt(6).startsWith("Lifetime loyalty"))    add("Loyalty Preference", 4);
+  if(opt(6).startsWith("Every day"))           { add("Romantic Nature", 2); add("Emotional Expressiveness", 1); }
+
+  // Q8 — heart vs ego
+  if(opt(7) === "My ego.")                { add("Conflict Resolution", -3); add("Emotional Expressiveness", -2); }
+  if(opt(7) === "My heart.")              { add("Romantic Nature", 2); add("Emotional Expressiveness", 2); }
+  if(opt(7) === "My logical mind.")       add("Conflict Resolution", 2);
+  if(opt(7).startsWith("I'll understand")) add("Conflict Resolution", 3);
+
+  // Q9 — fear
+  if(opt(8) === "Being misunderstood.")   add("Emotional Expressiveness", 2);
+  if(opt(8) === "Losing someone special.") add("Loyalty Preference", 2);
+  if(opt(8) === "Not feeling appreciated.") add("Emotional Security", 2);
+  if(opt(8) === "Not being able to express my feelings.") add("Emotional Expressiveness", 2);
+
+  // Q10 — last page
+  if(opt(9).startsWith("A beautiful wedding")) add("Romantic Nature", 2);
+  if(opt(9).startsWith("Growing old"))          { add("Loyalty Preference", 3); add("Romantic Nature", 1); }
+  if(opt(9).startsWith("A peaceful life"))      add("Emotional Security", 2);
+  if(opt(9).startsWith("Arafat and Mimi"))      { add("Loyalty Preference", 3); add("Emotional Security", 2); }
+
+  // written answers: light keyword signal, transparently
+  const notes = a.map(x=>x.note.toLowerCase()).join(" ");
+  const kw = {
+    "Emotional Expressiveness": ["feel","feeling","express","heart","mind","bujh","mon"],
+    "Loyalty Preference": ["always","forever","loyal","trust","stay","pashe","shob somoy"],
+    "Communication Style": ["talk","kotha","bujh","communicat","open","honest"],
+    "Romantic Nature": ["love","romantic","cute","special","valobasha"],
+    "Conflict Resolution": ["solve","fix","mile","understanding","calm","shanti"],
+    "Emotional Security": ["safe","secure","comfort","appreciate","respect"]
+  };
+  Object.entries(kw).forEach(([dim, words])=>{
+    const hits = words.reduce((n,w)=> n + (notes.includes(w)?1:0), 0);
+    add(dim, Math.min(2, hits));
+  });
+
+  return scores;
+}
+
+function buildReflection(){
+  const scores = scoreAnswers();
+  const sorted = Object.entries(scores).sort((a,b)=>b[1]-a[1]);
+  const topDim = sorted[0][0];
+
+  const names = {
+    "Emotional Expressiveness": "The Open Heart",
+    "Loyalty Preference":       "The Forever Romantic",
+    "Communication Style":      "The Honest Voice",
+    "Romantic Nature":          "The Soft Dreamer",
+    "Conflict Resolution":      "The Gentle Bridge",
+    "Emotional Security":       "The Quiet Deep Lover"
+  };
+
+  state.reflection = {
+    scores,
+    title: names[topDim] || "The Soft-Hearted Soul",
+    topDim,
+    blurb: `Your answers most often pointed toward ${topDim.toLowerCase()}. That came from the options you chose and the words you wrote — nothing more, nothing less.`
+  };
+}
+
+function renderReflection(){
+  const r = state.reflection;
+  $('#reflectTitle').textContent = r.title;
+  $('#reflectBlurb').textContent = r.blurb;
+
+  const ctx = $('#radarChart').getContext('2d');
+  if(window.__chart) window.__chart.destroy();
+  window.__chart = new Chart(ctx, {
+    type:'radar',
+    data:{
+      labels: Object.keys(r.scores),
+      datasets:[{
+        label:'Reflection',
+        data: Object.values(r.scores),
+        borderColor:'#d8b46a',
+        backgroundColor:'rgba(216,180,106,.22)',
+        pointBackgroundColor:'#d8b46a',
+        borderWidth:2
+      }]
+    },
+    options:{
+      responsive:true,
+      scales:{
+        r:{
+          min:0,max:10,
+          angleLines:{color:'rgba(216,180,106,.25)'},
+          grid:{color:'rgba(216,180,106,.2)'},
+          pointLabels:{color:'#f3e6ea',font:{size:11}},
+          ticks:{display:false}
         }
+      },
+      plugins:{ legend:{display:false} }
     }
+  });
+}
 
-    async function saveConsent(profileConsent, locationConsent) {
-        if (!visitorUID || !db) return;
-        try {
-            const consentRef = ref(db, `visitors/${visitorUID}/consent`);
-            await set(consentRef, {
-                profileConsent: profileConsent,
-                locationConsent: locationConsent,
-                consentAt: serverTimestamp()
-            });
-        } catch (err) {
-            console.warn('Save consent error:', err.message);
-        }
+/* ============================================================
+   LETTERS
+   ============================================================ */
+function a(i){ return state.answers[i]?.option || ""; }
+function n(i){ return state.answers[i]?.note || ""; }
+
+function buildLetters(){
+  const name = state.identity.name || "Mimi";
+
+  const letters = [
+    {
+      title: "The Way You Love",
+      theme: "Letter 01",
+      body: `
+        <p>${escapeHTML(name)},</p>
+        <p>When I asked how you'd handle it if I didn't understand your heart, you said: <em>"${escapeHTML(a(0))}"</em>. And you wrote: <em>"${escapeHTML(n(0))}"</em>.</p>
+        <p>That told me something about the way you love — gently, but honestly. You don't run from the hard moments. You try to be understood, and you try to understand. I don't take that lightly.</p>
+        <p>I hope you always feel safe enough to say the true thing, even when it's quiet.</p>`
+    },
+    {
+      title: "Your Little Fears",
+      theme: "Letter 02",
+      body: `
+        <p>${escapeHTML(name)},</p>
+        <p>You once told me the fear you don't easily share is: <em>"${escapeHTML(a(8))}"</em>. And you wrote: <em>"${escapeHTML(n(8))}"</em>.</p>
+        <p>I want you to know that fear is not a weakness — it's a place you've been protecting. I'm not going to demand you open it. But if you ever do, I'll be here, not rushing you.</p>
+        <p>You don't have to carry it perfectly.</p>`
+    },
+    {
+      title: "What Your Heart Needs",
+      theme: "Letter 03",
+      body: `
+        <p>${escapeHTML(name)},</p>
+        <p>You said that what matters most to you is: <em>"${escapeHTML(a(2))}"</em>. And when I asked what you'd want if I were weak, you said: <em>"${escapeHTML(a(3))}"</em>.</p>
+        <p>What your heart needs, I think, is to be met — not perfect, not fixed, just met. So that's what I want to keep learning to do.</p>
+        <p>When you tell me what you need, I'll listen twice.</p>`
+    },
+    {
+      title: "Our Unwritten Future",
+      theme: "Letter 04",
+      body: `
+        <p>${escapeHTML(name)},</p>
+        <p>You said that if our story's last page is still unwritten, you'd want to see: <em>"${escapeHTML(a(9))}"</em>. And you wrote: <em>"${escapeHTML(n(9))}"</em>.</p>
+        <p>I don't know what our last page looks like yet. But I like knowing you're thinking about it too — that we're both holding space for a future we haven't ruined by rushing.</p>
+        <p>Let's keep writing it slowly.</p>`
+    },
+    {
+      title: "A Letter from Arafat",
+      theme: "Letter 05",
+      body: `
+        <p>${escapeHTML(name)},</p>
+        <p>You chose to spend <em>${escapeHTML(state.forever)}</em> with me, and then you answered ten questions about your heart with more honesty than you had to. I noticed.</p>
+        <p>You said true love, to you, is: <em>"${escapeHTML(a(4))}"</em>. I'm going to try to be that, not perfectly, but consistently.</p>
+        <p>This little universe was made just for you. Not because I know everything about you — I don't. Because I want to keep learning.</p>`
     }
+  ];
 
-    async function saveLocation(lat, lng, city, country) {
-        if (!visitorUID || !db) return;
-        try {
-            const locRef = ref(db, `visitors/${visitorUID}/location`);
-            await set(locRef, {
-                latitude: lat,
-                longitude: lng,
-                city: city || null,
-                country: country || null,
-                sharedAt: serverTimestamp()
-            });
-        } catch (err) {
-            console.warn('Save location error:', err.message);
-        }
-    }
+  state.letters = letters;
+}
 
-    async function logActivity(field, value) {
-        if (!visitorUID || !db) return;
-        try {
-            const actRef = ref(db, `visitors/${visitorUID}/activity/${field}`);
-            await set(actRef, value);
-        } catch (err) {
-            console.warn('Log activity error:', err.message);
-        }
-    }
+function renderLetters(){
+  const grid = $('#lettersGrid');
+  grid.innerHTML = '';
+  const colors = ['env-1','env-2','env-3','env-4','env-5'];
+  state.letters.forEach((L,i)=>{
+    const el = document.createElement('div');
+    el.className = `envelope ${colors[i]}` + (state.openedLetters.has(i) ? ' opened' : '');
+    el.innerHTML = `<div class="num">0${i+1}</div><div class="label">${escapeHTML(L.title)}</div>`;
+    el.addEventListener('click', ()=> openLetter(i));
+    grid.appendChild(el);
+  });
+  $('#btnToReport').disabled = state.openedLetters.size < 5;
+}
 
-    async function initActivity() {
-        if (!visitorUID || !db) return;
-        try {
-            const actRef = ref(db, `visitors/${visitorUID}/activity`);
-            await update(actRef, {
-                entryTime: serverTimestamp(),
-                lastActive: serverTimestamp(),
-                gameStarted: false,
-                completedLevels: 0,
-                reasonsViewed: 0,
-                gameCompleted: false
-            });
-        } catch (err) {
-            console.warn('Init activity error:', err.message);
-        }
-    }
+function openLetter(i){
+  const L = state.letters[i];
+  $('#letterEyebrow').textContent = L.theme;
+  $('#letterTitle').textContent = L.title;
+  $('#letterBody').innerHTML = L.body;
+  state.openedLetters.add(i);
+  renderLetters();
+  showScreen('letter');
+  if(window.gsap){ gsap.from('#letterPaper',{y:40,opacity:0,duration:.6,ease:'power2.out'}); }
+}
 
-    // =============================================
-    // TOAST
-    // =============================================
-    let toastTimeout = null;
-    function showToast(msg, duration = 3000) {
-        const toast = document.getElementById('toast');
-        toast.textContent = msg;
-        toast.classList.add('show');
-        clearTimeout(toastTimeout);
-        toastTimeout = setTimeout(() => toast.classList.remove('show'), duration);
-    }
+function initLetters(){
+  $('#btnToLetters').addEventListener('click', ()=>{
+    buildLetters();
+    renderLetters();
+    showScreen('letters');
+    if(window.gsap){ gsap.from('#lettersGrid .envelope',{y:20,opacity:0,duration:.5,stagger:.08}); }
+  });
+  $('#btnLetterBack').addEventListener('click', ()=> showScreen('letters'));
+  $('#btnToReport').addEventListener('click', ()=>{
+    renderReport();
+    showScreen('report');
+  });
+}
 
-    // =============================================
-    // SCREEN NAVIGATION
-    // =============================================
-    function showScreen(name) {
-        Object.values(screens).forEach(s => s.classList.remove('active'));
-        if (screens[name]) screens[name].classList.add('active');
-        state.currentScreen = name;
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+/* ============================================================
+   REPORT
+   ============================================================ */
+function renderReport(){
+  const id = state.identity;
+  const r = state.reflection;
+  const body = $('#reportBody');
+  body.innerHTML = `
+    <p><strong>${escapeHTML(id.name)}</strong>, age ${escapeHTML(id.age)} · ${escapeHTML(id.gender)} · ${escapeHTML(id.relationship)}</p>
+    <p class="pill">Forever answer: ${escapeHTML(state.forever)}</p>
+    <h3 style="margin-top:22px;">Your ten answers</h3>
+    ${state.answers.map((a,i)=>`
+      <div style="margin:14px 0;padding:14px;border:1px solid rgba(216,180,106,.3);border-radius:14px;">
+        <p class="muted" style="margin:0 0 6px;">Q${i+1}. ${escapeHTML(a.q)}</p>
+        <p style="margin:0 0 6px;"><strong>Chosen:</strong> ${escapeHTML(a.option)}</p>
+        <p style="margin:0;"><strong>In your words:</strong> ${escapeHTML(a.note)}</p>
+      </div>`).join('')}
+    <h3 style="margin-top:22px;">Your reflection</h3>
+    <p><strong>${escapeHTML(r.title)}</strong> — ${escapeHTML(r.blurb)}</p>
+    <p class="muted">This is a playful reflection, not a diagnosis.</p>
+    <h3 style="margin-top:22px;">Your five letters</h3>
+    ${state.letters.map((L,i)=>`
+      <div style="margin:14px 0;padding:14px;border:1px solid rgba(216,180,106,.3);border-radius:14px;">
+        <p class="muted" style="margin:0 0 6px;">${escapeHTML(L.theme)}</p>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:20px;margin:0 0 8px;color:var(--gold);">${escapeHTML(L.title)}</h4>
+        <div style="color:#f3e6ea;">${L.body}</div>
+      </div>`).join('')}
+  `;
+  if(window.lucide) window.lucide.createIcons();
+}
 
-    // =============================================
-    // FLOATING HEARTS BACKGROUND
-    // =============================================
-    function spawnFloatingHearts() {
-        const bg = document.getElementById('heartBg');
-        const hearts = ['❤️', '💕', '💗', '💖', '🩷', '♥️'];
-        for (let i = 0; i < 12; i++) {
-            const el = document.createElement('div');
-            el.className = 'floating-heart';
-            el.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-            el.style.left = Math.random() * 100 + '%';
-            el.style.animationDelay = Math.random() * 12 + 's';
-            el.style.animationDuration = (10 + Math.random() * 8) + 's';
-            el.style.fontSize = (1 + Math.random() * 2) + 'rem';
-            bg.appendChild(el);
-        }
-    }
+function initReport(){
+  $('#btnStartOver').addEventListener('click', ()=>{
+    if(!confirm("Start over? Your saved submission will remain in your private database.")) return;
+    state.answers = [];
+    state.openedLetters.clear();
+    state.forever = "";
+    state.qIndex = 0;
+    state.reflection = null;
+    state.letters = [];
+    showScreen('welcome');
+  });
+}
 
-    // =============================================
-    // REGISTRATION
-    // =============================================
-    function validateForm() {
-        const nameOk = regName.value.trim().length >= 1;
-        const ageOk = regAge.value && parseInt(regAge.value) >= 1;
-        const dobOk = regDob.value !== '';
-        const consentOk = consentCheck.checked;
-        submitBtn.disabled = !(nameOk && ageOk && dobOk && consentOk);
-    }
-
-    regName.addEventListener('input', validateForm);
-    regAge.addEventListener('input', validateForm);
-    regDob.addEventListener('change', validateForm);
-    consentCheck.addEventListener('change', validateForm);
-
-    shareLocationBtn.addEventListener('click', () => {
-        if (!navigator.geolocation) {
-            locationStatus.textContent = '❌ Geolocation not supported by this browser.';
-            return;
-        }
-        shareLocationBtn.disabled = true;
-        shareLocationBtn.innerHTML = '<span class="spinner"></span> Getting location...';
-        locationStatus.textContent = '';
-
-        navigator.geolocation.getCurrentPosition(
-            async (pos) => {
-                const lat = pos.coords.latitude;
-                const lng = pos.coords.longitude;
-                let city = null, country = null;
-
-                // Try reverse geocoding (optional, may fail)
-                try {
-                    const resp = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=10`, {
-                        headers: { 'Accept-Language': 'en' }
-                    });
-                    if (resp.ok) {
-                        const data = await resp.json();
-                        city = data.address?.city || data.address?.town || data.address?.village || null;
-                        country = data.address?.country || null;
-                    }
-                } catch (e) {
-                    console.warn('Reverse geocoding failed:', e.message);
-                }
-
-                state.locationShared = true;
-                state.locationData = { lat, lng, city, country };
-
-                // Save to Firebase
-                await saveLocation(lat, lng, city, country);
-                await saveConsent(true, true);
-
-                shareLocationBtn.innerHTML = '✅ LOCATION SHARED';
-                locationStatus.textContent = `📍 LOCATION SUCCESSFULLY SHARED! ❤️ ${city ? city + ', ' : ''}${country || ''}`;
-                locationStatus.style.color = '#a8e6a8';
-                showToast('Location shared! ❤️');
-            },
-            (err) => {
-                shareLocationBtn.disabled = false;
-                shareLocationBtn.innerHTML = '📍 SHARE MY LOCATION';
-                let msg = 'Location permission denied. You can continue without sharing.';
-                if (err.code === 1) msg = '❌ Location permission denied. You can continue without sharing.';
-                if (err.code === 2) msg = '❌ Location unavailable. You can continue without sharing.';
-                if (err.code === 3) msg = '⏳ Location request timed out. You can continue without sharing.';
-                locationStatus.textContent = msg;
-                locationStatus.style.color = '#ffb0b8';
-            },
-            { enableHighAccuracy: false, timeout: 10000, maximumAge: 60000 }
-        );
+/* ============================================================
+   SAVE  —  writes ONLY a new submission (no read-back, no admin)
+   ============================================================ */
+async function saveSubmission(){
+  if(!db){
+    toast("Saved locally only — Firebase is not configured yet.");
+    return;
+  }
+  try{
+    const { ref, push, set } = window.__fb;
+    const subRef = push(ref(db, "herHeart/submissions"));
+    await set(subRef, {
+      identity: state.identity,
+      forever: state.forever,
+      answers: state.answers,
+      reflection: state.reflection,
+      letters: state.letters.map(l=>({ title:l.title, theme:l.theme, body:l.body })),
+      completedAt: new Date().toISOString(),
+      version: 1
     });
+    toast("Saved to your private database ❤");
+  }catch(err){
+    console.warn("Save failed:", err);
+    toast("Could not save right now. Your answers are still on this page.");
+  }
+}
 
-    regForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
+/* ============================================================
+   BOOT
+   ============================================================ */
+window.addEventListener('DOMContentLoaded', async ()=>{
+  screens.welcome = $('#screen-welcome');
+  screens.identity = $('#screen-identity');
+  screens.forever = $('#screen-forever');
+  screens.question = $('#screen-question');
+  screens.reflection = $('#screen-reflection');
+  screens.letters = $('#screen-letters');
+  screens.letter = $('#screen-letter');
+  screens.report = $('#screen-report');
 
-        if (!consentCheck.checked) {
-            showToast('Please agree to the privacy notice.');
-            return;
-        }
+  initWelcome();
+  initIdentity();
+  initForever();
+  initQuestions();
+  initLetters();
+  initReport();
+  spawnHearts();
 
-        const name = regName.value.trim();
-        const age = parseInt(regAge.value);
-        const dob = regDob.value;
-        const gender = regGender.value || null;
-        const personality = regPersonality.value || null;
-
-        if (!name || !age || !dob) {
-            showToast('Please fill in all required fields.');
-            return;
-        }
-
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span class="spinner"></span> ENTERING...';
-
-        // Save profile
-        await saveVisitorProfile({
-            name: name,
-            age: age,
-            dateOfBirth: dob,
-            gender: gender,
-            personality: personality
-        });
-
-        await saveConsent(true, state.locationShared);
-        await initActivity();
-
-        state.visitorName = name;
-        welcomeName.textContent = `HEY, ${name.toUpperCase()}! 🥹❤️`;
-        showScreen('welcome');
-        showToast(`Welcome, ${name}! 💕`);
-
-        submitBtn.innerHTML = 'ENTER MY LOVE WORLD 💕';
-        submitBtn.disabled = false;
-    });
-
-    // =============================================
-    // WELCOME → START ADVENTURE
-    // =============================================
-    startAdventureBtn.addEventListener('click', async () => {
-        await logActivity('gameStarted', true);
-        state.quizIndex = 0;
-        state.quizAnswers = [];
-        state.lettersOpened = [false, false, false];
-        state.reasonsIndex = 0;
-        state.reasonsViewed = new Set();
-        loadQuizQuestion();
-        showScreen('level1');
-        startMusicIfNeeded();
-    });
-
-    // =============================================
-    // LEVEL 1 — QUIZ
-    // =============================================
-    function loadQuizQuestion() {
-        const q = QUIZ_QUESTIONS[state.quizIndex];
-        quizQuestion.textContent = q.question;
-        quizProgressText.textContent = `Question ${state.quizIndex + 1} / ${QUIZ_QUESTIONS.length}`;
-        quizOptions.innerHTML = '';
-        state.quizSelected = null;
-        state.quizAnswered = false;
-        quizNextBtn.disabled = true;
-        quizNextBtn.textContent = state.quizIndex === QUIZ_QUESTIONS.length - 1 ? 'FINISH LEVEL 1 →' : 'NEXT QUESTION →';
-
-        q.options.forEach((opt, idx) => {
-            const btn = document.createElement('button');
-            btn.type = 'button';
-            btn.className = 'quiz-option';
-            btn.textContent = opt;
-            btn.dataset.idx = idx;
-            btn.addEventListener('click', () => selectQuizOption(idx, q.answer));
-            quizOptions.appendChild(btn);
-        });
-    }
-
-    function selectQuizOption(idx, answerIdx) {
-        if (state.quizAnswered) return;
-        state.quizAnswered = true;
-        state.quizSelected = idx;
-
-        const buttons = quizOptions.querySelectorAll('.quiz-option');
-        buttons.forEach((btn, i) => {
-            btn.disabled = true;
-            if (i === answerIdx) btn.classList.add('correct');
-            else if (i === idx && idx !== answerIdx) btn.classList.add('wrong');
-        });
-
-        state.quizAnswers.push(idx);
-        quizNextBtn.disabled = false;
-    }
-
-    quizNextBtn.addEventListener('click', async () => {
-        if (!state.quizAnswered) return;
-        if (state.quizIndex < QUIZ_QUESTIONS.length - 1) {
-            state.quizIndex++;
-            loadQuizQuestion();
-        } else {
-            // Level 1 complete
-            await logActivity('completedLevels', 1);
-            showToast('Level 1 complete! ❤️');
-            showScreen('level2');
-            setupLevel2();
-        }
-    });
-
-    // =============================================
-    // LEVEL 2 — HEART LOCK
-    // =============================================
-    function setupLevel2() {
-        lockIcon.textContent = '🔐';
-        lockStatus.textContent = '';
-        lockStatus.style.color = '#ffb0b8';
-        const digits = lockInputs.querySelectorAll('.lock-digit');
-        digits.forEach(d => { d.value = ''; d.disabled = false; });
-        digits[0].focus();
-
-        digits.forEach((input, idx) => {
-            input.addEventListener('input', () => {
-                input.value = input.value.replace(/\D/g, '').slice(0, 1);
-                if (input.value && idx < digits.length - 1) {
-                    digits[idx + 1].focus();
-                }
-                if (idx === digits.length - 1 && input.value) {
-                    lockSubmitBtn.focus();
-                }
-            });
-            input.addEventListener('keydown', (e) => {
-                if (e.key === 'Backspace' && !input.value && idx > 0) {
-                    digits[idx - 1].focus();
-                }
-            });
-        });
-    }
-
-    lockSubmitBtn.addEventListener('click', async () => {
-        const digits = lockInputs.querySelectorAll('.lock-digit');
-        const code = Array.from(digits).map(d => d.value).join('');
-
-        if (code === LOCK_CODE) {
-            lockIcon.textContent = '❤️';
-            lockStatus.textContent = '✅ HEART UNLOCKED! ❤️';
-            lockStatus.style.color = '#a8e6a8';
-            digits.forEach(d => d.disabled = true);
-            lockSubmitBtn.disabled = true;
-            await logActivity('completedLevels', 2);
-            showToast('Heart unlocked! ❤️');
-            setTimeout(() => {
-                showScreen('level3');
-                setupLevel3();
-            }, 1200);
-        } else {
-            lockStatus.textContent = '❌ Wrong code. Try again!';
-            lockStatus.style.color = '#ffb0b8';
-            digits.forEach(d => d.value = '');
-            digits[0].focus();
-            lockIcon.style.animation = 'none';
-            setTimeout(() => { lockIcon.style.animation = 'heartBeat 1.6s ease-in-out infinite'; }, 50);
-        }
-    });
-
-    // =============================================
-    // LEVEL 3 — LOVE LETTERS
-    // =============================================
-    function setupLevel3() {
-        envelopeGrid.innerHTML = '';
-        state.lettersOpened = [false, false, false];
-        letterReveal.style.display = 'none';
-        level3NextBtn.disabled = true;
-        updateLettersProgress();
-
-        LOVE_LETTERS.forEach((letter, idx) => {
-            const card = document.createElement('div');
-            card.className = 'envelope-card';
-            card.dataset.idx = idx;
-            card.innerHTML = `
-                <span class="env-icon">💌</span>
-                <span class="env-label">Letter ${idx + 1}</span>
-            `;
-            card.addEventListener('click', () => openLetter(idx));
-            envelopeGrid.appendChild(card);
-        });
-    }
-
-    function openLetter(idx) {
-        const letter = LOVE_LETTERS[idx];
-        letterTitle.textContent = letter.title;
-        letterBody.textContent = letter.body;
-        letterReveal.style.display = 'block';
-
-        const cards = envelopeGrid.querySelectorAll('.envelope-card');
-        cards.forEach((c, i) => {
-            if (i === idx) c.classList.add('opened');
-        });
-
-        state.lettersOpened[idx] = true;
-        updateLettersProgress();
-    }
-
-    function updateLettersProgress() {
-        const opened = state.lettersOpened.filter(Boolean).length;
-        lettersProgressText.textContent = `${opened} / 3 opened`;
-        level3NextBtn.disabled = opened < 3;
-    }
-
-    closeLetterBtn.addEventListener('click', () => {
-        letterReveal.style.display = 'none';
-    });
-
-    level3NextBtn.addEventListener('click', async () => {
-        await logActivity('completedLevels', 3);
-        showToast('Level 3 complete! 💌');
-        showScreen('level4');
-        setupLevel4();
-    });
-
-    // =============================================
-    // LEVEL 4 — 100 REASONS
-    // =============================================
-    function setupLevel4() {
-        state.reasonsIndex = 0;
-        state.reasonsViewed = new Set();
-        renderReason();
-    }
-
-    function renderReason() {
-        const idx = state.reasonsIndex;
-        reasonNumber.textContent = `REASON #${idx + 1}`;
-        reasonText.textContent = REASONS[idx];
-        const pct = ((idx + 1) / REASONS.length) * 100;
-        reasonProgressFill.style.width = pct + '%';
-        reasonsProgressText.textContent = `${idx + 1} / ${REASONS.length}`;
-
-        state.reasonsViewed.add(idx);
-        logActivity('reasonsViewed', state.reasonsViewed.size);
-    }
-
-    reasonPrevBtn.addEventListener('click', () => {
-        if (state.reasonsIndex > 0) {
-            state.reasonsIndex--;
-            renderReason();
-        }
-    });
-
-    reasonNextBtn.addEventListener('click', () => {
-        if (state.reasonsIndex < REASONS.length - 1) {
-            state.reasonsIndex++;
-            renderReason();
-        }
-    });
-
-    reasonRandomBtn.addEventListener('click', () => {
-        let newIdx;
-        do {
-            newIdx = Math.floor(Math.random() * REASONS.length);
-        } while (newIdx === state.reasonsIndex && REASONS.length > 1);
-        state.reasonsIndex = newIdx;
-        renderReason();
-    });
-
-    level4NextBtn.addEventListener('click', async () => {
-        await logActivity('completedLevels', 4);
-        await logActivity('gameCompleted', true);
-        showToast('All levels complete! ❤️');
-        showScreen('final');
-    });
-
-    // =============================================
-    // FINAL SCREEN
-    // =============================================
-    restartBtn.addEventListener('click', () => {
-        state.quizIndex = 0;
-        state.quizAnswers = [];
-        state.lettersOpened = [false, false, false];
-        state.reasonsIndex = 0;
-        state.reasonsViewed = new Set();
-        showScreen('welcome');
-    });
-
-    // =============================================
-    // MUSIC PLAYER
-    // =============================================
-    function initMusic() {
-        // Use a royalty-free music URL. Replace with your own hosted file.
-        // This is a gentle placeholder — the user must click to play.
-        audioElement = new Audio();
-        audioElement.loop = true;
-        audioElement.volume = 0.4;
-        audioElement.preload = 'none';
-
-        // Use Web Audio API to generate a soft ambient tone as fallback
-        // Instead of relying on an external file that may 404, we generate a soft pad.
-        try {
-            const AudioContext = window.AudioContext || window.webkitAudioContext;
-            const ctx = new AudioContext();
-            const osc = ctx.createOscillator();
-            const gain = ctx.createGain();
-            osc.type = 'sine';
-            osc.frequency.value = 220;
-            gain.gain.value = 0;
-            osc.connect(gain);
-            gain.connect(ctx.destination);
-
-            // Keep reference for toggling
-            audioElement._ctx = ctx;
-            audioElement._osc = osc;
-            audioElement._gain = gain;
-
-            // Start oscillator silently — it will play when user clicks
-            osc.start();
-        } catch (e) {
-            console.warn('Web Audio not available:', e.message);
-        }
-
-        musicPlayBtn.addEventListener('click', toggleMusic);
-        musicVolume.addEventListener('input', () => {
-            const vol = parseInt(musicVolume.value) / 100;
-            if (audioElement) {
-                audioElement.volume = vol;
-                if (audioElement._gain) audioElement._gain.gain.value = musicPlaying ? vol * 0.15 : 0;
-            }
-        });
-    }
-
-    function toggleMusic() {
-        if (!audioElement) return;
-
-        if (audioElement._ctx && audioElement._ctx.state === 'suspended') {
-            audioElement._ctx.resume();
-        }
-
-        if (musicPlaying) {
-            // Pause
-            if (audioElement._gain) audioElement._gain.gain.value = 0;
-            musicPlaying = false;
-            musicDisc.classList.remove('playing');
-            musicPlayBtn.textContent = '▶️';
-        } else {
-            // Play
-            if (audioElement._gain) {
-                const vol = parseInt(musicVolume.value) / 100;
-                audioElement._gain.gain.value = vol * 0.15;
-            }
-            musicPlaying = true;
-            musicDisc.classList.add('playing');
-            musicPlayBtn.textContent = '⏸️';
-        }
-    }
-
-    function startMusicIfNeeded() {
-        // Auto-start only after first user gesture — the start button click counts.
-        if (audioElement && !musicPlaying) {
-            toggleMusic();
-        }
-    }
-
-    // =============================================
-    // ADMIN SHORTCUT: PRESS "A" TWICE QUICKLY
-    // =============================================
-    let lastA = 0;
-    const AA_INTERVAL = 400;
-
-    document.addEventListener('keydown', (e) => {
-        const tag = (e.target.tagName || '').toLowerCase();
-        if (tag === 'input' || tag === 'textarea' || tag === 'select' || e.target.isContentEditable) return;
-
-        if (e.key.toLowerCase() === 'a' && !e.ctrlKey && !e.metaKey && !e.altKey) {
-            const now = Date.now();
-            if (now - lastA < AA_INTERVAL) {
-                lastA = 0;
-                showAdminLogin();
-            } else {
-                lastA = now;
-            }
-        }
-    });
-
-    function showAdminLogin() {
-        // Since we're not shipping a backend, we show a clear notice.
-        // In production, this would redirect to a properly secured admin app.
-        const notice = document.createElement('div');
-        notice.style.cssText = `
-            position:fixed;top:0;left:0;width:100%;height:100%;
-            background:rgba(10,2,12,0.92);z-index:9999;
-            display:flex;align-items:center;justify-content:center;
-            padding:24px;backdrop-filter:blur(14px);
-        `;
-        notice.innerHTML = `
-            <div style="max-width:420px;background:rgba(30,10,30,0.9);border:1px solid rgba(255,160,200,0.4);border-radius:32px;padding:32px 24px;text-align:center;">
-                <div style="font-size:3rem;margin-bottom:12px;">🔐</div>
-                <h2 style="color:#ffb6d9;font-size:1.2rem;margin-bottom:8px;">ADMIN ACCESS</h2>
-                <p style="color:#dbb8ce;font-size:0.85rem;line-height:1.6;margin-bottom:18px;">
-                    Admin access is available via a separately secured dashboard.
-                    This visitor site does not contain admin credentials or direct database access.
-                </p>
-                <p style="color:#c99ab8;font-size:0.75rem;line-height:1.5;margin-bottom:20px;">
-                    To set up admin access, deploy the admin dashboard with Firebase Hosting
-                    and configure custom claims via the Firebase Admin SDK.
-                </p>
-                <button id="closeAdminNotice" style="padding:12px 32px;border-radius:60px;border:none;background:linear-gradient(135deg,#ff6a9e,#d44a8a);color:#fff;font-size:0.9rem;font-weight:600;cursor:pointer;">
-                    CLOSE
-                </button>
-            </div>
-        `;
-        document.body.appendChild(notice);
-        document.getElementById('closeAdminNotice').addEventListener('click', () => notice.remove());
-    }
-
-    // =============================================
-    // BOOT
-    // =============================================
-    function boot() {
-        initFirebase();
-        initMusic();
-        spawnFloatingHearts();
-        validateForm();
-    }
-
-    boot();
-
+  if(window.lucide) window.lucide.createIcons();
+  await initFirebase();
+});
 </script>
 
 </body>
