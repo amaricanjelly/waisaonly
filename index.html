@@ -1,203 +1,1905 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>The Secret of My Heart ❤️</title>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#fff0f6;--card:#fff;--ink:#3a1a4a;--pink:#ff5fa2;--pur:#7b2d8e;--soft:#f6d9ec}
-*{box-sizing:border-box}body{margin:0;font-family:Fredoka,system-ui,sans-serif;background:linear-gradient(160deg,#ffe3f1,#e9d7ff);color:var(--ink);min-height:100vh;overflow-x:hidden}
-h1,h2{font-family:'Playfair Display',serif;font-style:italic;margin:.3em 0}
-main{max-width:560px;margin:0 auto;padding:20px 16px 90px}
-.card{background:var(--card);border-radius:28px 28px 28px 8px;padding:22px;box-shadow:0 8px 24px #7b2d8e22;display:none}
-.card.on{display:block;animation:pop .45s ease}
-@keyframes pop{from{transform:scale(.94) translateY(12px);opacity:0}}
-label{display:block;margin:12px 0 4px;font-weight:600}
-input,select,textarea{width:100%;padding:11px 14px;border:2px solid var(--soft);border-radius:16px;font:inherit;color:var(--ink)}
-input:focus,select:focus{outline:3px solid #ff5fa255;border-color:var(--pink)}
-button{font:inherit;font-weight:600;border:0;border-radius:999px;padding:12px 22px;background:var(--pink);color:#fff;cursor:pointer;margin:10px 6px 0 0;transition:transform .15s}
-button:active{transform:scale(.95)}button.alt{background:var(--soft);color:var(--pur)}button:disabled{opacity:.5}
-.note{font-size:.85rem;background:#f9eefc;padding:10px 12px;border-radius:14px;margin:12px 0}
-.err{color:#c0215b;font-size:.9rem;min-height:1.2em}
-.big{font-size:4.5rem;text-align:center;display:block;animation:bob 2.4s ease-in-out infinite}
-@keyframes bob{50%{transform:translateY(-10px) rotate(3deg)}}
-.opt{display:block;width:100%;text-align:left;background:var(--soft);color:var(--ink);border-radius:18px}.opt.ok{background:#bdf0cf}.opt.no{background:#ffc2d4}
-.bar{height:8px;background:var(--soft);border-radius:9px;overflow:hidden;margin-bottom:14px}.bar i{display:block;height:100%;background:var(--pink);transition:width .4s}
-.env{font-size:3.4rem;background:none;padding:0;margin:4px;transition:transform .4s}.env.open{transform:rotateY(180deg) scale(1.1)}
-.letter{background:#fff8fc;border:2px dashed var(--pink);border-radius:18px;padding:14px;margin:10px 0;display:none;animation:pop .4s}
-.rcard{font-size:1.25rem;text-align:center;padding:26px 12px;border-radius:24px;background:var(--soft);min-height:130px}
-.heart{font-size:7rem;text-align:center;display:block;transition:transform .9s}.heart.open{transform:scale(1.25)}
-.fly{position:fixed;top:100%;font-size:22px;pointer-events:none;animation:up linear infinite;z-index:-1;opacity:.7}
-@keyframes up{to{transform:translateY(-115vh) translateX(30px)}}
-.bf{position:fixed;font-size:26px;pointer-events:none;animation:fl 9s ease-in-out infinite alternate;z-index:-1}
-@keyframes fl{to{transform:translate(60vw,-30vh) rotate(20deg)}}
-#music{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);background:#fff;border-radius:999px;padding:6px 14px;display:flex;gap:10px;align-items:center;box-shadow:0 4px 16px #7b2d8e33}
-#disc{font-size:1.6rem}#disc.spin{animation:sp 3s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
-#music button{margin:0;padding:6px 12px}#music input{width:80px;padding:0}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>THE SECRET OF MY HEART ❤️</title>
+    <style>
+        /* ===== RESET & GLOBAL ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, sans-serif;
+        }
 
-#adm{position:fixed;inset:0;z-index:50;background:linear-gradient(160deg,#fff0f6,#ece0ff);overflow:auto;padding:16px;font-size:.95rem}
-#adm[hidden]{display:none}
-#adm .in{max-width:1100px;margin:auto}#adm .c{background:#fff;border-radius:20px;padding:16px;margin:12px 0;box-shadow:0 4px 16px #7b2d8e1f}
-#adm .g{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}#adm .g b{display:block;font-size:1.8rem;color:var(--pur)}
-#adm input,#adm select{width:auto;max-width:100%;padding:9px 12px;margin:4px 4px 4px 0;border-radius:12px}
-#adm button{padding:9px 16px;margin:4px 4px 4px 0}#adm .w{overflow-x:auto}#adm table{border-collapse:collapse;width:100%;font-size:.85rem}
-#adm td,#adm th{padding:7px 9px;border-bottom:1px solid #f0e4f7;text-align:left;white-space:nowrap}#adm tr.r{cursor:pointer}#adm tr.r:hover{background:#fbf1ff}
-#adm .row{display:flex;align-items:center;gap:8px;font-size:.85rem;margin:3px 0}#adm .row i{display:block;height:12px;background:var(--pink);border-radius:6px}
-#adm pre,#adm ul{font-size:.85rem}#adm pre{white-space:pre-wrap}#a-err{color:#c0215b}
-</style></head><body><main>
-<section class="card on" id="s-reg"><span class="big">🧸🎀</span>
-<h1>WELCOME TO MY LITTLE LOVE WORLD! 🎀</h1><p>Before entering, tell me a little about yourself.</p>
-<form id="f"><label>FULL NAME *</label><input id="name" required maxlength="80">
-<label>AGE *</label><input id="age" type="number" min="1" max="120" required>
-<label>DATE OF BIRTH *</label><input id="dob" type="date" required>
-<label>GENDER (optional)</label><select id="gender"><option value="">—</option><option>Male</option><option>Female</option><option>Other</option><option>Prefer not to say</option></select>
-<div id="ori"><label>SEXUAL ORIENTATION (optional)</label><select id="orientation"><option value="">—</option><option>Gay</option><option>Straight</option><option>Lesbian</option><option>Bisexual</option><option>Other</option><option>Prefer not to say</option></select></div>
-<label>PERSONALITY (optional)</label><select id="personality"><option value="">—</option><option>POOKIE 🥹</option><option>TOXIC 😈</option><option>BOTH 😭❤️</option></select>
-<div class="note"><b>Privacy:</b> I store the details you enter, plus your game progress, in a private database. Only the site administrator can read them. Optional fields can be left empty. Orientation and location are never collected from anyone under 18. You can delete your data any time with the button at the end of the game.</div>
-<label style="font-weight:400"><input type="checkbox" id="consent" style="width:auto"> I agree to share the information above with the administrator.</label>
-<div class="err" id="err"></div><button>CONTINUE ❤️</button></form></section>
+        body {
+            background: linear-gradient(145deg, #2d0b2e 0%, #4a1a4b 40%, #7a2e6e 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+            color: #fff0f5;
+            animation: bgGlow 18s infinite alternate;
+        }
 
-<section class="card" id="s-loc"><span class="big">🌍</span><h2>WHERE ARE YOU EXPLORING FROM? 🌍</h2>
-<div class="note">Optional. Sharing sends your exact coordinates (and an approximate city and country, looked up through bigdatacloud.net) to the administrator. Nothing is ever tracked without your tap.</div>
-<button id="loc">SHARE MY LOCATION 📍</button><button class="alt" id="skip">SKIP</button><p id="locmsg"></p></section>
+        @keyframes bgGlow {
+            0% { background: linear-gradient(145deg, #2d0b2e, #4a1a4b, #7a2e6e); }
+            100% { background: linear-gradient(145deg, #3d1540, #5e2260, #8b3a7c); }
+        }
 
-<section class="card" id="s-wel"><span class="big">💌</span><h1 id="hey"></h1><p>YOU ARE NOW ENTERING MY LITTLE WORLD.</p><button id="go">START MY ADVENTURE 💌</button></section>
+        .app-container {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(255, 220, 240, 0.08);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-radius: 48px;
+            padding: 28px 22px 32px;
+            box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(255, 200, 230, 0.15) inset;
+            border: 1px solid rgba(255, 180, 220, 0.25);
+            transition: all 0.3s ease;
+        }
 
-<section class="card" id="s-1"><div class="bar"><i style="width:20%"></i></div><h2>LEVEL 01 · HOW WELL DO YOU KNOW US?</h2><div id="q"></div></section>
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3 {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
 
-<section class="card" id="s-2"><div class="bar"><i style="width:40%"></i></div><h2>LEVEL 02 · UNLOCK MY HEART</h2><span class="big" id="lock">🔒</span>
-<p>Hint: <i id="hint"></i></p><input id="secret" placeholder="Type the secret word" autocomplete="off"><div class="err" id="lerr"></div><button id="open">UNLOCK 🗝️</button></section>
+        .main-title {
+            font-size: clamp(1.9rem, 6vw, 3.2rem);
+            text-align: center;
+            background: linear-gradient(135deg, #ffb6d9, #ff8ab5, #f7a8d8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            text-shadow: 0 0 30px rgba(255, 130, 180, 0.4);
+            line-height: 1.2;
+        }
 
-<section class="card" id="s-3"><div class="bar"><i style="width:60%"></i></div><h2>LEVEL 03 · SECRET LOVE LETTERS</h2><p>Open all three envelopes.</p><div id="envs"></div></section>
+        .subtitle {
+            text-align: center;
+            font-size: 1rem;
+            color: #e8c8e0;
+            margin-bottom: 22px;
+            opacity: 0.9;
+            font-weight: 300;
+            letter-spacing: 0.3px;
+        }
 
-<section class="card" id="s-4"><div class="bar"><i style="width:80%"></i></div><h2>LEVEL 04 · REASONS WHY I LOVE YOU</h2>
-<p id="rc-n"></p><div class="rcard" id="rc"></div><button class="alt" id="prev">◀</button><button class="alt" id="rnd">RANDOM 🎲</button><button class="alt" id="next">▶</button>
-<p id="rprog"></p><button id="r-done" disabled>OPEN MY HEART 💖</button></section>
+        /* ===== SCREENS ===== */
+        .screen {
+            display: none;
+            animation: fadeSlide 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+        }
 
-<section class="card" id="s-5"><div class="bar"><i style="width:100%"></i></div><h2>THE SECRET OF MY HEART</h2><span class="heart" id="hrt">💗</span>
-<div class="letter" id="fin" style="display:none"></div><button id="hopen">OPEN</button><div id="after" style="display:none"><button class="alt" id="del">DELETE MY DATA 🗑️</button></div></section>
-</main>
-<div id="music"><span id="disc">💿</span><button id="pp">▶</button><input id="vol" type="range" min="0" max="1" step=".05" value=".5" aria-label="Volume"></div>
-<div id="adm" hidden role="dialog" aria-label="Admin"><div class="in"><button class="alt" id="a-x">✕ Close</button>
-<div class="c" id="a-login"><h2>Admin login 🔐</h2><input id="a-em" type="email" placeholder="Admin email" autocomplete="username"><input id="a-pw" type="password" placeholder="Password" autocomplete="current-password"><button id="a-in">Sign in</button><p id="a-err"></p></div>
-<div id="a-app" hidden><h2>Admin dashboard ❤️</h2><button class="alt" id="a-rf">Refresh</button><button class="alt" id="a-out">Sign out</button>
-<div class="c g" id="a-stats"></div>
-<div class="c"><input id="a-q" placeholder="Search name, city, personality…"><select id="a-fl"><option value="">All visitors</option><option value="done">Completed game</option><option value="loc">Shared location</option></select><button id="a-csv">Export CSV</button><div class="w"><table id="a-t"></table></div></div>
-<div class="c" id="a-detail" hidden><h3>Visitor profile</h3><pre id="a-pre"></pre><h4>Activity history</h4><ul id="a-hist"></ul><button id="a-del" style="background:#c0215b">Delete this visitor</button></div>
-<div class="c"><h3>Analytics</h3><div id="a-ch"></div></div></div></div></div>
-<audio id="aud" loop preload="none"></audio>
+        .screen.active {
+            display: block;
+        }
+
+        @keyframes fadeSlide {
+            0% { opacity: 0; transform: translateY(16px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== REGISTRATION FORM ===== */
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #f0c0d8;
+            margin-bottom: 6px;
+            letter-spacing: 0.3px;
+        }
+
+        .form-group label .optional {
+            font-weight: 300;
+            font-size: 0.7rem;
+            color: #c99ab8;
+            margin-left: 6px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 13px 16px;
+            border-radius: 60px;
+            border: 1.5px solid rgba(255, 160, 200, 0.3);
+            background: rgba(30, 10, 30, 0.55);
+            color: #fff0f5;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border 0.25s, box-shadow 0.25s;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #ff8ab5;
+            box-shadow: 0 0 0 3px rgba(255, 130, 180, 0.2);
+        }
+
+        .form-group input::placeholder {
+            color: #b88aa8;
+            font-weight: 300;
+        }
+
+        .form-group select option {
+            background: #2d0b2e;
+            color: #fff0f5;
+        }
+
+        .row-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        @media (max-width: 480px) {
+            .row-2 {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+
+        /* ===== PRIVACY NOTICE ===== */
+        .privacy-box {
+            background: rgba(255, 200, 230, 0.07);
+            border: 1px solid rgba(255, 160, 200, 0.2);
+            border-radius: 20px;
+            padding: 14px 16px;
+            font-size: 0.75rem;
+            color: #dbb8ce;
+            line-height: 1.5;
+            margin: 18px 0 12px;
+        }
+
+        .privacy-box strong {
+            color: #ffb6d9;
+            font-weight: 600;
+        }
+
+        .consent-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 12px 0 18px;
+            font-size: 0.8rem;
+            color: #e0b8d0;
+        }
+
+        .consent-check input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            accent-color: #ff6a9e;
+            flex-shrink: 0;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn-primary {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 60px;
+            border: none;
+            background: linear-gradient(135deg, #ff6a9e, #d44a8a, #b83a7a);
+            color: #fff;
+            font-size: 1.05rem;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.25s, filter 0.2s;
+            box-shadow: 0 8px 24px -6px rgba(255, 80, 140, 0.45);
+            margin-top: 6px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px -6px rgba(255, 80, 140, 0.6);
+            filter: brightness(1.05);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.97);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-secondary {
+            padding: 11px 22px;
+            border-radius: 60px;
+            border: 1.5px solid rgba(255, 160, 200, 0.5);
+            background: rgba(255, 200, 230, 0.08);
+            color: #ffb6d9;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s, border 0.2s, transform 0.15s;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 160, 200, 0.18);
+            border-color: #ff8ab5;
+        }
+
+        .btn-secondary:active {
+            transform: scale(0.95);
+        }
+
+        .btn-location {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 26px;
+            border-radius: 60px;
+            border: 1.5px dashed rgba(255, 170, 200, 0.5);
+            background: rgba(255, 200, 230, 0.06);
+            color: #ffc0d8;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s;
+            margin: 6px auto 14px;
+            width: fit-content;
+        }
+
+        .btn-location:hover {
+            background: rgba(255, 160, 200, 0.15);
+            border-color: #ff8ab5;
+        }
+
+        .btn-location:disabled {
+            opacity: 0.5;
+            cursor: default;
+        }
+
+        /* ===== LOCATION SECTION ===== */
+        .location-section {
+            text-align: center;
+            margin: 10px 0 6px;
+        }
+
+        .location-section h3 {
+            font-size: 1rem;
+            color: #f0c0d8;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .location-section .small-note {
+            font-size: 0.7rem;
+            color: #c99ab8;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .location-status {
+            font-size: 0.8rem;
+            color: #a8e6a8;
+            min-height: 20px;
+            margin: 4px 0 8px;
+            transition: opacity 0.3s;
+        }
+
+        /* ===== WELCOME SCREEN ===== */
+        .welcome-box {
+            text-align: center;
+            padding: 20px 0 10px;
+        }
+
+        .welcome-box .greeting {
+            font-size: clamp(1.6rem, 5vw, 2.4rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffb6d9, #ff8ab5, #f7a8d8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .welcome-box .sub-greeting {
+            font-size: 1rem;
+            color: #dbb8ce;
+            margin-bottom: 28px;
+            font-weight: 300;
+        }
+
+        .envelope-anim {
+            font-size: 4rem;
+            animation: floatEnvelope 2.6s ease-in-out infinite;
+            display: inline-block;
+            margin: 10px 0 20px;
+            filter: drop-shadow(0 0 24px rgba(255, 150, 200, 0.5));
+        }
+
+        @keyframes floatEnvelope {
+            0%, 100% { transform: translateY(0) rotate(-3deg) scale(1); }
+            50% { transform: translateY(-12px) rotate(3deg) scale(1.06); }
+        }
+
+        /* ===== GAME SCREENS ===== */
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .level-badge {
+            background: linear-gradient(135deg, #ff6a9e, #c44a7a);
+            padding: 6px 18px;
+            border-radius: 60px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(255, 80, 140, 0.3);
+        }
+
+        .progress-text {
+            font-size: 0.8rem;
+            color: #dbb8ce;
+            font-weight: 400;
+        }
+
+        .question-box {
+            background: rgba(255, 200, 230, 0.07);
+            border: 1px solid rgba(255, 160, 200, 0.2);
+            border-radius: 28px;
+            padding: 24px 20px;
+            margin-bottom: 18px;
+        }
+
+        .question-box h3 {
+            font-size: 1.2rem;
+            color: #ffd6e8;
+            margin-bottom: 18px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .quiz-option {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 14px 20px;
+            margin: 10px 0;
+            border-radius: 60px;
+            border: 1.5px solid rgba(255, 160, 200, 0.3);
+            background: rgba(30, 10, 30, 0.5);
+            color: #f0d6e4;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.22s ease;
+        }
+
+        .quiz-option:hover {
+            background: rgba(255, 160, 200, 0.15);
+            border-color: #ff8ab5;
+            transform: translateX(4px);
+        }
+
+        .quiz-option.selected {
+            background: linear-gradient(135deg, rgba(255, 106, 158, 0.35), rgba(212, 74, 138, 0.35));
+            border-color: #ff6a9e;
+            color: #fff;
+            box-shadow: 0 0 16px rgba(255, 100, 160, 0.25);
+        }
+
+        .quiz-option.correct {
+            background: rgba(100, 220, 130, 0.25);
+            border-color: #6ee68a;
+            color: #b0ffc0;
+        }
+
+        .quiz-option.wrong {
+            background: rgba(255, 80, 100, 0.2);
+            border-color: #ff6a7a;
+            color: #ffb0b8;
+        }
+
+        /* ===== HEART LOCK ===== */
+        .heart-lock-container {
+            text-align: center;
+            padding: 10px 0 20px;
+        }
+
+        .heart-lock-icon {
+            font-size: 5rem;
+            animation: heartBeat 1.6s ease-in-out infinite;
+            display: inline-block;
+            filter: drop-shadow(0 0 30px rgba(255, 100, 160, 0.6));
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            14% { transform: scale(1.12); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.08); }
+            70% { transform: scale(1); }
+        }
+
+        .lock-code-input {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 20px 0 14px;
+            flex-wrap: wrap;
+        }
+
+        .lock-code-input input {
+            width: 56px;
+            height: 60px;
+            text-align: center;
+            font-size: 1.6rem;
+            font-weight: 600;
+            border-radius: 16px;
+            border: 1.5px solid rgba(255, 160, 200, 0.35);
+            background: rgba(30, 10, 30, 0.6);
+            color: #fff0f5;
+            outline: none;
+            transition: border 0.2s;
+        }
+
+        .lock-code-input input:focus {
+            border-color: #ff8ab5;
+            box-shadow: 0 0 0 3px rgba(255, 130, 180, 0.2);
+        }
+
+        /* ===== LOVE LETTERS ===== */
+        .envelope-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .envelope-card {
+            background: rgba(255, 200, 230, 0.07);
+            border: 1px solid rgba(255, 160, 200, 0.2);
+            border-radius: 24px;
+            padding: 24px 14px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .envelope-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 160, 200, 0.12);
+            border-color: #ff8ab5;
+            box-shadow: 0 14px 30px -10px rgba(255, 100, 160, 0.3);
+        }
+
+        .envelope-card .env-icon {
+            font-size: 2.4rem;
+            display: block;
+            margin-bottom: 8px;
+            transition: transform 0.3s;
+        }
+
+        .envelope-card:hover .env-icon {
+            transform: scale(1.15) rotate(-6deg);
+        }
+
+        .envelope-card .env-label {
+            font-size: 0.75rem;
+            color: #dbb8ce;
+            font-weight: 400;
+        }
+
+        .envelope-card.opened {
+            background: rgba(255, 160, 200, 0.18);
+            border-color: #ff6a9e;
+        }
+
+        .envelope-card.opened .env-label {
+            color: #ffb6d9;
+        }
+
+        /* ===== REASONS ===== */
+        .reason-card {
+            background: rgba(255, 200, 230, 0.09);
+            border: 1px solid rgba(255, 160, 200, 0.25);
+            border-radius: 28px;
+            padding: 28px 22px;
+            margin: 18px 0;
+            text-align: center;
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .reason-number {
+            font-size: 0.75rem;
+            color: #c99ab8;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .reason-text {
+            font-size: 1.05rem;
+            color: #ffd6e8;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .reason-nav {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 16px 0;
+        }
+
+        .reason-progress-bar {
+            width: 100%;
+            height: 5px;
+            background: rgba(255, 160, 200, 0.15);
+            border-radius: 60px;
+            margin: 12px 0 6px;
+            overflow: hidden;
+        }
+
+        .reason-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6a9e, #d44a8a);
+            border-radius: 60px;
+            transition: width 0.35s ease;
+            width: 0%;
+        }
+
+        /* ===== FINAL SCREEN ===== */
+        .final-heart {
+            text-align: center;
+            padding: 10px 0 6px;
+        }
+
+        .final-heart-icon {
+            font-size: 7rem;
+            animation: finalPulse 2.2s ease-in-out infinite;
+            display: inline-block;
+            filter: drop-shadow(0 0 50px rgba(255, 100, 160, 0.7));
+        }
+
+        @keyframes finalPulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(3deg); }
+        }
+
+        .final-letter {
+            background: linear-gradient(145deg, rgba(255, 220, 240, 0.1), rgba(255, 180, 220, 0.06));
+            border: 1.5px solid rgba(255, 160, 200, 0.3);
+            border-radius: 32px;
+            padding: 28px 22px;
+            margin: 16px 0 20px;
+            line-height: 1.75;
+            font-size: 0.95rem;
+            color: #f5dae8;
+            text-align: left;
+        }
+
+        .final-letter .letter-greeting {
+            font-size: 1.15rem;
+            color: #ffb6d9;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .final-letter .letter-signature {
+            margin-top: 18px;
+            text-align: right;
+            font-style: italic;
+            color: #ffb6d9;
+            font-weight: 500;
+        }
+
+        /* ===== MUSIC PLAYER ===== */
+        .music-player {
+            position: fixed;
+            bottom: 18px;
+            right: 18px;
+            background: rgba(30, 10, 30, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 60px;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid rgba(255, 160, 200, 0.3);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            z-index: 100;
+            transition: opacity 0.3s;
+        }
+
+        .music-disc {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: conic-gradient(#ff6a9e, #d44a8a, #ff8ab5, #b83a7a, #ff6a9e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            animation: spinDisc 4s linear infinite;
+            animation-play-state: paused;
+            flex-shrink: 0;
+        }
+
+        .music-disc.playing {
+            animation-play-state: running;
+        }
+
+        @keyframes spinDisc {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .music-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .music-btn {
+            background: none;
+            border: none;
+            color: #ffb6d9;
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 4px;
+            transition: transform 0.15s, color 0.2s;
+        }
+
+        .music-btn:hover {
+            color: #fff;
+            transform: scale(1.15);
+        }
+
+        .music-volume {
+            width: 60px;
+            accent-color: #ff6a9e;
+            cursor: pointer;
+            height: 4px;
+            border-radius: 60px;
+        }
+
+        @media (max-width: 480px) {
+            .music-player {
+                bottom: 12px;
+                right: 12px;
+                padding: 8px 12px;
+                gap: 8px;
+            }
+            .music-volume { width: 40px; }
+            .music-disc { width: 32px; height: 32px; font-size: 0.85rem; }
+        }
+
+        /* ===== ADMIN SHORTCUT HINT ===== */
+        .admin-hint {
+            text-align: center;
+            font-size: 0.6rem;
+            color: rgba(255, 200, 230, 0.15);
+            margin-top: 14px;
+            letter-spacing: 1px;
+        }
+
+        /* ===== UTILS ===== */
+        .hidden { display: none !important; }
+        .text-center { text-align: center; }
+        .mt-12 { margin-top: 12px; }
+        .mt-20 { margin-top: 20px; }
+        .mb-12 { margin-bottom: 12px; }
+
+        /* ===== LOADING SPINNER ===== */
+        .spinner {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 2.5px solid rgba(255, 200, 230, 0.25);
+            border-top-color: #ff6a9e;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ===== TOAST ===== */
+        .toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-80px);
+            background: rgba(30, 10, 30, 0.92);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 160, 200, 0.4);
+            color: #ffd6e8;
+            padding: 12px 26px;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            z-index: 999;
+            opacity: 0;
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.4s;
+            pointer-events: none;
+            max-width: 90vw;
+            text-align: center;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* ===== ANIMATED HEARTS BG ===== */
+        .floating-heart {
+            position: fixed;
+            color: rgba(255, 150, 200, 0.12);
+            font-size: 2rem;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatUp 12s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg) scale(0.6); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg) scale(1.2); opacity: 0; }
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 160, 200, 0.3); border-radius: 60px; }
+    </style>
+</head>
+<body>
+
+<!-- Floating hearts background -->
+<div id="heartBg"></div>
+
+<!-- Toast notification -->
+<div id="toast" class="toast"></div>
+
+<div class="app-container" id="appContainer">
+
+    <!-- ============================================ -->
+    <!-- SCREEN 1: REGISTRATION -->
+    <!-- ============================================ -->
+    <div id="screen-register" class="screen active">
+        <h1 class="main-title">WELCOME TO MY LITTLE LOVE WORLD! 🎀</h1>
+        <p class="subtitle">Before entering, tell me a little about yourself.</p>
+
+        <form id="regForm" autocomplete="off">
+            <div class="form-group">
+                <label for="regName">FULL NAME <span class="optional">(required)</span></label>
+                <input type="text" id="regName" placeholder="Your beautiful name..." required maxlength="60">
+            </div>
+
+            <div class="row-2">
+                <div class="form-group">
+                    <label for="regAge">AGE <span class="optional">(required)</span></label>
+                    <input type="number" id="regAge" placeholder="Your age" required min="1" max="120">
+                </div>
+                <div class="form-group">
+                    <label for="regDob">DATE OF BIRTH <span class="optional">(required)</span></label>
+                    <input type="date" id="regDob" required>
+                </div>
+            </div>
+
+            <div class="row-2">
+                <div class="form-group">
+                    <label for="regGender">GENDER <span class="optional">(optional)</span></label>
+                    <select id="regGender">
+                        <option value="">Select...</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                        <option value="Prefer not to say">Prefer not to say</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="regPersonality">PERSONALITY <span class="optional">(optional)</span></label>
+                    <select id="regPersonality">
+                        <option value="">Select...</option>
+                        <option value="POOKIE 🥹">POOKIE 🥹</option>
+                        <option value="TOXIC 😈">TOXIC 😈</option>
+                        <option value="BOTH 😭❤️">BOTH 😭❤️</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Location section -->
+            <div class="location-section">
+                <h3>WHERE ARE YOU EXPLORING FROM? 🌍</h3>
+                <p class="small-note">Optional. If you share, your approximate city and country will be saved. Precise coordinates are visible to the administrator.</p>
+                <button type="button" class="btn-location" id="shareLocationBtn">
+                    📍 SHARE MY LOCATION
+                </button>
+                <div class="location-status" id="locationStatus"></div>
+            </div>
+
+            <!-- Privacy notice -->
+            <div class="privacy-box">
+                <strong>Privacy Notice:</strong> We collect your name, age, date of birth, and optionally your gender, personality, and location. This data is stored securely and visible to the site administrator. You can request deletion at any time. By submitting, you agree to this collection.
+            </div>
+
+            <div class="consent-check">
+                <input type="checkbox" id="consentCheck">
+                <label for="consentCheck">I understand and agree that my information will be collected and stored as described above.</label>
+            </div>
+
+            <button type="submit" class="btn-primary" id="submitBtn" disabled>
+                ENTER MY LOVE WORLD 💕
+            </button>
+        </form>
+
+        <p class="admin-hint">Press A twice quickly for admin access</p>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SCREEN 2: WELCOME -->
+    <!-- ============================================ -->
+    <div id="screen-welcome" class="screen">
+        <div class="welcome-box">
+            <div class="envelope-anim">💌</div>
+            <div class="greeting" id="welcomeName">HEY!</div>
+            <div class="sub-greeting">YOU ARE NOW ENTERING MY LITTLE WORLD.</div>
+            <button class="btn-primary" id="startAdventureBtn" style="max-width:340px;margin:0 auto;">
+                START MY ADVENTURE 💌
+            </button>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SCREEN 3: LEVEL 1 — QUIZ -->
+    <!-- ============================================ -->
+    <div id="screen-level1" class="screen">
+        <div class="game-header">
+            <span class="level-badge">LEVEL 01</span>
+            <span class="progress-text" id="quizProgressText">Question 1 / 5</span>
+        </div>
+        <div class="question-box">
+            <h3 id="quizQuestion">Loading question...</h3>
+            <div id="quizOptions"></div>
+        </div>
+        <button class="btn-primary" id="quizNextBtn" disabled>NEXT QUESTION →</button>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SCREEN 4: LEVEL 2 — HEART LOCK -->
+    <!-- ============================================ -->
+    <div id="screen-level2" class="screen">
+        <div class="game-header">
+            <span class="level-badge">LEVEL 02</span>
+            <span class="progress-text">UNLOCK MY HEART</span>
+        </div>
+        <div class="heart-lock-container">
+            <div class="heart-lock-icon" id="lockIcon">🔐</div>
+            <h3 style="color:#ffd6e8;font-weight:500;margin:14px 0 6px;" id="lockPrompt">Enter the secret code to unlock my heart</h3>
+            <p style="font-size:0.78rem;color:#c99ab8;" id="lockHint">Hint: The number of letters in "LOVE" (type below)</p>
+            <div class="lock-code-input" id="lockInputs">
+                <input type="text" maxlength="1" inputmode="numeric" class="lock-digit" data-idx="0" autocomplete="off">
+                <input type="text" maxlength="1" inputmode="numeric" class="lock-digit" data-idx="1" autocomplete="off">
+                <input type="text" maxlength="1" inputmode="numeric" class="lock-digit" data-idx="2" autocomplete="off">
+                <input type="text" maxlength="1" inputmode="numeric" class="lock-digit" data-idx="3" autocomplete="off">
+            </div>
+            <div id="lockStatus" style="min-height:24px;font-size:0.85rem;color:#ffb0b8;"></div>
+            <button class="btn-primary" id="lockSubmitBtn" style="max-width:280px;margin:12px auto 0;">UNLOCK ❤️</button>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SCREEN 5: LEVEL 3 — LOVE LETTERS -->
+    <!-- ============================================ -->
+    <div id="screen-level3" class="screen">
+        <div class="game-header">
+            <span class="level-badge">LEVEL 03</span>
+            <span class="progress-text" id="lettersProgressText">0 / 3 opened</span>
+        </div>
+        <h3 style="color:#ffd6e8;font-weight:500;text-align:center;margin-bottom:6px;">Secret Love Letters 💌</h3>
+        <p style="text-align:center;font-size:0.82rem;color:#c99ab8;margin-bottom:10px;">Tap each envelope to reveal its message.</p>
+        <div class="envelope-grid" id="envelopeGrid"></div>
+        <div id="letterReveal" class="question-box" style="display:none;margin-top:16px;">
+            <h3 id="letterTitle"></h3>
+            <p id="letterBody" style="font-size:0.95rem;color:#e8c8e0;line-height:1.7;"></p>
+            <button class="btn-secondary" id="closeLetterBtn" style="margin-top:14px;">CLOSE</button>
+        </div>
+        <button class="btn-primary" id="level3NextBtn" disabled style="max-width:340px;margin:18px auto 0;">CONTINUE TO LEVEL 4 →</button>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SCREEN 6: LEVEL 4 — 100 REASONS -->
+    <!-- ============================================ -->
+    <div id="screen-level4" class="screen">
+        <div class="game-header">
+            <span class="level-badge">LEVEL 04</span>
+            <span class="progress-text" id="reasonsProgressText">1 / 100</span>
+        </div>
+        <h3 style="color:#ffd6e8;font-weight:500;text-align:center;margin-bottom:10px;">100 Reasons Why I Love You</h3>
+        <div class="reason-card">
+            <div class="reason-number" id="reasonNumber">REASON #1</div>
+            <div class="reason-text" id="reasonText">Loading...</div>
+        </div>
+        <div class="reason-progress-bar"><div class="reason-progress-fill" id="reasonProgressFill"></div></div>
+        <div class="reason-nav">
+            <button class="btn-secondary" id="reasonPrevBtn">← PREVIOUS</button>
+            <button class="btn-secondary" id="reasonRandomBtn">🎲 RANDOM</button>
+            <button class="btn-secondary" id="reasonNextBtn">NEXT →</button>
+        </div>
+        <button class="btn-primary" id="level4NextBtn" style="max-width:340px;margin:18px auto 0;">GO TO FINAL LEVEL →</button>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SCREEN 7: FINAL LEVEL -->
+    <!-- ============================================ -->
+    <div id="screen-final" class="screen">
+        <div class="game-header">
+            <span class="level-badge">FINAL LEVEL</span>
+            <span class="progress-text">THE SECRET OF MY HEART</span>
+        </div>
+        <div class="final-heart">
+            <div class="final-heart-icon">❤️</div>
+        </div>
+        <div class="final-letter">
+            <div class="letter-greeting" id="finalGreeting">My Dearest,</div>
+            <p>You made it to the end of this little journey, and that means more to me than you know. Every quiz question, every locked heart, every letter, and every reason — they were all little pieces of something I've been trying to say.</p>
+            <p style="margin-top:12px;">The secret of my heart is simple: it beats for you. Not in a grand, dramatic way — but in the quiet, everyday way that feels like home. It's in the way I save the last bite for you, the way I look for you in every room, the way I'm writing this right now hoping it makes you smile.</p>
+            <p style="margin-top:12px;">You are my favorite hello and my hardest goodbye. You are the reason I believe in soft things, slow mornings, and love that doesn't need to shout to be real.</p>
+            <p style="margin-top:12px;">Thank you for playing, for reading, for being you. If you ever forget how loved you are, come back to this page. It will always be here — and so will I.</p>
+            <div class="letter-signature">Always yours,<br>Me ❤️</div>
+        </div>
+        <button class="btn-primary" id="restartBtn" style="max-width:300px;margin:0 auto;">PLAY AGAIN 💕</button>
+    </div>
+
+</div>
+
+<!-- ============================================ -->
+<!-- MUSIC PLAYER -->
+<!-- ============================================ -->
+<div class="music-player" id="musicPlayer">
+    <div class="music-disc" id="musicDisc">🎵</div>
+    <div class="music-controls">
+        <button class="music-btn" id="musicPlayBtn" aria-label="Play">▶️</button>
+        <input type="range" class="music-volume" id="musicVolume" min="0" max="100" value="40" aria-label="Volume">
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- FIREBASE + GAME SCRIPT -->
+<!-- ============================================ -->
 <script type="module">
-/* ====== EDIT YOUR CONTENT HERE ====== */
-const CONFIG={
- musicUrl:"", /* direct URL to an mp3 you have the rights to use */
- secret:"forever", hint:"The word we always say at the end of every goodbye.",
- quiz:[
-  {q:"Where did we first meet?",o:["School","Online","A friend's party","A café"],a:0},
-  {q:"My favourite thing to eat with you?",o:["Pizza","Ice cream","Biryani","Fuchka"],a:1},
-  {q:"What do I call you when I'm happy?",o:["Pookie","Bestie","Sunshine","Silly"],a:0},
-  {q:"Our favourite thing to do together?",o:["Late-night talks","Shopping","Walking","Movies"],a:0},
-  {q:"What colour do I think of when I think of us?",o:["Blue","Green","Pink","Gold"],a:2}],
- letters:["You make ordinary days feel like a little festival.","Whenever I'm tired, remembering your laugh is my reset button.","If hearts had addresses, mine would just say: wherever you are."],
- finalLetter:"Dear you, the secret of my heart is simple: it learned how to be brave because of you. Thank you for every message, every laugh, every quiet moment. I love you, always. ❤️"};
-const REASONS=["You remember tiny details I forgot I told you.","You laugh at my worst jokes anyway.","You make silence feel safe.","You say 'text me when you get home' and mean it.","Your voice notes are my favourite podcast.","You cheer louder for my wins than I do.","You never make me feel small for being sensitive.","You turn boring errands into adventures.","You hold my hand like it's the most normal, precious thing.","You tell me the truth, gently.","You share your food (mostly).","You make my bad days shorter.","You see the best version of me before I do.","You're brave about being soft.","You sing off-key with full confidence.","You apologise like an adult and forgive like an angel.","You make home feel like a person.","You dream out loud with me.","Your hugs reset my whole week.","You keep my secrets like treasure.","You make 3am talks feel like magic.","You're proud of me in ways that matter.","You make me want to be kinder.","You know which song fits my mood.","You laugh with your whole face.","You choose me on ordinary Tuesdays.","You make waiting feel worth it.","You turn my worries into plans.","You celebrate small things like they're festivals.","You are my favourite person to be quiet with."];
-/* Add more strings to REASONS above to reach 100. Everything below adapts automatically. */
-import {initializeApp} from "https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js";
-import {getAuth,signInAnonymously,onAuthStateChanged,signInWithEmailAndPassword,signOut} from "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
-import {getDatabase,ref,get,update,remove,serverTimestamp} from "https://www.gstatic.com/firebasejs/13.1.0/firebase-database.js";
-const app=initializeApp({apiKey:"AIzaSyCzx5PjKJNlKMJC4evQPjyXmdp1sTwpCP4",authDomain:"my-website-ctg.firebaseapp.com",databaseURL:"https://my-website-ctg-default-rtdb.firebaseio.com",projectId:"my-website-ctg",storageBucket:"my-website-ctg.firebasestorage.app",messagingSenderId:"655567782113",appId:"1:655567782113:web:a5adaa922a76bc58f5b7a0",measurementId:"G-8LBRH0WSEQ"});
-const auth=getAuth(app),db=getDatabase(app),$=id=>document.getElementById(id);
-let uid=null,adult=false,name="",done=0,seen={},ri=0,qi=0,opened=0;
-const show=id=>{document.querySelectorAll('.card').forEach(c=>c.classList.remove('on'));$(id).classList.add('on');scrollTo(0,0)};
-const save=(p,o)=>update(ref(db,`visitors/${uid}${p?'/'+p:''}`),{...o}).catch(e=>console.warn('save failed',e.code));
-const touch=o=>save('activity',{lastActive:serverTimestamp(),...o});
-/* floating hearts + butterflies */
-for(let i=0;i<8;i++){const h=document.createElement('div');h.className='fly';h.textContent='💗';h.style.left=Math.random()*95+'%';h.style.animationDuration=12+Math.random()*10+'s';h.style.animationDelay=-Math.random()*12+'s';document.body.append(h)}
-for(let i=0;i<3;i++){const b=document.createElement('div');b.className='bf';b.textContent='🦋';b.style.left=i*25+'%';b.style.top=30+i*20+'%';b.style.animationDelay=-i*3+'s';document.body.append(b)}
-/* hide orientation for minors */
-const minor=()=>{const a=+$('age').value,d=$('dob').value;let ages=[];if(a)ages.push(a);if(d){const t=new Date(),b=new Date(d);let y=t.getFullYear()-b.getFullYear();if(t<new Date(t.getFullYear(),b.getMonth(),b.getDate()))y--;ages.push(y)}return ages.length&&Math.min(...ages)<18};
-const sync=()=>{const m=minor();$('ori').style.display=m?'none':'block';if(m)$('orientation').value=''};
-$('age').oninput=$('dob').oninput=sync;
-/* auth + restore */
-onAuthStateChanged(auth,async u=>{if(!u){signInAnonymously(auth).catch(e=>$('err').textContent='Could not connect. Check that Anonymous sign-in is enabled.');return}
- if(!u.isAnonymous){if($('adm').hidden)signOut(auth);else adminCheck(u);return}
- uid=u.uid;try{const s=await get(ref(db,`visitors/${uid}`));if(s.exists()&&s.val().profile){const v=s.val();name=v.profile.name;adult=v.profile.age>=18;done=v.activity?.completedLevels||0;seen=v.activity?.reasonsViewed||{};$('hey').textContent=`HEY, ${name.toUpperCase()}! 🥹❤️`;
-  if(v.activity?.gameCompleted)start(5);else if(done>0)start(done+1);else show('s-wel')}}catch(e){console.warn(e)}});
-$('f').onsubmit=async e=>{e.preventDefault();const err=$('err');err.textContent='';
- if(!uid)return err.textContent='Still connecting, try again in a second.';
- if(!$('consent').checked)return err.textContent='Please tick the consent box to continue.';
- const age=+$('age').value,m=minor();if(!$('name').value.trim()||!age||!$('dob').value)return err.textContent='Name, age and date of birth are required.';
- name=$('name').value.trim();adult=!m;const p={name,age,dateOfBirth:$('dob').value,createdAt:serverTimestamp()};
- for(const k of['gender','personality'])if($(k).value)p[k]=$(k).value;if(adult&&$('orientation').value)p.orientation=$('orientation').value;
- try{const ex=await get(ref(db,`visitors/${uid}/profile`));if(!ex.exists())await update(ref(db,`visitors/${uid}`),{profile:p,consent:{profileConsent:true,locationConsent:false,consentAt:serverTimestamp()},activity:{entryTime:serverTimestamp(),gameStarted:false,completedLevels:0,gameCompleted:false,lastActive:serverTimestamp()}})}
- catch(x){return err.textContent='Could not save. Please try again.'}
- $('hey').textContent=`HEY, ${name.toUpperCase()}! 🥹❤️`;show(adult?'s-loc':'s-wel')};
-$('skip').onclick=()=>show('s-wel');
-$('loc').onclick=()=>{if(!adult)return;if(!navigator.geolocation){$('locmsg').textContent='Location is not supported here. You can continue.';return}
- navigator.geolocation.getCurrentPosition(async p=>{const l={latitude:p.coords.latitude,longitude:p.coords.longitude,sharedAt:serverTimestamp()};
-  try{const r=await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${l.latitude}&longitude=${l.longitude}&localityLanguage=en`);const j=await r.json();if(j.city||j.locality)l.city=(j.city||j.locality).slice(0,80);if(j.countryName)l.country=j.countryName.slice(0,80)}catch{}
-  await update(ref(db,`visitors/${uid}`),{location:l,'consent/locationConsent':true}).then(()=>{$('locmsg').innerHTML='<span class="big" style="font-size:3rem">📍💖</span>LOCATION SUCCESSFULLY SHARED! ❤️';setTimeout(()=>show('s-wel'),1600)}).catch(()=>$('locmsg').textContent='Could not save location. You can continue.')},
- ()=>{$('locmsg').textContent='No problem, location stays private. Tap skip to continue.'},{timeout:12000})};
-$('go').onclick=()=>{touch({gameStarted:true});startMusic();start(1)};
-function start(n){if(n>5)n=5;[null,l1,l2,l3,l4,l5][n]();}
-/* L1 */
-function l1(){show('s-1');qi=0;qs()}
-function qs(){const q=CONFIG.quiz[qi];if(!q){return finish(1,l2)}$('q').innerHTML=`<p><b>${qi+1}/${CONFIG.quiz.length}</b> ${q.q}</p>`+q.o.map((o,i)=>`<button class="opt" data-i="${i}">${o}</button>`).join('');
- $('q').querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const ok=+b.dataset.i===q.a;b.classList.add(ok?'ok':'no');if(ok)setTimeout(()=>{qi++;qs()},600)})}
-const finish=(n,next)=>{done=Math.max(done,n);touch({completedLevels:done});next()};
-/* L2 */
-function l2(){show('s-2');$('hint').textContent=CONFIG.hint}
-$('open').onclick=()=>{if($('secret').value.trim().toLowerCase()===CONFIG.secret.toLowerCase()){$('lock').textContent='💖';setTimeout(()=>finish(2,l3),900)}else{$('lerr').textContent='Not quite. Try again 🥹'}};
-/* L3 */
-function l3(){show('s-3');opened=0;$('envs').innerHTML=CONFIG.letters.map((t,i)=>`<button class="env" data-i="${i}" aria-label="Open letter ${i+1}">✉️</button><div class="letter" id="L${i}">${t}</div>`).join('');
- $('envs').querySelectorAll('.env').forEach(b=>b.onclick=()=>{if(b.classList.contains('open'))return;b.classList.add('open');b.textContent='💌';$('L'+b.dataset.i).style.display='block';if(++opened===CONFIG.letters.length){touch({surpriseOpened:true});$('envs').insertAdjacentHTML('beforeend','<button id="n3">NEXT ➜</button>');$('n3').onclick=()=>finish(3,l4)}})}
-/* L4 */
-function l4(){show('s-4');ri=0;rr()}
-function rr(){$('rc-n').textContent=`Reason ${ri+1} of ${REASONS.length}`;$('rc').textContent=REASONS[ri];if(!seen[ri+1]){seen[ri+1]=true;save('activity/reasonsViewed',{[ri+1]:true});touch({})}
- const c=Object.keys(seen).length,need=Math.min(10,REASONS.length);$('rprog').textContent=`${c}/${REASONS.length} seen · see ${need} to unlock`;$('r-done').disabled=c<need}
-$('prev').onclick=()=>{ri=(ri-1+REASONS.length)%REASONS.length;rr()};$('next').onclick=()=>{ri=(ri+1)%REASONS.length;rr()};$('rnd').onclick=()=>{ri=Math.floor(Math.random()*REASONS.length);rr()};
-$('r-done').onclick=()=>finish(4,l5);
-/* L5 */
-function l5(){show('s-5');$('fin').textContent=CONFIG.finalLetter}
-$('hopen').onclick=()=>{$('hrt').classList.add('open');$('hrt').textContent='💌';$('hopen').style.display='none';$('fin').style.display='block';$('after').style.display='block';touch({completedLevels:5,gameCompleted:true})};
-$('del').onclick=async()=>{if(!confirm('Delete all my saved data?'))return;await remove(ref(db,`visitors/${uid}`));alert('Your data has been deleted. 💗');location.reload()};
-/* music */
-const a=$('aud');let want=false;
-function startMusic(){if(!CONFIG.musicUrl||want)return;want=true;a.src=CONFIG.musicUrl;a.volume=$('vol').value;a.play().then(()=>{$('pp').textContent='⏸';$('disc').classList.add('spin')}).catch(()=>{want=false})}
-$('pp').onclick=()=>{if(!CONFIG.musicUrl){alert('No music file is configured yet.');return}if(!a.src)a.src=CONFIG.musicUrl;if(a.paused){a.play().then(()=>{$('pp').textContent='⏸';$('disc').classList.add('spin')}).catch(()=>alert('Could not play the music.'))}else{a.pause();$('pp').textContent='▶';$('disc').classList.remove('spin')}};
-$('vol').oninput=()=>a.volume=$('vol').value;a.onerror=()=>{$('pp').textContent='▶';$('disc').classList.remove('spin')};
-/* admin shortcut: A A (400 ms); ignores inputs, textareas, selects, editable elements */
-let last=0;addEventListener('keydown',e=>{const el=document.activeElement,t0=el&&el.tagName;if(/INPUT|TEXTAREA|SELECT/.test(t0)||(el&&el.isContentEditable)||e.ctrlKey||e.metaKey||e.altKey||e.repeat||e.key.toLowerCase()!=='a')return;const t=Date.now();if(t-last<400){last=0;$('adm').hidden=false}else last=t});
-/* ===== hidden admin dashboard (same file) ===== */
-let V={},cur=null;const A=i=>$('a-'+i);
-const esc=x=>String(x??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const fmt=t=>t?new Date(t).toLocaleString():'';
-A('x').onclick=()=>{$('adm').hidden=true;if(!auth.currentUser?.isAnonymous)signOut(auth).then(()=>location.reload())};
-A('out').onclick=()=>signOut(auth).then(()=>location.reload());
-A('in').onclick=()=>{A('err').textContent='';signInWithEmailAndPassword(auth,A('em').value,A('pw').value).catch(()=>A('err').textContent='Sign-in failed. Check email and password.')};
-A('pw').onkeydown=e=>{if(e.key==='Enter')A('in').click()};
-A('rf').onclick=()=>loadAdm();
-async function adminCheck(u){A('app').hidden=true;A('login').hidden=false;
- try{const a=await get(ref(db,'admins/'+u.uid));if(a.val()!==true)throw 0;await loadAdm();A('login').hidden=true;A('app').hidden=false}
- catch{A('err').textContent='This account is not authorised as an admin.';signOut(auth)}}
-async function loadAdm(){const s=await get(ref(db,'visitors'));V=s.val()||{};render()}
-const rows=()=>Object.entries(V).filter(([k,v])=>v.profile).map(([k,v])=>({k,...v.profile,...v.location,...v.activity,reasons:Object.keys(v.activity?.reasonsViewed||{})}));
-function render(){const R=rows(),now=Date.now(),day=new Date().setHours(0,0,0,0);
- const st=[['Total visitors',R.length],['Today',R.filter(r=>r.createdAt>=day).length],['Game starts',R.filter(r=>r.gameStarted).length],['Completed',R.filter(r=>r.gameCompleted).length],['Active (5 min)',R.filter(r=>now-r.lastActive<3e5).length],['Reasons viewed',R.reduce((a,r)=>a+r.reasons.length,0)]];
- A('stats').innerHTML=st.map(([a,b])=>`<div><b>${b}</b>${a}</div>`).join('');
- const q=A('q').value.toLowerCase(),f=A('fl').value;
- const L=R.filter(r=>(!q||JSON.stringify([r.name,r.city,r.country,r.personality]).toLowerCase().includes(q))&&(!f||(f==='done'?r.gameCompleted:r.latitude!=null)));
- A('t').innerHTML='<tr><th>Name<th>Age<th>Birthday<th>Gender<th>Orientation<th>Personality<th>Registered<th>Location<th>Progress<th>Last active</tr>'+L.map(r=>`<tr class="r" data-k="${esc(r.k)}"><td>${esc(r.name)}<td>${esc(r.age)}<td>${esc(r.dateOfBirth)}<td>${esc(r.gender)}<td>${esc(r.orientation)}<td>${esc(r.personality)}<td>${fmt(r.createdAt)}<td>${r.latitude!=null?esc([r.city,r.country].filter(Boolean).join(', ')||r.latitude.toFixed(3)+', '+r.longitude.toFixed(3)):''}<td>${r.completedLevels||0}/5${r.gameCompleted?' ✔':''}<td>${fmt(r.lastActive)}</tr>`).join('');
- A('t').querySelectorAll('tr.r').forEach(tr=>tr.onclick=()=>detail(tr.dataset.k));
- const bars=(t,m)=>`<h4>${t}</h4>`+(Object.keys(m).length?Object.entries(m).map(([k,n])=>`<div class="row"><span style="min-width:110px">${esc(k)}</span><i style="width:${Math.min(n*30,400)}px"></i>${n}</div>`).join(''):'<p>No data yet.</p>');
- const days={},lv={},rs={};R.forEach(r=>{const d=new Date(r.createdAt).toLocaleDateString();days[d]=(days[d]||0)+1;for(let i=1;i<=(r.completedLevels||0);i++)lv['Level '+i]=(lv['Level '+i]||0)+1;r.reasons.forEach(n=>rs['Reason '+n]=(rs['Reason '+n]||0)+1)});
- const top=Object.fromEntries(Object.entries(rs).sort((a,b)=>b[1]-a[1]).slice(0,8));
- A('ch').innerHTML=bars('Daily visitors',days)+bars('Game completion',{Started:R.filter(r=>r.gameStarted).length,Completed:R.filter(r=>r.gameCompleted).length})+bars('Level completion',lv)+bars('Most viewed reasons',top)}
-function detail(k){cur=k;const v=V[k],a=v.activity||{},p=v.profile||{},l=v.location,c=v.consent||{};A('detail').hidden=false;
- A('pre').textContent=`Name: ${p.name}\nAge: ${p.age}\nBirthday: ${p.dateOfBirth}\nGender: ${p.gender||'-'}\nOrientation: ${p.orientation||'-'}\nPersonality: ${p.personality||'-'}\nLocation: ${l?`${l.latitude}, ${l.longitude} (${[l.city,l.country].filter(Boolean).join(', ')||'no city'})`:'not shared'}\nProfile consent: ${c.profileConsent?'yes':'no'}   Location consent: ${c.locationConsent?'yes':'no'}\nUID: ${k}`;
- const h=[[p.createdAt,'Registered'],[a.entryTime,'Entered the site'],[a.gameStarted?a.entryTime:0,'Game started'],[l?.sharedAt,'Shared location'],[a.surpriseOpened?a.lastActive:0,'Opened the love letters'],[a.completedLevels?a.lastActive:0,`Completed ${a.completedLevels||0} of 5 levels`],[Object.keys(a.reasonsViewed||{}).length?a.lastActive:0,`Viewed ${Object.keys(a.reasonsViewed||{}).length} love reasons`],[a.gameCompleted?a.lastActive:0,'Completed the game']].filter(x=>x[0]);
- A('hist').innerHTML=h.sort((x,y)=>x[0]-y[0]).map(x=>`<li>${fmt(x[0])} · ${esc(x[1])}</li>`).join('')+`<li>${fmt(a.lastActive)} · Last active</li>`;
- A('detail').scrollIntoView({behavior:'smooth'})}
-A('q').oninput=A('fl').onchange=render;
-A('del').onclick=async()=>{if(cur&&confirm('Delete this visitor permanently?')){await remove(ref(db,'visitors/'+cur));delete V[cur];A('detail').hidden=true;render()}};
-A('csv').onclick=()=>{const R=rows(),h=['name','age','dateOfBirth','gender','orientation','personality','createdAt','city','country','latitude','longitude','completedLevels','gameCompleted','lastActive'];
- const c=v=>{v=String(v??'');if(/^[=+\-@]/.test(v))v="'"+v;return '"'+v.replace(/"/g,'""')+'"'};
- const b=new Blob([[h.join(','),...R.map(r=>h.map(k=>c(r[k])).join(','))].join('\n')],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='visitors.csv';a.click()};
-</script></body></html>
+    // =============================================
+    // FIREBASE IMPORTS
+    // =============================================
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js";
+    import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
+    import { getDatabase, ref, set, update, get, serverTimestamp } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-database.js";
+
+    // =============================================
+    // FIREBASE CONFIG
+    // =============================================
+    const firebaseConfig = {
+        apiKey: "AIzaSyCzx5PjKJNlKMJC4evQPjyXmdp1sTwpCP4",
+        authDomain: "my-website-ctg.firebaseapp.com",
+        databaseURL: "https://my-website-ctg-default-rtdb.firebaseio.com",
+        projectId: "my-website-ctg",
+        storageBucket: "my-website-ctg.firebasestorage.app",
+        messagingSenderId: "655567782113",
+        appId: "1:655567782113:web:a5adaa922a76bc58f5b7a0",
+        measurementId: "G-8LBRH0WSEQ"
+    };
+
+    let app, auth, db;
+    let currentUser = null;
+    let visitorUID = null;
+
+    // =============================================
+    // GAME DATA
+    // =============================================
+    const QUIZ_QUESTIONS = [
+        {
+            question: "What's my favorite thing to do with you?",
+            options: ["Go on long walks", "Watch movies together", "Talk for hours", "All of the above ❤️"],
+            answer: 3
+        },
+        {
+            question: "What's the first thing I notice about you?",
+            options: ["Your smile", "Your eyes", "Your laugh", "Your kindness"],
+            answer: 0
+        },
+        {
+            question: "What's my idea of a perfect date?",
+            options: ["Fancy dinner", "Cozy night in", "Adventure trip", "Anywhere with you"],
+            answer: 3
+        },
+        {
+            question: "What do I love most about us?",
+            options: ["Our adventures", "Our quiet moments", "Our inside jokes", "Everything 💕"],
+            answer: 3
+        },
+        {
+            question: "What's the secret to my heart?",
+            options: ["Chocolate", "Flowers", "You", "Music"],
+            answer: 2
+        }
+    ];
+
+    const LOVE_LETTERS = [
+        {
+            title: "When I First Saw You",
+            body: "I remember the exact moment I realized you were different. It wasn't anything dramatic — just the way you laughed, the way you looked at me like I was worth looking at. From that day, my heart had a new favorite person."
+        },
+        {
+            title: "Every Little Thing",
+            body: "It's the little things, isn't it? The way you hum without realizing, the way you get excited about small wins, the way you make ordinary days feel like something worth remembering. You make the mundane magical."
+        },
+        {
+            title: "The Way You Make Me Feel",
+            body: "You make me feel safe. Not the boring kind of safe — the warm, cozy, wrapped-in-a-blanket kind. The kind where I can be completely myself and know that's exactly who you want me to be."
+        }
+    ];
+
+    const REASONS = [
+        "The way your smile lights up a room.",
+        "How you always know how to make me laugh.",
+        "Your kindness toward strangers.",
+        "The way you listen — really listen.",
+        "How passionate you get about your hobbies.",
+        "Your sleepy morning voice.",
+        "The way you hold my hand.",
+        "How you remember tiny details I mention.",
+        "Your terrible puns that somehow always work.",
+        "The way you dance when you think no one's watching.",
+        "How you make even grocery shopping fun.",
+        "Your unwavering support of my dreams.",
+        "The way you say my name.",
+        "How comfortable silence feels with you.",
+        "Your laugh — especially the ugly one.",
+        "The way you care for the people you love.",
+        "How you always steal my hoodies.",
+        "Your passion for justice and fairness.",
+        "The way you look when you're deep in thought.",
+        "How you always have a snack for me.",
+        "Your courage in hard moments.",
+        "The way you sing in the car.",
+        "How you never give up on us.",
+        "Your beautiful, messy, real morning hair.",
+        "The way you encourage me to be better.",
+        "How you handle stressful days with grace.",
+        "Your random facts that you're so proud of.",
+        "The way you always know when I need a hug.",
+        "How you make me feel seen.",
+        "The way you say 'I love you' in a hundred small ways.",
+        "Your patience with me on my worst days.",
+        "How you celebrate my wins like they're your own.",
+        "The way you look at me when you think I'm not looking.",
+        "Your willingness to try new things with me.",
+        "How you make our home feel like home.",
+        "The way you stand up for what's right.",
+        "Your endless curiosity about the world.",
+        "How you make time for us, even when life is busy.",
+        "The way you handle disagreements with love.",
+        "Your beautiful heart that loves so deeply.",
+        "How you always root for the underdog.",
+        "The way you remember our inside jokes.",
+        "Your sleepy text messages at midnight.",
+        "How you make me feel like the luckiest person alive.",
+        "The way you trust me with your secrets.",
+        "Your gentle spirit in a loud world.",
+        "How you always find the good in people.",
+        "The way you take care of yourself too.",
+        "Your excitement over small victories.",
+        "How you never make me feel small.",
+        "The way you show up, every single time.",
+        "Your ability to make anything an adventure.",
+        "How you respect my boundaries.",
+        "The way you say 'we' instead of 'I'.",
+        "Your beautiful mind and how it works.",
+        "How you never let me go to bed upset.",
+        "The way you handle my mood swings with patience.",
+        "Your consistency — you're always there.",
+        "How you make me feel proud to be yours.",
+        "The way you love your family.",
+        "Your honesty, even when it's hard.",
+        "How you always know how to fix a bad day.",
+        "The way you hold me when I'm overwhelmed.",
+        "Your ambition and drive.",
+        "How you still get butterflies when I text you.",
+        "The way you never give up on people.",
+        "Your warm, infectious energy.",
+        "How you always make room for my feelings.",
+        "The way you value my opinion.",
+        "Your loyalty — unwavering and strong.",
+        "How you make me feel like I'm enough.",
+        "The way you laugh at your own jokes.",
+        "Your ability to forgive and move forward.",
+        "How you never stop learning and growing.",
+        "The way you prioritize us.",
+        "Your thoughtfulness in the smallest gestures.",
+        "How you remember to say thank you.",
+        "The way you make me want to be better.",
+        "Your resilience through tough times.",
+        "How you always keep your promises.",
+        "The way you look when you wake up.",
+        "Your gentle honesty when I need to hear it.",
+        "How you never judge my weird habits.",
+        "The way you hold space for my feelings.",
+        "Your ability to make me laugh when I'm crying.",
+        "How you always choose us, even when it's hard.",
+        "The way you accept all my flaws.",
+        "Your patience with my overthinking.",
+        "How you make me feel beautiful on my worst days.",
+        "The way you always listen without interrupting.",
+        "Your commitment to our future.",
+        "How you never let distance feel like a problem.",
+        "The way you say goodnight and good morning.",
+        "Your beautiful, kind, loving soul.",
+        "How you make me feel like the only person in the room.",
+        "The way you handle my quirks with love.",
+        "Your ability to turn any day into a good one.",
+        "How you never forget what matters to me.",
+        "The way you love me — exactly as I am.",
+        "Because every day with you is a gift.",
+        "And because you're you — that's more than enough."
+    ];
+
+    const LOCK_CODE = "4"; // "LOVE" has 4 letters
+
+    // =============================================
+    // DOM REFERENCES
+    // =============================================
+    const screens = {
+        register: document.getElementById('screen-register'),
+        welcome: document.getElementById('screen-welcome'),
+        level1: document.getElementById('screen-level1'),
+        level2: document.getElementById('screen-level2'),
+        level3: document.getElementById('screen-level3'),
+        level4: document.getElementById('screen-level4'),
+        final: document.getElementById('screen-final')
+    };
+
+    // Registration
+    const regForm = document.getElementById('regForm');
+    const regName = document.getElementById('regName');
+    const regAge = document.getElementById('regAge');
+    const regDob = document.getElementById('regDob');
+    const regGender = document.getElementById('regGender');
+    const regPersonality = document.getElementById('regPersonality');
+    const consentCheck = document.getElementById('consentCheck');
+    const submitBtn = document.getElementById('submitBtn');
+    const shareLocationBtn = document.getElementById('shareLocationBtn');
+    const locationStatus = document.getElementById('locationStatus');
+
+    // Welcome
+    const welcomeName = document.getElementById('welcomeName');
+    const startAdventureBtn = document.getElementById('startAdventureBtn');
+
+    // Level 1
+    const quizQuestion = document.getElementById('quizQuestion');
+    const quizOptions = document.getElementById('quizOptions');
+    const quizNextBtn = document.getElementById('quizNextBtn');
+    const quizProgressText = document.getElementById('quizProgressText');
+
+    // Level 2
+    const lockIcon = document.getElementById('lockIcon');
+    const lockInputs = document.getElementById('lockInputs');
+    const lockSubmitBtn = document.getElementById('lockSubmitBtn');
+    const lockStatus = document.getElementById('lockStatus');
+
+    // Level 3
+    const envelopeGrid = document.getElementById('envelopeGrid');
+    const letterReveal = document.getElementById('letterReveal');
+    const letterTitle = document.getElementById('letterTitle');
+    const letterBody = document.getElementById('letterBody');
+    const closeLetterBtn = document.getElementById('closeLetterBtn');
+    const level3NextBtn = document.getElementById('level3NextBtn');
+    const lettersProgressText = document.getElementById('lettersProgressText');
+
+    // Level 4
+    const reasonNumber = document.getElementById('reasonNumber');
+    const reasonText = document.getElementById('reasonText');
+    const reasonPrevBtn = document.getElementById('reasonPrevBtn');
+    const reasonNextBtn = document.getElementById('reasonNextBtn');
+    const reasonRandomBtn = document.getElementById('reasonRandomBtn');
+    const reasonProgressFill = document.getElementById('reasonProgressFill');
+    const reasonsProgressText = document.getElementById('reasonsProgressText');
+    const level4NextBtn = document.getElementById('level4NextBtn');
+
+    // Final
+    const finalGreeting = document.getElementById('finalGreeting');
+    const restartBtn = document.getElementById('restartBtn');
+
+    // Music
+    const musicDisc = document.getElementById('musicDisc');
+    const musicPlayBtn = document.getElementById('musicPlayBtn');
+    const musicVolume = document.getElementById('musicVolume');
+
+    // =============================================
+    // STATE
+    // =============================================
+    let state = {
+        currentScreen: 'register',
+        visitorName: '',
+        locationShared: false,
+        locationData: null,
+        quizIndex: 0,
+        quizAnswers: [],
+        quizSelected: null,
+        quizAnswered: false,
+        lettersOpened: [false, false, false],
+        reasonsIndex: 0,
+        reasonsViewed: new Set()
+    };
+
+    let audioElement = null;
+    let musicPlaying = false;
+
+    // =============================================
+    // FIREBASE INIT
+    // =============================================
+    function initFirebase() {
+        try {
+            app = initializeApp(firebaseConfig);
+            auth = getAuth(app);
+            db = getDatabase(app);
+
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    currentUser = user;
+                    visitorUID = user.uid;
+                    console.log('✅ Signed in anonymously:', visitorUID);
+                } else {
+                    signInAnonymously(auth).catch((err) => {
+                        console.warn('Anonymous auth failed:', err.message);
+                    });
+                }
+            });
+
+            // Try to sign in anonymously immediately
+            signInAnonymously(auth).catch((err) => {
+                console.warn('Anonymous auth not available:', err.message);
+            });
+        } catch (err) {
+            console.warn('Firebase init error:', err.message);
+        }
+    }
+
+    // =============================================
+    // FIRESTORE HELPERS
+    // =============================================
+    async function saveVisitorProfile(data) {
+        if (!visitorUID || !db) return;
+        try {
+            const visitorRef = ref(db, `visitors/${visitorUID}/profile`);
+            await set(visitorRef, {
+                ...data,
+                createdAt: serverTimestamp()
+            });
+        } catch (err) {
+            console.warn('Save profile error:', err.message);
+        }
+    }
+
+    async function saveConsent(profileConsent, locationConsent) {
+        if (!visitorUID || !db) return;
+        try {
+            const consentRef = ref(db, `visitors/${visitorUID}/consent`);
+            await set(consentRef, {
+                profileConsent: profileConsent,
+                locationConsent: locationConsent,
+                consentAt: serverTimestamp()
+            });
+        } catch (err) {
+            console.warn('Save consent error:', err.message);
+        }
+    }
+
+    async function saveLocation(lat, lng, city, country) {
+        if (!visitorUID || !db) return;
+        try {
+            const locRef = ref(db, `visitors/${visitorUID}/location`);
+            await set(locRef, {
+                latitude: lat,
+                longitude: lng,
+                city: city || null,
+                country: country || null,
+                sharedAt: serverTimestamp()
+            });
+        } catch (err) {
+            console.warn('Save location error:', err.message);
+        }
+    }
+
+    async function logActivity(field, value) {
+        if (!visitorUID || !db) return;
+        try {
+            const actRef = ref(db, `visitors/${visitorUID}/activity/${field}`);
+            await set(actRef, value);
+        } catch (err) {
+            console.warn('Log activity error:', err.message);
+        }
+    }
+
+    async function initActivity() {
+        if (!visitorUID || !db) return;
+        try {
+            const actRef = ref(db, `visitors/${visitorUID}/activity`);
+            await update(actRef, {
+                entryTime: serverTimestamp(),
+                lastActive: serverTimestamp(),
+                gameStarted: false,
+                completedLevels: 0,
+                reasonsViewed: 0,
+                gameCompleted: false
+            });
+        } catch (err) {
+            console.warn('Init activity error:', err.message);
+        }
+    }
+
+    // =============================================
+    // TOAST
+    // =============================================
+    let toastTimeout = null;
+    function showToast(msg, duration = 3000) {
+        const toast = document.getElementById('toast');
+        toast.textContent = msg;
+        toast.classList.add('show');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => toast.classList.remove('show'), duration);
+    }
+
+    // =============================================
+    // SCREEN NAVIGATION
+    // =============================================
+    function showScreen(name) {
+        Object.values(screens).forEach(s => s.classList.remove('active'));
+        if (screens[name]) screens[name].classList.add('active');
+        state.currentScreen = name;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // =============================================
+    // FLOATING HEARTS BACKGROUND
+    // =============================================
+    function spawnFloatingHearts() {
+        const bg = document.getElementById('heartBg');
+        const hearts = ['❤️', '💕', '💗', '💖', '🩷', '♥️'];
+        for (let i = 0; i < 12; i++) {
+            const el = document.createElement('div');
+            el.className = 'floating-heart';
+            el.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+            el.style.left = Math.random() * 100 + '%';
+            el.style.animationDelay = Math.random() * 12 + 's';
+            el.style.animationDuration = (10 + Math.random() * 8) + 's';
+            el.style.fontSize = (1 + Math.random() * 2) + 'rem';
+            bg.appendChild(el);
+        }
+    }
+
+    // =============================================
+    // REGISTRATION
+    // =============================================
+    function validateForm() {
+        const nameOk = regName.value.trim().length >= 1;
+        const ageOk = regAge.value && parseInt(regAge.value) >= 1;
+        const dobOk = regDob.value !== '';
+        const consentOk = consentCheck.checked;
+        submitBtn.disabled = !(nameOk && ageOk && dobOk && consentOk);
+    }
+
+    regName.addEventListener('input', validateForm);
+    regAge.addEventListener('input', validateForm);
+    regDob.addEventListener('change', validateForm);
+    consentCheck.addEventListener('change', validateForm);
+
+    shareLocationBtn.addEventListener('click', () => {
+        if (!navigator.geolocation) {
+            locationStatus.textContent = '❌ Geolocation not supported by this browser.';
+            return;
+        }
+        shareLocationBtn.disabled = true;
+        shareLocationBtn.innerHTML = '<span class="spinner"></span> Getting location...';
+        locationStatus.textContent = '';
+
+        navigator.geolocation.getCurrentPosition(
+            async (pos) => {
+                const lat = pos.coords.latitude;
+                const lng = pos.coords.longitude;
+                let city = null, country = null;
+
+                // Try reverse geocoding (optional, may fail)
+                try {
+                    const resp = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=10`, {
+                        headers: { 'Accept-Language': 'en' }
+                    });
+                    if (resp.ok) {
+                        const data = await resp.json();
+                        city = data.address?.city || data.address?.town || data.address?.village || null;
+                        country = data.address?.country || null;
+                    }
+                } catch (e) {
+                    console.warn('Reverse geocoding failed:', e.message);
+                }
+
+                state.locationShared = true;
+                state.locationData = { lat, lng, city, country };
+
+                // Save to Firebase
+                await saveLocation(lat, lng, city, country);
+                await saveConsent(true, true);
+
+                shareLocationBtn.innerHTML = '✅ LOCATION SHARED';
+                locationStatus.textContent = `📍 LOCATION SUCCESSFULLY SHARED! ❤️ ${city ? city + ', ' : ''}${country || ''}`;
+                locationStatus.style.color = '#a8e6a8';
+                showToast('Location shared! ❤️');
+            },
+            (err) => {
+                shareLocationBtn.disabled = false;
+                shareLocationBtn.innerHTML = '📍 SHARE MY LOCATION';
+                let msg = 'Location permission denied. You can continue without sharing.';
+                if (err.code === 1) msg = '❌ Location permission denied. You can continue without sharing.';
+                if (err.code === 2) msg = '❌ Location unavailable. You can continue without sharing.';
+                if (err.code === 3) msg = '⏳ Location request timed out. You can continue without sharing.';
+                locationStatus.textContent = msg;
+                locationStatus.style.color = '#ffb0b8';
+            },
+            { enableHighAccuracy: false, timeout: 10000, maximumAge: 60000 }
+        );
+    });
+
+    regForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        if (!consentCheck.checked) {
+            showToast('Please agree to the privacy notice.');
+            return;
+        }
+
+        const name = regName.value.trim();
+        const age = parseInt(regAge.value);
+        const dob = regDob.value;
+        const gender = regGender.value || null;
+        const personality = regPersonality.value || null;
+
+        if (!name || !age || !dob) {
+            showToast('Please fill in all required fields.');
+            return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner"></span> ENTERING...';
+
+        // Save profile
+        await saveVisitorProfile({
+            name: name,
+            age: age,
+            dateOfBirth: dob,
+            gender: gender,
+            personality: personality
+        });
+
+        await saveConsent(true, state.locationShared);
+        await initActivity();
+
+        state.visitorName = name;
+        welcomeName.textContent = `HEY, ${name.toUpperCase()}! 🥹❤️`;
+        showScreen('welcome');
+        showToast(`Welcome, ${name}! 💕`);
+
+        submitBtn.innerHTML = 'ENTER MY LOVE WORLD 💕';
+        submitBtn.disabled = false;
+    });
+
+    // =============================================
+    // WELCOME → START ADVENTURE
+    // =============================================
+    startAdventureBtn.addEventListener('click', async () => {
+        await logActivity('gameStarted', true);
+        state.quizIndex = 0;
+        state.quizAnswers = [];
+        state.lettersOpened = [false, false, false];
+        state.reasonsIndex = 0;
+        state.reasonsViewed = new Set();
+        loadQuizQuestion();
+        showScreen('level1');
+        startMusicIfNeeded();
+    });
+
+    // =============================================
+    // LEVEL 1 — QUIZ
+    // =============================================
+    function loadQuizQuestion() {
+        const q = QUIZ_QUESTIONS[state.quizIndex];
+        quizQuestion.textContent = q.question;
+        quizProgressText.textContent = `Question ${state.quizIndex + 1} / ${QUIZ_QUESTIONS.length}`;
+        quizOptions.innerHTML = '';
+        state.quizSelected = null;
+        state.quizAnswered = false;
+        quizNextBtn.disabled = true;
+        quizNextBtn.textContent = state.quizIndex === QUIZ_QUESTIONS.length - 1 ? 'FINISH LEVEL 1 →' : 'NEXT QUESTION →';
+
+        q.options.forEach((opt, idx) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'quiz-option';
+            btn.textContent = opt;
+            btn.dataset.idx = idx;
+            btn.addEventListener('click', () => selectQuizOption(idx, q.answer));
+            quizOptions.appendChild(btn);
+        });
+    }
+
+    function selectQuizOption(idx, answerIdx) {
+        if (state.quizAnswered) return;
+        state.quizAnswered = true;
+        state.quizSelected = idx;
+
+        const buttons = quizOptions.querySelectorAll('.quiz-option');
+        buttons.forEach((btn, i) => {
+            btn.disabled = true;
+            if (i === answerIdx) btn.classList.add('correct');
+            else if (i === idx && idx !== answerIdx) btn.classList.add('wrong');
+        });
+
+        state.quizAnswers.push(idx);
+        quizNextBtn.disabled = false;
+    }
+
+    quizNextBtn.addEventListener('click', async () => {
+        if (!state.quizAnswered) return;
+        if (state.quizIndex < QUIZ_QUESTIONS.length - 1) {
+            state.quizIndex++;
+            loadQuizQuestion();
+        } else {
+            // Level 1 complete
+            await logActivity('completedLevels', 1);
+            showToast('Level 1 complete! ❤️');
+            showScreen('level2');
+            setupLevel2();
+        }
+    });
+
+    // =============================================
+    // LEVEL 2 — HEART LOCK
+    // =============================================
+    function setupLevel2() {
+        lockIcon.textContent = '🔐';
+        lockStatus.textContent = '';
+        lockStatus.style.color = '#ffb0b8';
+        const digits = lockInputs.querySelectorAll('.lock-digit');
+        digits.forEach(d => { d.value = ''; d.disabled = false; });
+        digits[0].focus();
+
+        digits.forEach((input, idx) => {
+            input.addEventListener('input', () => {
+                input.value = input.value.replace(/\D/g, '').slice(0, 1);
+                if (input.value && idx < digits.length - 1) {
+                    digits[idx + 1].focus();
+                }
+                if (idx === digits.length - 1 && input.value) {
+                    lockSubmitBtn.focus();
+                }
+            });
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && !input.value && idx > 0) {
+                    digits[idx - 1].focus();
+                }
+            });
+        });
+    }
+
+    lockSubmitBtn.addEventListener('click', async () => {
+        const digits = lockInputs.querySelectorAll('.lock-digit');
+        const code = Array.from(digits).map(d => d.value).join('');
+
+        if (code === LOCK_CODE) {
+            lockIcon.textContent = '❤️';
+            lockStatus.textContent = '✅ HEART UNLOCKED! ❤️';
+            lockStatus.style.color = '#a8e6a8';
+            digits.forEach(d => d.disabled = true);
+            lockSubmitBtn.disabled = true;
+            await logActivity('completedLevels', 2);
+            showToast('Heart unlocked! ❤️');
+            setTimeout(() => {
+                showScreen('level3');
+                setupLevel3();
+            }, 1200);
+        } else {
+            lockStatus.textContent = '❌ Wrong code. Try again!';
+            lockStatus.style.color = '#ffb0b8';
+            digits.forEach(d => d.value = '');
+            digits[0].focus();
+            lockIcon.style.animation = 'none';
+            setTimeout(() => { lockIcon.style.animation = 'heartBeat 1.6s ease-in-out infinite'; }, 50);
+        }
+    });
+
+    // =============================================
+    // LEVEL 3 — LOVE LETTERS
+    // =============================================
+    function setupLevel3() {
+        envelopeGrid.innerHTML = '';
+        state.lettersOpened = [false, false, false];
+        letterReveal.style.display = 'none';
+        level3NextBtn.disabled = true;
+        updateLettersProgress();
+
+        LOVE_LETTERS.forEach((letter, idx) => {
+            const card = document.createElement('div');
+            card.className = 'envelope-card';
+            card.dataset.idx = idx;
+            card.innerHTML = `
+                <span class="env-icon">💌</span>
+                <span class="env-label">Letter ${idx + 1}</span>
+            `;
+            card.addEventListener('click', () => openLetter(idx));
+            envelopeGrid.appendChild(card);
+        });
+    }
+
+    function openLetter(idx) {
+        const letter = LOVE_LETTERS[idx];
+        letterTitle.textContent = letter.title;
+        letterBody.textContent = letter.body;
+        letterReveal.style.display = 'block';
+
+        const cards = envelopeGrid.querySelectorAll('.envelope-card');
+        cards.forEach((c, i) => {
+            if (i === idx) c.classList.add('opened');
+        });
+
+        state.lettersOpened[idx] = true;
+        updateLettersProgress();
+    }
+
+    function updateLettersProgress() {
+        const opened = state.lettersOpened.filter(Boolean).length;
+        lettersProgressText.textContent = `${opened} / 3 opened`;
+        level3NextBtn.disabled = opened < 3;
+    }
+
+    closeLetterBtn.addEventListener('click', () => {
+        letterReveal.style.display = 'none';
+    });
+
+    level3NextBtn.addEventListener('click', async () => {
+        await logActivity('completedLevels', 3);
+        showToast('Level 3 complete! 💌');
+        showScreen('level4');
+        setupLevel4();
+    });
+
+    // =============================================
+    // LEVEL 4 — 100 REASONS
+    // =============================================
+    function setupLevel4() {
+        state.reasonsIndex = 0;
+        state.reasonsViewed = new Set();
+        renderReason();
+    }
+
+    function renderReason() {
+        const idx = state.reasonsIndex;
+        reasonNumber.textContent = `REASON #${idx + 1}`;
+        reasonText.textContent = REASONS[idx];
+        const pct = ((idx + 1) / REASONS.length) * 100;
+        reasonProgressFill.style.width = pct + '%';
+        reasonsProgressText.textContent = `${idx + 1} / ${REASONS.length}`;
+
+        state.reasonsViewed.add(idx);
+        logActivity('reasonsViewed', state.reasonsViewed.size);
+    }
+
+    reasonPrevBtn.addEventListener('click', () => {
+        if (state.reasonsIndex > 0) {
+            state.reasonsIndex--;
+            renderReason();
+        }
+    });
+
+    reasonNextBtn.addEventListener('click', () => {
+        if (state.reasonsIndex < REASONS.length - 1) {
+            state.reasonsIndex++;
+            renderReason();
+        }
+    });
+
+    reasonRandomBtn.addEventListener('click', () => {
+        let newIdx;
+        do {
+            newIdx = Math.floor(Math.random() * REASONS.length);
+        } while (newIdx === state.reasonsIndex && REASONS.length > 1);
+        state.reasonsIndex = newIdx;
+        renderReason();
+    });
+
+    level4NextBtn.addEventListener('click', async () => {
+        await logActivity('completedLevels', 4);
+        await logActivity('gameCompleted', true);
+        showToast('All levels complete! ❤️');
+        showScreen('final');
+    });
+
+    // =============================================
+    // FINAL SCREEN
+    // =============================================
+    restartBtn.addEventListener('click', () => {
+        state.quizIndex = 0;
+        state.quizAnswers = [];
+        state.lettersOpened = [false, false, false];
+        state.reasonsIndex = 0;
+        state.reasonsViewed = new Set();
+        showScreen('welcome');
+    });
+
+    // =============================================
+    // MUSIC PLAYER
+    // =============================================
+    function initMusic() {
+        // Use a royalty-free music URL. Replace with your own hosted file.
+        // This is a gentle placeholder — the user must click to play.
+        audioElement = new Audio();
+        audioElement.loop = true;
+        audioElement.volume = 0.4;
+        audioElement.preload = 'none';
+
+        // Use Web Audio API to generate a soft ambient tone as fallback
+        // Instead of relying on an external file that may 404, we generate a soft pad.
+        try {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            const ctx = new AudioContext();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.value = 220;
+            gain.gain.value = 0;
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+
+            // Keep reference for toggling
+            audioElement._ctx = ctx;
+            audioElement._osc = osc;
+            audioElement._gain = gain;
+
+            // Start oscillator silently — it will play when user clicks
+            osc.start();
+        } catch (e) {
+            console.warn('Web Audio not available:', e.message);
+        }
+
+        musicPlayBtn.addEventListener('click', toggleMusic);
+        musicVolume.addEventListener('input', () => {
+            const vol = parseInt(musicVolume.value) / 100;
+            if (audioElement) {
+                audioElement.volume = vol;
+                if (audioElement._gain) audioElement._gain.gain.value = musicPlaying ? vol * 0.15 : 0;
+            }
+        });
+    }
+
+    function toggleMusic() {
+        if (!audioElement) return;
+
+        if (audioElement._ctx && audioElement._ctx.state === 'suspended') {
+            audioElement._ctx.resume();
+        }
+
+        if (musicPlaying) {
+            // Pause
+            if (audioElement._gain) audioElement._gain.gain.value = 0;
+            musicPlaying = false;
+            musicDisc.classList.remove('playing');
+            musicPlayBtn.textContent = '▶️';
+        } else {
+            // Play
+            if (audioElement._gain) {
+                const vol = parseInt(musicVolume.value) / 100;
+                audioElement._gain.gain.value = vol * 0.15;
+            }
+            musicPlaying = true;
+            musicDisc.classList.add('playing');
+            musicPlayBtn.textContent = '⏸️';
+        }
+    }
+
+    function startMusicIfNeeded() {
+        // Auto-start only after first user gesture — the start button click counts.
+        if (audioElement && !musicPlaying) {
+            toggleMusic();
+        }
+    }
+
+    // =============================================
+    // ADMIN SHORTCUT: PRESS "A" TWICE QUICKLY
+    // =============================================
+    let lastA = 0;
+    const AA_INTERVAL = 400;
+
+    document.addEventListener('keydown', (e) => {
+        const tag = (e.target.tagName || '').toLowerCase();
+        if (tag === 'input' || tag === 'textarea' || tag === 'select' || e.target.isContentEditable) return;
+
+        if (e.key.toLowerCase() === 'a' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+            const now = Date.now();
+            if (now - lastA < AA_INTERVAL) {
+                lastA = 0;
+                showAdminLogin();
+            } else {
+                lastA = now;
+            }
+        }
+    });
+
+    function showAdminLogin() {
+        // Since we're not shipping a backend, we show a clear notice.
+        // In production, this would redirect to a properly secured admin app.
+        const notice = document.createElement('div');
+        notice.style.cssText = `
+            position:fixed;top:0;left:0;width:100%;height:100%;
+            background:rgba(10,2,12,0.92);z-index:9999;
+            display:flex;align-items:center;justify-content:center;
+            padding:24px;backdrop-filter:blur(14px);
+        `;
+        notice.innerHTML = `
+            <div style="max-width:420px;background:rgba(30,10,30,0.9);border:1px solid rgba(255,160,200,0.4);border-radius:32px;padding:32px 24px;text-align:center;">
+                <div style="font-size:3rem;margin-bottom:12px;">🔐</div>
+                <h2 style="color:#ffb6d9;font-size:1.2rem;margin-bottom:8px;">ADMIN ACCESS</h2>
+                <p style="color:#dbb8ce;font-size:0.85rem;line-height:1.6;margin-bottom:18px;">
+                    Admin access is available via a separately secured dashboard.
+                    This visitor site does not contain admin credentials or direct database access.
+                </p>
+                <p style="color:#c99ab8;font-size:0.75rem;line-height:1.5;margin-bottom:20px;">
+                    To set up admin access, deploy the admin dashboard with Firebase Hosting
+                    and configure custom claims via the Firebase Admin SDK.
+                </p>
+                <button id="closeAdminNotice" style="padding:12px 32px;border-radius:60px;border:none;background:linear-gradient(135deg,#ff6a9e,#d44a8a);color:#fff;font-size:0.9rem;font-weight:600;cursor:pointer;">
+                    CLOSE
+                </button>
+            </div>
+        `;
+        document.body.appendChild(notice);
+        document.getElementById('closeAdminNotice').addEventListener('click', () => notice.remove());
+    }
+
+    // =============================================
+    // BOOT
+    // =============================================
+    function boot() {
+        initFirebase();
+        initMusic();
+        spawnFloatingHearts();
+        validateForm();
+    }
+
+    boot();
+
+</script>
+
+</body>
+</html>
