@@ -217,6 +217,22 @@ details summary{cursor:pointer}
 <canvas id="bg"></canvas>
 <div id="cu"></div>
 <div id="app"></div>
+
+<!-- BACKGROUND MUSIC: hidden, no controls. Starts on first tap/click anywhere. -->
+<audio id="bgm" src="Kushagra%20-%20Finding%20Her%20(Lyrics).mp3" loop preload="auto" style="display:none"></audio>
+<script>
+(()=>{
+  const a=document.getElementById('bgm');
+  a.volume=.7;
+  const evs=['pointerdown','click','touchend','keydown'];
+  const stop=()=>evs.forEach(e=>removeEventListener(e,start,true));
+  const start=()=>{
+    a.play().then(stop).catch(()=>{}); // fail hole porer click-e abar try korbe
+  };
+  evs.forEach(e=>addEventListener(e,start,true));
+})();
+</script>
+
 <script type="module">
 import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import{getDatabase,ref,push,set,onValue,remove}from"https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
