@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Secret of My Heart ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff0f6;--card:#fff;--ink:#3a1a4a;--pink:#ff5fa2;--pur:#7b2d8e;--soft:#f6d9ec}
+*{box-sizing:border-box}body{margin:0;font-family:Fredoka,system-ui,sans-serif;background:linear-gradient(160deg,#ffe3f1,#e9d7ff);color:var(--ink);min-height:100vh;overflow-x:hidden}
+h1,h2{font-family:'Playfair Display',serif;font-style:italic;margin:.3em 0}
+main{max-width:560px;margin:0 auto;padding:20px 16px 90px}
+.card{background:var(--card);border-radius:28px 28px 28px 8px;padding:22px;box-shadow:0 8px 24px #7b2d8e22;display:none}
+.card.on{display:block;animation:pop .45s ease}
+@keyframes pop{from{transform:scale(.94) translateY(12px);opacity:0}}
+label{display:block;margin:12px 0 4px;font-weight:600}
+input,select,textarea{width:100%;padding:11px 14px;border:2px solid var(--soft);border-radius:16px;font:inherit;color:var(--ink)}
+input:focus,select:focus{outline:3px solid #ff5fa255;border-color:var(--pink)}
+button{font:inherit;font-weight:600;border:0;border-radius:999px;padding:12px 22px;background:var(--pink);color:#fff;cursor:pointer;margin:10px 6px 0 0;transition:transform .15s}
+button:active{transform:scale(.95)}button.alt{background:var(--soft);color:var(--pur)}button:disabled{opacity:.5}
+.note{font-size:.85rem;background:#f9eefc;padding:10px 12px;border-radius:14px;margin:12px 0}
+.err{color:#c0215b;font-size:.9rem;min-height:1.2em}
+.big{font-size:4.5rem;text-align:center;display:block;animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-10px) rotate(3deg)}}
+.opt{display:block;width:100%;text-align:left;background:var(--soft);color:var(--ink);border-radius:18px}.opt.ok{background:#bdf0cf}.opt.no{background:#ffc2d4}
+.bar{height:8px;background:var(--soft);border-radius:9px;overflow:hidden;margin-bottom:14px}.bar i{display:block;height:100%;background:var(--pink);transition:width .4s}
+.env{font-size:3.4rem;background:none;padding:0;margin:4px;transition:transform .4s}.env.open{transform:rotateY(180deg) scale(1.1)}
+.letter{background:#fff8fc;border:2px dashed var(--pink);border-radius:18px;padding:14px;margin:10px 0;display:none;animation:pop .4s}
+.rcard{font-size:1.25rem;text-align:center;padding:26px 12px;border-radius:24px;background:var(--soft);min-height:130px}
+.heart{font-size:7rem;text-align:center;display:block;transition:transform .9s}.heart.open{transform:scale(1.25)}
+.fly{position:fixed;top:100%;font-size:22px;pointer-events:none;animation:up linear infinite;z-index:-1;opacity:.7}
+@keyframes up{to{transform:translateY(-115vh) translateX(30px)}}
+.bf{position:fixed;font-size:26px;pointer-events:none;animation:fl 9s ease-in-out infinite alternate;z-index:-1}
+@keyframes fl{to{transform:translate(60vw,-30vh) rotate(20deg)}}
+#music{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);background:#fff;border-radius:999px;padding:6px 14px;display:flex;gap:10px;align-items:center;box-shadow:0 4px 16px #7b2d8e33}
+#disc{font-size:1.6rem}#disc.spin{animation:sp 3s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
+#music button{margin:0;padding:6px 12px}#music input{width:80px;padding:0}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body><main>
+<section class="card on" id="s-reg"><span class="big">🧸🎀</span>
+<h1>WELCOME TO MY LITTLE LOVE WORLD! 🎀</h1><p>Before entering, tell me a little about yourself.</p>
+<form id="f"><label>FULL NAME *</label><input id="name" required maxlength="80">
+<label>AGE *</label><input id="age" type="number" min="1" max="120" required>
+<label>DATE OF BIRTH *</label><input id="dob" type="date" required>
+<label>GENDER (optional)</label><select id="gender"><option value="">—</option><option>Male</option><option>Female</option><option>Other</option><option>Prefer not to say</option></select>
+<div id="ori"><label>SEXUAL ORIENTATION (optional)</label><select id="orientation"><option value="">—</option><option>Gay</option><option>Straight</option><option>Lesbian</option><option>Bisexual</option><option>Other</option><option>Prefer not to say</option></select></div>
+<label>PERSONALITY (optional)</label><select id="personality"><option value="">—</option><option>POOKIE 🥹</option><option>TOXIC 😈</option><option>BOTH 😭❤️</option></select>
+<div class="note"><b>Privacy:</b> I store the details you enter, plus your game progress, in a private database. Only the site administrator can read them. Optional fields can be left empty. Orientation and location are never collected from anyone under 18. You can delete your data any time with the button at the end of the game.</div>
+<label style="font-weight:400"><input type="checkbox" id="consent" style="width:auto"> I agree to share the information above with the administrator.</label>
+<div class="err" id="err"></div><button>CONTINUE ❤️</button></form></section>
+
+<section class="card" id="s-loc"><span class="big">🌍</span><h2>WHERE ARE YOU EXPLORING FROM? 🌍</h2>
+<div class="note">Optional. Sharing sends your exact coordinates (and an approximate city and country, looked up through bigdatacloud.net) to the administrator. Nothing is ever tracked without your tap.</div>
+<button id="loc">SHARE MY LOCATION 📍</button><button class="alt" id="skip">SKIP</button><p id="locmsg"></p></section>
+
+<section class="card" id="s-wel"><span class="big">💌</span><h1 id="hey"></h1><p>YOU ARE NOW ENTERING MY LITTLE WORLD.</p><button id="go">START MY ADVENTURE 💌</button></section>
+
+<section class="card" id="s-1"><div class="bar"><i style="width:20%"></i></div><h2>LEVEL 01 · HOW WELL DO YOU KNOW US?</h2><div id="q"></div></section>
+
+<section class="card" id="s-2"><div class="bar"><i style="width:40%"></i></div><h2>LEVEL 02 · UNLOCK MY HEART</h2><span class="big" id="lock">🔒</span>
+<p>Hint: <i id="hint"></i></p><input id="secret" placeholder="Type the secret word" autocomplete="off"><div class="err" id="lerr"></div><button id="open">UNLOCK 🗝️</button></section>
+
+<section class="card" id="s-3"><div class="bar"><i style="width:60%"></i></div><h2>LEVEL 03 · SECRET LOVE LETTERS</h2><p>Open all three envelopes.</p><div id="envs"></div></section>
+
+<section class="card" id="s-4"><div class="bar"><i style="width:80%"></i></div><h2>LEVEL 04 · REASONS WHY I LOVE YOU</h2>
+<p id="rc-n"></p><div class="rcard" id="rc"></div><button class="alt" id="prev">◀</button><button class="alt" id="rnd">RANDOM 🎲</button><button class="alt" id="next">▶</button>
+<p id="rprog"></p><button id="r-done" disabled>OPEN MY HEART 💖</button></section>
+
+<section class="card" id="s-5"><div class="bar"><i style="width:100%"></i></div><h2>THE SECRET OF MY HEART</h2><span class="heart" id="hrt">💗</span>
+<div class="letter" id="fin" style="display:none"></div><button id="hopen">OPEN</button><div id="after" style="display:none"><button class="alt" id="del">DELETE MY DATA 🗑️</button></div></section>
+</main>
+<div id="music"><span id="disc">💿</span><button id="pp">▶</button><input id="vol" type="range" min="0" max="1" step=".05" value=".5" aria-label="Volume"></div>
+<audio id="aud" loop preload="none"></audio>
+<script type="module">
+/* ====== EDIT YOUR CONTENT HERE ====== */
+const CONFIG={
+ musicUrl:"", /* direct URL to an mp3 you have the rights to use */
+ secret:"forever", hint:"The word we always say at the end of every goodbye.",
+ quiz:[
+  {q:"Where did we first meet?",o:["School","Online","A friend's party","A café"],a:0},
+  {q:"My favourite thing to eat with you?",o:["Pizza","Ice cream","Biryani","Fuchka"],a:1},
+  {q:"What do I call you when I'm happy?",o:["Pookie","Bestie","Sunshine","Silly"],a:0},
+  {q:"Our favourite thing to do together?",o:["Late-night talks","Shopping","Walking","Movies"],a:0},
+  {q:"What colour do I think of when I think of us?",o:["Blue","Green","Pink","Gold"],a:2}],
+ letters:["You make ordinary days feel like a little festival.","Whenever I'm tired, remembering your laugh is my reset button.","If hearts had addresses, mine would just say: wherever you are."],
+ finalLetter:"Dear you, the secret of my heart is simple: it learned how to be brave because of you. Thank you for every message, every laugh, every quiet moment. I love you, always. ❤️"};
+const REASONS=["You remember tiny details I forgot I told you.","You laugh at my worst jokes anyway.","You make silence feel safe.","You say 'text me when you get home' and mean it.","Your voice notes are my favourite podcast.","You cheer louder for my wins than I do.","You never make me feel small for being sensitive.","You turn boring errands into adventures.","You hold my hand like it's the most normal, precious thing.","You tell me the truth, gently.","You share your food (mostly).","You make my bad days shorter.","You see the best version of me before I do.","You're brave about being soft.","You sing off-key with full confidence.","You apologise like an adult and forgive like an angel.","You make home feel like a person.","You dream out loud with me.","Your hugs reset my whole week.","You keep my secrets like treasure.","You make 3am talks feel like magic.","You're proud of me in ways that matter.","You make me want to be kinder.","You know which song fits my mood.","You laugh with your whole face.","You choose me on ordinary Tuesdays.","You make waiting feel worth it.","You turn my worries into plans.","You celebrate small things like they're festivals.","You are my favourite person to be quiet with."];
+/* Add more strings to REASONS above to reach 100. Everything below adapts automatically. */
+import {initializeApp} from "https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js";
+import {getAuth,signInAnonymously,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
+import {getDatabase,ref,get,update,remove,serverTimestamp} from "https://www.gstatic.com/firebasejs/13.1.0/firebase-database.js";
+const app=initializeApp({apiKey:"AIzaSyCzx5PjKJNlKMJC4evQPjyXmdp1sTwpCP4",authDomain:"my-website-ctg.firebaseapp.com",databaseURL:"https://my-website-ctg-default-rtdb.firebaseio.com",projectId:"my-website-ctg",storageBucket:"my-website-ctg.firebasestorage.app",messagingSenderId:"655567782113",appId:"1:655567782113:web:a5adaa922a76bc58f5b7a0",measurementId:"G-8LBRH0WSEQ"});
+const auth=getAuth(app),db=getDatabase(app),$=id=>document.getElementById(id);
+let uid=null,adult=false,name="",done=0,seen={},ri=0,qi=0,opened=0;
+const show=id=>{document.querySelectorAll('.card').forEach(c=>c.classList.remove('on'));$(id).classList.add('on');scrollTo(0,0)};
+const save=(p,o)=>update(ref(db,`visitors/${uid}${p?'/'+p:''}`),{...o}).catch(e=>console.warn('save failed',e.code));
+const touch=o=>save('activity',{lastActive:serverTimestamp(),...o});
+/* floating hearts + butterflies */
+for(let i=0;i<8;i++){const h=document.createElement('div');h.className='fly';h.textContent='💗';h.style.left=Math.random()*95+'%';h.style.animationDuration=12+Math.random()*10+'s';h.style.animationDelay=-Math.random()*12+'s';document.body.append(h)}
+for(let i=0;i<3;i++){const b=document.createElement('div');b.className='bf';b.textContent='🦋';b.style.left=i*25+'%';b.style.top=30+i*20+'%';b.style.animationDelay=-i*3+'s';document.body.append(b)}
+/* hide orientation for minors */
+const minor=()=>{const a=+$('age').value,d=$('dob').value;let ages=[];if(a)ages.push(a);if(d){const t=new Date(),b=new Date(d);let y=t.getFullYear()-b.getFullYear();if(t<new Date(t.getFullYear(),b.getMonth(),b.getDate()))y--;ages.push(y)}return ages.length&&Math.min(...ages)<18};
+const sync=()=>{const m=minor();$('ori').style.display=m?'none':'block';if(m)$('orientation').value=''};
+$('age').oninput=$('dob').oninput=sync;
+/* auth + restore */
+onAuthStateChanged(auth,async u=>{if(!u){signInAnonymously(auth).catch(e=>$('err').textContent='Could not connect. Check that Anonymous sign-in is enabled.');return}
+ uid=u.uid;try{const s=await get(ref(db,`visitors/${uid}`));if(s.exists()&&s.val().profile){const v=s.val();name=v.profile.name;adult=v.profile.age>=18;done=v.activity?.completedLevels||0;seen=v.activity?.reasonsViewed||{};$('hey').textContent=`HEY, ${name.toUpperCase()}! 🥹❤️`;
+  if(v.activity?.gameCompleted)start(5);else if(done>0)start(done+1);else show('s-wel')}}catch(e){console.warn(e)}});
+$('f').onsubmit=async e=>{e.preventDefault();const err=$('err');err.textContent='';
+ if(!uid)return err.textContent='Still connecting, try again in a second.';
+ if(!$('consent').checked)return err.textContent='Please tick the consent box to continue.';
+ const age=+$('age').value,m=minor();if(!$('name').value.trim()||!age||!$('dob').value)return err.textContent='Name, age and date of birth are required.';
+ name=$('name').value.trim();adult=!m;const p={name,age,dateOfBirth:$('dob').value,createdAt:serverTimestamp()};
+ for(const k of['gender','personality'])if($(k).value)p[k]=$(k).value;if(adult&&$('orientation').value)p.orientation=$('orientation').value;
+ try{const ex=await get(ref(db,`visitors/${uid}/profile`));if(!ex.exists())await update(ref(db,`visitors/${uid}`),{profile:p,consent:{profileConsent:true,locationConsent:false,consentAt:serverTimestamp()},activity:{entryTime:serverTimestamp(),gameStarted:false,completedLevels:0,gameCompleted:false,lastActive:serverTimestamp()}})}
+ catch(x){return err.textContent='Could not save. Please try again.'}
+ $('hey').textContent=`HEY, ${name.toUpperCase()}! 🥹❤️`;show(adult?'s-loc':'s-wel')};
+$('skip').onclick=()=>show('s-wel');
+$('loc').onclick=()=>{if(!adult)return;if(!navigator.geolocation){$('locmsg').textContent='Location is not supported here. You can continue.';return}
+ navigator.geolocation.getCurrentPosition(async p=>{const l={latitude:p.coords.latitude,longitude:p.coords.longitude,sharedAt:serverTimestamp()};
+  try{const r=await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${l.latitude}&longitude=${l.longitude}&localityLanguage=en`);const j=await r.json();if(j.city||j.locality)l.city=(j.city||j.locality).slice(0,80);if(j.countryName)l.country=j.countryName.slice(0,80)}catch{}
+  await update(ref(db,`visitors/${uid}`),{location:l,'consent/locationConsent':true}).then(()=>{$('locmsg').innerHTML='<span class="big" style="font-size:3rem">📍💖</span>LOCATION SUCCESSFULLY SHARED! ❤️';setTimeout(()=>show('s-wel'),1600)}).catch(()=>$('locmsg').textContent='Could not save location. You can continue.')},
+ ()=>{$('locmsg').textContent='No problem, location stays private. Tap skip to continue.'},{timeout:12000})};
+$('go').onclick=()=>{touch({gameStarted:true});startMusic();start(1)};
+function start(n){if(n>5)n=5;[null,l1,l2,l3,l4,l5][n]();}
+/* L1 */
+function l1(){show('s-1');qi=0;qs()}
+function qs(){const q=CONFIG.quiz[qi];if(!q){return finish(1,l2)}$('q').innerHTML=`<p><b>${qi+1}/${CONFIG.quiz.length}</b> ${q.q}</p>`+q.o.map((o,i)=>`<button class="opt" data-i="${i}">${o}</button>`).join('');
+ $('q').querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const ok=+b.dataset.i===q.a;b.classList.add(ok?'ok':'no');if(ok)setTimeout(()=>{qi++;qs()},600)})}
+const finish=(n,next)=>{done=Math.max(done,n);touch({completedLevels:done});next()};
+/* L2 */
+function l2(){show('s-2');$('hint').textContent=CONFIG.hint}
+$('open').onclick=()=>{if($('secret').value.trim().toLowerCase()===CONFIG.secret.toLowerCase()){$('lock').textContent='💖';setTimeout(()=>finish(2,l3),900)}else{$('lerr').textContent='Not quite. Try again 🥹'}};
+/* L3 */
+function l3(){show('s-3');opened=0;$('envs').innerHTML=CONFIG.letters.map((t,i)=>`<button class="env" data-i="${i}" aria-label="Open letter ${i+1}">✉️</button><div class="letter" id="L${i}">${t}</div>`).join('');
+ $('envs').querySelectorAll('.env').forEach(b=>b.onclick=()=>{if(b.classList.contains('open'))return;b.classList.add('open');b.textContent='💌';$('L'+b.dataset.i).style.display='block';if(++opened===CONFIG.letters.length){touch({surpriseOpened:true});$('envs').insertAdjacentHTML('beforeend','<button id="n3">NEXT ➜</button>');$('n3').onclick=()=>finish(3,l4)}})}
+/* L4 */
+function l4(){show('s-4');ri=0;rr()}
+function rr(){$('rc-n').textContent=`Reason ${ri+1} of ${REASONS.length}`;$('rc').textContent=REASONS[ri];if(!seen[ri+1]){seen[ri+1]=true;save('activity/reasonsViewed',{[ri+1]:true});touch({})}
+ const c=Object.keys(seen).length,need=Math.min(10,REASONS.length);$('rprog').textContent=`${c}/${REASONS.length} seen · see ${need} to unlock`;$('r-done').disabled=c<need}
+$('prev').onclick=()=>{ri=(ri-1+REASONS.length)%REASONS.length;rr()};$('next').onclick=()=>{ri=(ri+1)%REASONS.length;rr()};$('rnd').onclick=()=>{ri=Math.floor(Math.random()*REASONS.length);rr()};
+$('r-done').onclick=()=>finish(4,l5);
+/* L5 */
+function l5(){show('s-5');$('fin').textContent=CONFIG.finalLetter}
+$('hopen').onclick=()=>{$('hrt').classList.add('open');$('hrt').textContent='💌';$('hopen').style.display='none';$('fin').style.display='block';$('after').style.display='block';touch({completedLevels:5,gameCompleted:true})};
+$('del').onclick=async()=>{if(!confirm('Delete all my saved data?'))return;await remove(ref(db,`visitors/${uid}`));alert('Your data has been deleted. 💗');location.reload()};
+/* music */
+const a=$('aud');let want=false;
+function startMusic(){if(!CONFIG.musicUrl||want)return;want=true;a.src=CONFIG.musicUrl;a.volume=$('vol').value;a.play().then(()=>{$('pp').textContent='⏸';$('disc').classList.add('spin')}).catch(()=>{want=false})}
+$('pp').onclick=()=>{if(!CONFIG.musicUrl){alert('No music file is configured yet.');return}if(!a.src)a.src=CONFIG.musicUrl;if(a.paused){a.play().then(()=>{$('pp').textContent='⏸';$('disc').classList.add('spin')}).catch(()=>alert('Could not play the music.'))}else{a.pause();$('pp').textContent='▶';$('disc').classList.remove('spin')}};
+$('vol').oninput=()=>a.volume=$('vol').value;a.onerror=()=>{$('pp').textContent='▶';$('disc').classList.remove('spin')};
+/* admin shortcut: A A */
+let last=0;addEventListener('keydown',e=>{if(/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)||e.key.toLowerCase()!=='a')return;const t=Date.now();if(t-last<400)location.href='admin.html';last=t});
+</script></body></html>
